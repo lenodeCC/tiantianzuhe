@@ -69,6 +69,7 @@ class Reg(APIView):
         phone=str(phone)
         pw=request.POST.get('pwd','').strip()
         token=request.POST.get('token','').strip()
+        code=request.POST.get('code','').strip()
         token=str(token)
         try:
             usertoken=MyUserToken.objects.get(phone=phone)
@@ -78,6 +79,10 @@ class Reg(APIView):
                         data={'success':False,'err_code':1001,'err_msg':'phone number was used'}
                     else:
                         user=MyUser.objects.create_user(phone=phone,password=pw)
+                        usercode=random.randint(10000000,99999999)
+                        usercode=str(usercode)+str(user.id)
+                        user.token=usercode
+                        user.money=100
                         user.save()
                         uuser=authenticate(phone=phone,password=pw)
                         login(request,uuser)
@@ -113,6 +118,34 @@ class Login(APIView):
                 data={'success':False,'err_code':1002,'err_msg':'need reg'}
         else:
             data={'success':False,'err_code':1003,'err_msg':'empty phone or password'}
+        return Response(data)
+
+class ThirdLogin(APIView):
+    authentication_classes = (UnsafeSessionAuthentication,)
+    permission_classes = (AllowAny,)
+    def post(self, request, format=None):
+        openid=request.POST.get('openid','').strip()
+        openname=request.POST.get('openname','').strip()
+        openurl=request.POST.get('openurl','').strip()
+        if not openid:
+            data={'success':False,'err_code':1003}
+            return Response(data)            
+        try:
+            user=MyUser.objects.get(openid=openid)
+            data={'success':True,'isfirst':False}
+        except:
+            user=MyUser.objects.create_user(phone=openid,password='password')
+            user.openid=openid
+            user.openname=openname
+            user.openurl=openurl
+            usercode=random.randint(10000000,99999999)
+            usercode=str(usercode)+str(user.id)
+            user.token=usercode
+            user.money=100
+            user.save()
+            data={'success':True,'isfirst':True}
+        user.backend = 'django.contrib.auth.backends.ModelBackend'
+        login(request,user)
         return Response(data)
     
 class LogOut(APIView):

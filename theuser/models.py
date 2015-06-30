@@ -36,6 +36,11 @@ class MyUser(AbstractBaseUser):
     looks=models.ManyToManyField(settings.AUTH_USER_MODEL,verbose_name='关注用户',blank=True,null=True,related_name='look')
     money=models.IntegerField(verbose_name='天天币',default=0)
     token=models.CharField(max_length=20,verbose_name='推荐码',blank=True)
+
+    openid=models.CharField(max_length=20,verbose_name='第三方id',blank=True)
+    openname=models.CharField(max_length=20,verbose_name='第三方昵称',blank=True)
+    openurl=models.CharField(max_length=20,verbose_name='第三方头像',blank=True)
+    
     is_active = models.BooleanField(default=True,verbose_name='活跃用户')
     is_admin = models.BooleanField(default=False,verbose_name='管理权限')
 

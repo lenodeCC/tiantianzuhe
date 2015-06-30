@@ -3,10 +3,12 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.urlpatterns import format_suffix_patterns
+from tiantianzuhe import views
 urlpatterns = patterns('',
     url(r'^createtoken/$', views.CreateToken.as_view()),
     url(r'^reg/$', views.Reg.as_view()),
     url(r'^login/$', views.Login.as_view()),
+    url(r'^thirdlogin/$', views.ThirdLogin.as_view()),
 
     url(r'^admin/', include(admin.site.urls)),
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
