@@ -3,6 +3,7 @@ from django.http import HttpResponse,Http404
 from django.contrib.auth import authenticate, login, logout  
 from django.utils import timezone
 from django.db.models import Sum
+from django.db.models import Q
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -22,6 +23,8 @@ import decimal
 import calendar
 
 from theuser.models import MyUser,MyUserToken
+from info.models import Banner,Message
+from zuhe.models import Zuhe,SingleStock,Comment
 
 class UnsafeSessionAuthentication(SessionAuthentication):
     def authenticate(self, request):
@@ -96,7 +99,18 @@ class Reg(APIView):
             data={'success':False,'err_code':1004,'err_msg':u'token donot exists'}
      
         return Response(data)
-                
+
+class IsReged(APIView):
+    authentication_classes = (UnsafeSessionAuthentication,)
+    permission_classes = (AllowAny,)
+    def post(self, request, format=None):
+        phone=request.POST.get('phone','').strip()
+        if MyUserToken.objects.filter(phone=phone).exists():
+            data={'success':True}
+        else:
+            data={'success':False}
+        return Response(data)
+        
 class Login(APIView):
     authentication_classes = (UnsafeSessionAuthentication,)
     permission_classes = (AllowAny,)
@@ -198,3 +212,129 @@ class ModifyPassword(APIView):
         request.user.set_password(new)
         request.user.save()
         return Response({'success':True})
+
+class GetBanner(APIView):
+    authentication_classes = (UnsafeSessionAuthentication,BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get(self, request, format=None):
+        data=Banner.objects.values()
+        return Response(data)
+
+class MakeMessage(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_user(self, pk):
+        try:
+            return MyUser.objects.get(pk=int(pk))
+        except MyUser.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        user=request.user
+        pk=request.POST.get('id','')
+        touser=self.get_user(pk)
+        content=request.POST.get('content','')
+        Message.objects.create(fromuser=user,touser=touser,content=content)
+        data={'success':True}
+        return Response(data)
+
+class GetMessage(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_user(self, pk):
+        try:
+            return MyUser.objects.get(pk=int(pk))
+        except MyUser.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        user=request.user
+        pk=request.POST.get('id','')
+        touser=self.get_user(pk)
+        page=request.POST.get('page','')
+        if not page:
+            page=1
+        page=int(page)
+        start=(page-1)*10
+        end=start+10
+        data=Message.objects.filter(fromuser__in=[user,touser],touser__in=[user,touser]).order_by('-date').values('fromuser__id','fromuser__img','fromuser__name','content','date')[start:end]
+        return Response(data)
+   
+class ReadMessage(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_message(self,user,pk):
+        try:
+            return Message.objects.get(touser=user,pk=int(pk))
+        except Message.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        user=request.user
+        pk=request.POST.get('id','')
+        message=self.get_message(user,pk)
+        message.is_read=True
+        message.save()
+        data={'success':True}
+        return Response(data)
+
+class GetMessageUsers(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_user(self, pk):
+        try:
+            return MyUser.objects.get(pk=int(pk))
+        except MyUser.DoesNotExist:
+            raise Http404
+    def get(self, request, format=None):
+        user=request.user
+        touserlist=Message.objects.filter(fromuser=user).values_list('touser__id', flat=True)
+        touserlist=list(touserlist)
+        fromuserlist=Message.objects.filter(touser=user).values_list('fromuser__id', flat=True)
+        fromuserlist=list(fromuserlist)
+        userlist=touserlist+fromuserlist
+        userlist=set(userlist)
+        data=[]
+        for pk in userlist:
+            theuser=self.get_user(pk)
+            data.append({'id':theuser.id,'img':theuser.img.name if theuser.img else '','name':theuser.name})
+        return Response(data)
+
+class FindUsers(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_user(self, pk):
+        try:
+            return MyUser.objects.get(pk=int(pk))
+        except MyUser.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        user=request.user
+        key=request.POST.get('keyword','')
+
+        if key:
+            page=request.POST.get('page','')
+            if not page:
+                page=1
+                page=int(page)
+            start=(page-1)*10
+            end=start+10
+            data=MyUser.objects.filter(name__icontains=key).values('id','name','img')
+            for i in data:
+                theuser=self.get_user(i['id'])
+                if theuser in user.friends.all():
+                    i['isfriend']=True
+                else:
+                    i['isfriend']=False
+            return Response(data)
+        userlist=MyUser.objects.values_list('id', flat=True)
+        userlist=list(userlist)
+        if len(userlist)<=10:
+            userlist=random.sample(userlist,len(userlist)-1)
+        else:
+            userlist=random.sample(userlist,10)
+        data=[]
+        for pk in userlist:
+            theuser=self.get_user(pk)
+            if theuser in user.friends.all():
+                data.append({'id':theuser.id,'img':theuser.img.name if theuser.img else '','name':theuser.name,'isfriend':True})
+            else:
+                data.append({'id':theuser.id,'img':theuser.img.name if theuser.img else '','name':theuser.name,'isfriend':False})
+        return Response(data)

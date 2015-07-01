@@ -7,9 +7,17 @@ from tiantianzuhe import views
 urlpatterns = patterns('',
     url(r'^createtoken/$', views.CreateToken.as_view()),
     url(r'^reg/$', views.Reg.as_view()),
+    url(r'^isreged/$', views.IsReged.as_view()),
     url(r'^login/$', views.Login.as_view()),
     url(r'^thirdlogin/$', views.ThirdLogin.as_view()),
+    url(r'^forgetpw/$', views.ForgetPW.as_view()),
+    url(r'^getbanner/$', views.GetBanner.as_view()),
+    url(r'^makemessage/$', views.MakeMessage.as_view()),
+    url(r'^getmessage/$', views.GetMessage.as_view()),
+    url(r'^getmessageusers/$', views.GetMessageUsers.as_view()),
+    url(r'^findfriends/$', views.FindUsers.as_view()),
 
+                       
     url(r'^admin/', include(admin.site.urls)),
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns = format_suffix_patterns(urlpatterns)

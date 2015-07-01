@@ -3,8 +3,18 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.utils import timezone
 from django.conf import settings
+from zuhe.models import Zuhe
 
-        
+class PreDate(models.Model):
+
+    date=models.DateField(verbose_name='日期')
+
+    def __unicode__(self):
+        return self.date.strftime('%Y-%m-%d')
+    class Meta:
+        verbose_name = '预定日期'
+        verbose_name_plural = "预定日期"
+
 class MyUserManager(BaseUserManager):
     def create_user(self, phone, password):
         if not phone:
@@ -32,8 +42,8 @@ class MyUser(AbstractBaseUser):
     gender=models.IntegerField(choices=GENDER_CHOICES,verbose_name='性别',blank=True,null=True)
     desc=models.TextField(verbose_name='简介',blank=True)
     email=models.EmailField(verbose_name='邮箱',blank=True)
-    friends=models.ManyToManyField(settings.AUTH_USER_MODEL,verbose_name='好友',blank=True,null=True,related_name='friend')
-    looks=models.ManyToManyField(settings.AUTH_USER_MODEL,verbose_name='关注用户',blank=True,null=True,related_name='look')
+    friends=models.ManyToManyField(settings.AUTH_USER_MODEL,verbose_name=u'好友',blank=True,null=True,related_name='friend')
+    looks=models.ManyToManyField(settings.AUTH_USER_MODEL,verbose_name=u'关注用户',blank=True,null=True,related_name='look')
     money=models.IntegerField(verbose_name='天天币',default=0)
     token=models.CharField(max_length=20,verbose_name='推荐码',blank=True)
 
@@ -41,6 +51,8 @@ class MyUser(AbstractBaseUser):
     openname=models.CharField(max_length=20,verbose_name='第三方昵称',blank=True)
     openurl=models.CharField(max_length=20,verbose_name='第三方头像',blank=True)
     
+    zuhes=models.ManyToManyField(Zuhe,verbose_name=u'收藏组合',blank=True,null=True,)
+    predate=models.ManyToManyField(PreDate,verbose_name=u'预定日期',blank=True,null=True,)
     is_active = models.BooleanField(default=True,verbose_name='活跃用户')
     is_admin = models.BooleanField(default=False,verbose_name='管理权限')
 
@@ -48,7 +60,7 @@ class MyUser(AbstractBaseUser):
 
     objects = MyUserManager()
     def __unicode__(self):
-        return self.name
+        return self.phone
 
     def get_full_name(self):
         return self.name
