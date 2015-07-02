@@ -39,6 +39,10 @@ class Zuhe(models.Model):
     endtime=models.DateTimeField(verbose_name='结束时间')
     pubtime=models.DateTimeField(auto_now_add=True,verbose_name='上传时间')
     style=models.IntegerField(choices=CHOICES,verbose_name='类型')
+    good=models.IntegerField(verbose_name='点赞数',default=0)
+    colnum=models.IntegerField(verbose_name='收藏数',default=0)
+    rate=models.DecimalField(verbose_name='收益', max_digits=5, decimal_places=2,blank=True,null=True)
+    updatedate=models.DateTimeField(verbose_name='更新日期',blank=True,null=True)
     def __unicode__(self):
         return u'%d年%d月%d日的%s组合'%(self.starttime.year,self.starttime.month,self.starttime.day,self.CHOICES[self.style-1][1])
     class Meta:
@@ -52,6 +56,10 @@ class SingleStock(models.Model):
         )
     code=models.CharField(max_length=20,verbose_name='代号')
     isfree=models.BooleanField(choices=CHOICES,verbose_name='是否免费',default=True)
+    startprice=models.CharField(max_length=20,verbose_name='开盘价',blank=True)
+    endprice=models.CharField(max_length=20,verbose_name='收盘价',blank=True)
+    rate=models.CharField(max_length=20,verbose_name='收益',blank=True)
+    updatedate=models.DateTimeField(verbose_name='更新日期',blank=True,null=True)
     zuhe=models.ForeignKey(Zuhe,verbose_name='所属组合')
     def __unicode__(self):
         return self.code
@@ -70,3 +78,13 @@ class Comment(models.Model):
     class Meta:
         verbose_name = '组合讨论'
         verbose_name_plural = "组合讨论"
+
+class Col(models.Model):
+    user=models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='用户')
+    zuhe=models.ForeignKey(Zuhe,verbose_name='组合')
+    date=models.DateTimeField(auto_now_add=True,verbose_name='创建时间')
+    def __unicode__(self):
+        return self.user.name
+    class Meta:
+        verbose_name = '收藏'
+        verbose_name_plural = "收藏"

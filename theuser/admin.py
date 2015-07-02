@@ -65,7 +65,7 @@ class MyUserAdmin(UserAdmin):
     list_filter = ('is_admin',)
     #readonly_fields=('account','frozenaccount','totalaccount','point','bankcard','bank','bankadd','bankpoint',)
     fieldsets = (
-        (u'个人信息', {'fields': ('phone','password','name','gender','img','desc','email','friends','looks','money','token','openid','openname','openurl','zuhes','predate',)}),
+        (u'个人信息', {'fields': ('phone','password','name','gender','img','desc','email','friends','looks','money','token','openid','openname','openurl','predate',)}),
         (u'权限', {'fields': ('is_active','is_admin',)}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
@@ -78,7 +78,7 @@ class MyUserAdmin(UserAdmin):
     )
     ordering=('id',)
     search_fields = ['name','phone']
-    filter_horizontal = ('friends','looks','zuhes','predate',)
+    filter_horizontal = ('friends','looks','predate',)
 #admin.site.register(PreDate,)
 admin.site.register(MyUser, MyUserAdmin)
 admin.site.unregister(Group)

@@ -338,3 +338,182 @@ class FindUsers(APIView):
             else:
                 data.append({'id':theuser.id,'img':theuser.img.name if theuser.img else '','name':theuser.name,'isfriend':False})
         return Response(data)
+
+class RaiseGroup(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_zuhe(self, pk):
+        try:
+            return Zuhe.objects.get(pk=int(pk))
+        except Zuhe.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        user=request.user
+        pk=request.POST.get('groupid','')
+        zuhe=self.get_zuhe(pk)
+        zuhe.good+=1
+        zuhe.save()
+        data={'success':True}
+        return Response(data)       
+
+class ColGroup(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_zuhe(self, pk):
+        try:
+            return Zuhe.objects.get(pk=int(pk))
+        except Zuhe.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        user=request.user
+        pk=request.POST.get('groupid','')
+        zuhe=self.get_zuhe(pk)
+        Col.objects.create(user=user,zuhe=zuhe)
+        zuhe.colnum+=1
+        zuhe.save()
+        data={'success':True}
+        return Response(data)    
+
+class RemoveGroup(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_zuhe(self, pk):
+        try:
+            return Zuhe.objects.get(pk=int(pk))
+        except Zuhe.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        user=request.user
+        pk=request.POST.get('groupid','')
+        zuhe=self.get_zuhe(pk)
+        try:
+            Col.objects.get(user=user,zuhe=zuhe).delete()
+            zuhe.colnum-=1
+            zuhe.save()
+        except:
+            pass
+        data={'success':True}
+        return Response(data) 
+
+class GetGroups(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def post(self, request, format=None):
+        user=request.user
+        style=request.POST.get('type','')
+        sort=request.POST.get('sortnum','')
+        page=request.POST.get('page','')
+        if not page:
+            page=1
+        page=int(page)
+        start=(page-1)*10
+        end=start+10
+        now=timezone.now()
+        if int(style):
+            if int(sortnum)==0:
+                data=Col.objects.order_by('-date').values('zuhe__id','zuhe__starttime',\
+                                                          'date','zuhe__rate','zuhe__good',\
+                                                          'zuhe__colnum','zuhe__endtime')[start:end]
+                
+            elif int(sortnum)==1:
+                data=Col.objects.order_by('-zuhe__starttime').values('zuhe__id','zuhe__starttime',\
+                                                          'date','zuhe__rate','zuhe__good',\
+                                                          'zuhe__colnum','zuhe__endtime')[start:end]
+            else:
+                data=Col.objects.order_by('-zuhe__rate').values('zuhe__id','zuhe__starttime',\
+                                                          'date','zuhe__rate','zuhe__good',\
+                                                          'zuhe__colnum','zuhe__endtime')[start:end]
+        else:
+            if int(sortnum)==0:
+                data=Col.objects.filter(zuhe__starttime__lte=now,zuhe__endtime__gte=now).order_by('-date').values('zuhe__id','zuhe__starttime',\
+                                                          'date','zuhe__rate','zuhe__good',\
+                                                          'zuhe__colnum','zuhe__endtime')[start:end]
+                
+            elif int(sortnum)==1:
+                data=Col.objects.filter(zuhe__starttime__lte=now,zuhe__endtime__gte=now).order_by('-zuhe__starttime').values('zuhe__id','zuhe__starttime',\
+                                                          'date','zuhe__rate','zuhe__good',\
+                                                          'zuhe__colnum','zuhe__endtime')[start:end]
+            else:
+                data=Col.objects.filter(zuhe__starttime__lte=now,zuhe__endtime__gte=now).order_by('-zuhe__rate').values('zuhe__id','zuhe__starttime',\
+                                                          'date','zuhe__rate','zuhe__good','zuhe__colnum','zuhe__endtime')[start:end]
+        return Response(data) 
+
+
+class MakeComment(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_zuhe(self, pk):
+        try:
+            return Zuhe.objects.get(pk=int(pk))
+        except Zuhe.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        user=request.user
+        pk=request.POST.get('groupid','')
+        zuhe=self.get_zuhe(pk)
+        content=request.POST.get('content','')
+        Comment.objects.create(user=user,zuhe=zuhe,content=content)
+        data={'success':True}
+        return Response(data)
+
+class MakeCommentToComment(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_comment(self, pk):
+        try:
+            return Comment.objects.get(pk=int(pk))
+        except Comment.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        user=request.user
+        pk=request.POST.get('talkid','')
+        comment=self.get_zuhe(pk)
+        content=request.POST.get('content','')
+        Comment.objects.create(user=user,zuhe=comment.zuhe,content=content,to=comment)
+        data={'success':True}
+        return Response(data)
+
+class GetCommentList(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_zuhe(self, pk):
+        try:
+            return Zuhe.objects.get(pk=int(pk))
+        except Zuhe.DoesNotExist:
+            raise Http404
+    def get_comment(self, pk):
+        try:
+            return Comment.objects.get(pk=int(pk))
+        except Comment.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        user=request.user
+        pk=request.POST.get('groupid','')
+        zuhe=self.get_zuhe(pk)
+        page=request.POST.get('page','')
+        if not page:
+            page=1
+        page=int(page)
+        start=(page-1)*10
+        end=start+10
+        data=Comment.objects.order_by('-date').values('id','user__id','user__name',\
+                                                      'user__img','date','content')
+        for i in data:
+            comment=self.get_comment(i['id'])
+            i['list']=comment.comment_set.order_by('-date').values('user__id','user__name',\
+                                                                   'user__img','date','content')[0:3]
+        return Response(data)
+
+class GetCommentListToComment(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_comment(self, pk):
+        try:
+            return Comment.objects.get(pk=int(pk))
+        except Comment.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        user=request.user
+        pk=request.POST.get('talkid','')
+        comment=self.get_comment(pk)
+        data=comment.comment_set.order_by('-date').values('user__id','user__name','user__img','date','content','to__user__id','to__user__name')

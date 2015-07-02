@@ -51,7 +51,7 @@ class MyUser(AbstractBaseUser):
     openname=models.CharField(max_length=20,verbose_name='第三方昵称',blank=True)
     openurl=models.CharField(max_length=20,verbose_name='第三方头像',blank=True)
     
-    zuhes=models.ManyToManyField(Zuhe,verbose_name=u'收藏组合',blank=True,null=True,)
+
     predate=models.ManyToManyField(PreDate,verbose_name=u'预定日期',blank=True,null=True,)
     is_active = models.BooleanField(default=True,verbose_name='活跃用户')
     is_admin = models.BooleanField(default=False,verbose_name='管理权限')

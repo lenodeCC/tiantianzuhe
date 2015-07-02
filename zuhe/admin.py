@@ -3,7 +3,7 @@ from zuhe.models import Zuhe,SingleStock
 class StockInline(admin.TabularInline):
     model = SingleStock
     extra = 10
-
+    readonly_fields=('startprice','endprice','rate','updatedate')
 class ZuheAdmin(admin.ModelAdmin):
     #filter_horizontal = ('color','mate',)
     inlines = [
@@ -12,5 +12,6 @@ class ZuheAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'style')
     list_filter  = ('starttime', 'style')
     search_fields= ('starttime', 'style')
+    readonly_fields = ('pubtime','rate','updatedate',)
 
 admin.site.register(Zuhe,ZuheAdmin)
