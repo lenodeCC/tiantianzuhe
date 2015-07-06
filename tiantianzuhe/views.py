@@ -105,7 +105,7 @@ class IsReged(APIView):
     permission_classes = (AllowAny,)
     def post(self, request, format=None):
         phone=request.POST.get('phone','').strip()
-        if MyUserToken.objects.filter(phone=phone).exists():
+        if MyUser.objects.filter(phone=phone).exists():
             data={'success':True}
         else:
             data={'success':False}
@@ -517,3 +517,4 @@ class GetCommentListToComment(APIView):
         pk=request.POST.get('talkid','')
         comment=self.get_comment(pk)
         data=comment.comment_set.order_by('-date').values('user__id','user__name','user__img','date','content','to__user__id','to__user__name')
+        return Response(data)
