@@ -24,8 +24,12 @@ urlpatterns = patterns('',
     url(r'^makecommenttocomment/$', views.MakeCommentToComment.as_view()),
     url(r'^getcommentlist/$', views.GetCommentList.as_view()),
     url(r'^getcommentlisttocomment/$', views.GetCommentListToComment.as_view()),
-
-                       
+    url(r'^getgroupofmonth/$', views.GetGroupOfMonth.as_view()),
+    url(r'^getgroupofday/$', views.GetGroupOfDay.as_view()),
+    url(r'^getzuhedetail/$', views.GetZuheDetail.as_view()),
+    url(r'^deftheday/$', views.DefTheDay.as_view()),                       
+    url(r'^gethelp/$', views.GetHelp.as_view()), 
+                      
     url(r'^admin/', include(admin.site.urls)),
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns = format_suffix_patterns(urlpatterns)

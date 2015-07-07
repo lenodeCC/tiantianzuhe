@@ -2,32 +2,15 @@
 from django.db import models
 from django.conf import settings
 
-'''class Zuhe(models.Model):
-    CHOICES=(
-        (1,'激进型'),
-        (2,'进取型'),
-        (3,'稳健型'),
-        )
-    name=models.CharField(max_length=20,verbose_name='名称')
-    max_num=models.IntegerField(verbose_name='最大人数')
-    money=models.IntegerField(verbose_name='总经费',blank=True,null=True)
-    permoney=models.IntegerField(verbose_name='人均经费',blank=True,null=True)
-    cus=models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='发起人')
-    sporttype=models.CharField(max_length=50,verbose_name='活动类型')
-    time=models.DateTimeField(verbose_name='出行时间',blank=True,null=True)
-    tran=models.CharField(max_length=20,verbose_name='出行方式',blank=True)
-    site=models.CharField(max_length=20,verbose_name='出行地点',blank=True,)
-    place=models.CharField(max_length=50,verbose_name='具体地址',blank=True,)
-    bgurl=models.CharField(max_length=50,verbose_name='底图地址',blank=True,)
-    desc=models.TextField(max_length=500,verbose_name='简介')
-    ispublic=models.BooleanField(verbose_name='是否公开',default=True)
-    date=models.DateTimeField(auto_now_add=True,verbose_name='创建时间')
-    state=models.IntegerField(choices=CHOICES,verbose_name='活动状态',default=2)
+class NoRecommend(models.Model):
+    date=models.DateField(verbose_name='无推荐日期')
+
     def __unicode__(self):
-        return self.name
+        return u'%d年%d月%d日无推荐'%(self.date.year,self.date.month,self.date.day)
     class Meta:
-        verbose_name = '活动'
-        verbose_name_plural = "活动"'''
+        verbose_name = u'设置无推荐'
+        verbose_name_plural = u"设置无推荐"
+
 class Zuhe(models.Model):
     CHOICES=(
         (1,u'激进型'),

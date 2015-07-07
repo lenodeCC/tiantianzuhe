@@ -1,5 +1,5 @@
 from django.contrib import admin
-from zuhe.models import Zuhe,SingleStock
+from zuhe.models import Zuhe,SingleStock,NoRecommend
 class StockInline(admin.TabularInline):
     model = SingleStock
     extra = 10
@@ -15,3 +15,4 @@ class ZuheAdmin(admin.ModelAdmin):
     readonly_fields = ('pubtime','rate','updatedate',)
 
 admin.site.register(Zuhe,ZuheAdmin)
+admin.site.register(NoRecommend)

@@ -23,8 +23,8 @@ import decimal
 import calendar
 
 from theuser.models import MyUser,MyUserToken
-from info.models import Banner,Message
-from zuhe.models import Zuhe,SingleStock,Comment
+from info.models import Banner,Message,Help
+from zuhe.models import Zuhe,SingleStock,Comment,Col
 
 class UnsafeSessionAuthentication(SessionAuthentication):
     def authenticate(self, request):
@@ -517,4 +517,141 @@ class GetCommentListToComment(APIView):
         pk=request.POST.get('talkid','')
         comment=self.get_comment(pk)
         data=comment.comment_set.order_by('-date').values('user__id','user__name','user__img','date','content','to__user__id','to__user__name')
+        return Response(data)
+
+class GetGroupOfMonth(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def post(self, request, format=None):
+        user=request.user
+        year=request.POST.get('year','')
+        month=request.POST.get('month','')
+        year=int(year)
+        month=int(month)
+        days=request.POST.get('day','')
+        days=int(day)
+        data=[]
+        for day in xrange(1,days+1):
+            i={}
+            if datetime.date(year=year,month=minth,day=day)<datetime.date.today():
+                if Zuhe.objects.filter(starttime__year=year,starttime__month=month,starttime__day=day).exists():
+                    zuhe=Zuhe.objects.filter(starttime__year=year,starttime__month=month,starttime__day=day).order_by('-rate')[0]
+                    i['toprate']=zuhe.rate
+                    i['type']=1
+                    if Col.objects.filter(user=user,zuhe=zuhe).exists():
+                        i['isbuy']=True
+                    else:
+                        i['isbuy']=False
+                else:
+                    i['toprate']=''
+                    i['type']=2
+                    i['isbuy']=False
+            elif datetime.date(year=year,month=minth,day=day)>datetime.date.today():
+                i['toprate']=''
+                i['type']=0
+                if user.predate.filter(date__year=year,date__month=month,date__day=day).exists():
+                    i['isbuy']=True
+                else:
+                    i['isbuy']=False
+            else:
+                i['toprate']=''
+                if Zuhe.objects.filter(starttime__year=year,starttime__month=month,starttime__day=day).exists():
+                    if timezone.now()>Zuhe.objects.filter(starttime__year=year,starttime__month=month,starttime__day=day)[0].starttime:
+                        i['type']=3
+                    else:
+                        i['type']=0
+                    if Col.objects.filter(user=user,zuhe__starttime__year=year,zuhe__starttime__month=month,zuhe__starttime__day=day).exists():
+                        i['isbuy']=True
+                    else:
+                        i['isbuy']=False
+                else:
+                    i['type']=2
+                    i['isbuy']=False
+                    if user.predate.filter(date__year=year,date__month=month,date__day=day).exists():
+                        i['isbuy']=True
+                    else:
+                        i['isbuy']=False
+            data.append(i)
+                   
+        return Response(data)
+
+class GetGroupOfDay(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_zuhe(self, pk):
+        try:
+            return Zuhe.objects.get(pk=int(pk))
+        except Zuhe.DoesNotExist:
+            raise Http404    
+    def post(self, request, format=None):
+        user=request.user
+        date=request.POST.get('date','')
+        year=date[:4]
+        month=date[5:7]
+        day=date[8:10]
+        year=int(year)
+        month=int(month)
+        day=int(day)
+        data=Zuhe.objects.values('style','good','id')
+        for i in data:
+            zuhe=self.get_zuhe(i['id'])
+            i['colnum']=Col.objects.filter(zuhe=zuhe).count()
+            i['code']=zuhe.singlestock_set.values_list('code',flat=True)
+        return Response(data)
+
+
+class GetZuheDetail(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_zuhe(self, pk):
+        try:
+            return Zuhe.objects.get(pk=int(pk))
+        except Zuhe.DoesNotExist:
+            raise Http404    
+    def post(self, request, format=None):
+        user=request.user
+        pk=request.POST.get('groupid','')
+        zuhe=self.get_zuhe(pk)
+        data={}
+        data['starttime']=zuhe.starttime.strftime('%Y%m%d')
+        data['continuedate']=(timezone.now()-zuhe.starttime).days+1
+        data['endtime']=zuhe.endtime.strftime('%Y%m%d')
+        data['type']=zuhe.style
+        if zuhe.freetime and timezone.now()<zuhe.freetime and not Col.objects.filter(user=user,zuhe=zuhe).exists():
+            data['stocklist']=zuhe.singlestock_set.filter(isfree=True).values_list('code',flat=True)
+        else:
+            data['stocklist']=zuhe.singlestock_set.values_list('code',flat=True)
+        return Response(data)
+
+class DefTheDay(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)   
+    def post(self, request, format=None):
+        user=request.user
+        dates=request.POST.get('date','')
+        dates=dates.split(',')
+        if user.money<len(dates)*100:
+            data={'success':False,'msg_code':1001}
+            return Response(data)
+        for date in dates:
+            year=date[:4]
+            month=date[5:7]
+            day=date[8:10]
+            year=int(year)
+            month=int(month)
+            day=int(day)
+            if not user.predate.filter(date__year=year,date__month=month,date__day=day).exists():
+               date=datetime.date(year=year,month=month,day=day)
+               predate=PreDate.objects.create(date=date)
+               user.predate.add(predate)
+               user.money-=100
+               user.save()
+        data={'success':True}
+        return Response(data)
+
+class GetHelp(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)   
+    def get(self, request, format=None):
+        data=Help.objects.values()
         return Response(data)
