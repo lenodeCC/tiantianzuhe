@@ -15,10 +15,10 @@ class Banner(models.Model):
     link=models.URLField(verbose_name='链接',blank=True)
     style=models.IntegerField(choices=CHOICES,verbose_name='类型')
     def __unicode__(self):
-        return self.name
+        return self.title
     class Meta:
-        verbose_name = '活动'
-        verbose_name_plural = "活动"
+        verbose_name = 'Banner'
+        verbose_name_plural = "Banner"
 
 class Message(models.Model):
     fromuser=models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='发送者',related_name='messagefrom')
