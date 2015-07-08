@@ -10,7 +10,21 @@ class NoRecommend(models.Model):
     class Meta:
         verbose_name = u'设置无推荐'
         verbose_name_plural = u"设置无推荐"
-
+        
+class ZuheWithExcel(models.Model):
+    starttime=models.DateTimeField(verbose_name='发布时间')
+    freetime=models.DateTimeField(verbose_name='免费时间')
+    endtime=models.DateTimeField(verbose_name='结束时间')
+    pubtime=models.DateTimeField(auto_now_add=True,verbose_name='上传时间')
+    excel=models.FileField(
+        upload_to='excel',
+        verbose_name='上传组合excel')
+    def __unicode__(self):
+        return u'%d年%d月%d日组合'%(self.starttime.year,self.starttime.month,self.starttime.day)
+    class Meta:
+        verbose_name = 'Excel上传组合'
+        verbose_name_plural = "Excel上传组合"
+        
 class Zuhe(models.Model):
     CHOICES=(
         (1,u'激进型'),
