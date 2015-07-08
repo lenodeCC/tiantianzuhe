@@ -13,7 +13,7 @@ class ZuheAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'style')
     list_filter  = ('starttime', 'style')
     search_fields= ('starttime', 'style')
-    readonly_fields = ('pubtime','rate','updatedate',)
+    readonly_fields = ('pubtime','updatedate',)
 
 class ZuheWithExcelAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
