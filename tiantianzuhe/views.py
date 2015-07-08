@@ -533,7 +533,7 @@ class GetGroupOfMonth(APIView):
         data=[]
         for day in xrange(1,days+1):
             i={}
-            if datetime.date(year=year,month=minth,day=day)<datetime.date.today():
+            if datetime.date(year=year,month=month,day=day)<datetime.date.today():
                 if Zuhe.objects.filter(starttime__year=year,starttime__month=month,starttime__day=day).exists():
                     zuhe=Zuhe.objects.filter(starttime__year=year,starttime__month=month,starttime__day=day).order_by('-rate')[0]
                     i['toprate']=zuhe.rate
@@ -546,7 +546,7 @@ class GetGroupOfMonth(APIView):
                     i['toprate']=''
                     i['type']=2
                     i['isbuy']=False
-            elif datetime.date(year=year,month=minth,day=day)>datetime.date.today():
+            elif datetime.date(year=year,month=month,day=day)>datetime.date.today():
                 i['toprate']=''
                 i['type']=0
                 if user.predate.filter(date__year=year,date__month=month,date__day=day).exists():
