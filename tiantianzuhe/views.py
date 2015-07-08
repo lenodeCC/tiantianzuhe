@@ -529,7 +529,7 @@ class GetGroupOfMonth(APIView):
         year=int(year)
         month=int(month)
         days=request.POST.get('day','')
-        days=int(day)
+        days=int(days)
         data=[]
         for day in xrange(1,days+1):
             i={}
