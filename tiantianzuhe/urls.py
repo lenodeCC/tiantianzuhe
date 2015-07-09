@@ -29,7 +29,11 @@ urlpatterns = patterns('',
     url(r'^getzuhedetail/$', views.GetZuheDetail.as_view()),
     url(r'^deftheday/$', views.DefTheDay.as_view()),                       
     url(r'^gethelp/$', views.GetHelp.as_view()), 
-                      
+    url(r'^gettiantianhelp/$', views.GetTiantianHelp.as_view()),
+    url(r'^getzuhehelp/$', views.GetZuheHelp.as_view()),
+
+
+                       
     url(r'^admin/', include(admin.site.urls)),
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns = format_suffix_patterns(urlpatterns)

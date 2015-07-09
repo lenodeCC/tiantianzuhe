@@ -25,7 +25,7 @@ import calendar
 from theuser.models import MyUser,MyUserToken
 from info.models import Banner,Message,Help
 from zuhe.models import Zuhe,SingleStock,Comment,Col
-
+from messagepush.models import TiantianHelp,ZuheHelp,TiantianMSG
 class UnsafeSessionAuthentication(SessionAuthentication):
     def authenticate(self, request):
         http_request = request._request
@@ -654,4 +654,27 @@ class GetHelp(APIView):
     permission_classes = (IsAuthenticated,)   
     def get(self, request, format=None):
         data=Help.objects.values()
+        return Response(data)
+
+class GetTiantianHelp(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)   
+    def get(self, request, format=None):
+        user=request.user
+        data=TiantianHelp.objects.filter(Q(style=1)|Q(members=user)).order_by('-pubtime').values('id','title','content','pubtime')
+        return Response(data)
+
+class GetZuheHelp(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)   
+    def get(self, request, format=None):
+        user=request.user
+        data=ZuheHelp.objects.filter(Q(style=3)|Q(user=user)).order_by('-pubtime').values('id','title','content','pubtime','style','zuhe','date')
+        return Response(data)
+
+class GetTiantianMSG(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)   
+    def get(self, request, format=None):
+        data=TiantianMSG.objects.order_by('-pubtime').values()
         return Response(data)
