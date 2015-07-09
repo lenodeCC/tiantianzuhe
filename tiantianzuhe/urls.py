@@ -31,7 +31,7 @@ urlpatterns = patterns('',
     url(r'^gethelp/$', views.GetHelp.as_view()), 
     url(r'^gettiantianhelp/$', views.GetTiantianHelp.as_view()),
     url(r'^getzuhehelp/$', views.GetZuheHelp.as_view()),
-
+    url(r'^gettiantianmsg/$', views.GetTiantianMSG.as_view()),
 
                        
     url(r'^admin/', include(admin.site.urls)),
