@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'theuser',
     'zuhe',
     'info',
+    'messagepush',
 )
 
 MIDDLEWARE_CLASSES = (
