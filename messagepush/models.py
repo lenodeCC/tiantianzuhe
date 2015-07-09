@@ -4,9 +4,14 @@ from zuhe.models import Zuhe
 from django.conf import settings
 
 class TiantianHelp(models.Model):
+    CHOICES=(
+        (1,u'推送给全部人'),
+        (2,u'推送给指定用户'),
+        )
     pubtime=models.DateTimeField(auto_now_add=True,verbose_name='生成时间')
     title=models.CharField(max_length=50,verbose_name='标题')
     content=models.TextField(verbose_name='内容')
+    style=models.IntegerField(choices=CHOICES,verbose_name='推送类型选择')
     members=models.ManyToManyField(settings.AUTH_USER_MODEL,verbose_name=u'推送人员选择(不选则为全部推送)',blank=True,null=True)
     def __unicode__(self):
         return self.title
