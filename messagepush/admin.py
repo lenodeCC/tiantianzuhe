@@ -1,6 +1,6 @@
 from django.contrib import admin
-from messagepush.models import Tiantianhelp,Zuhehelp,TiantianMSG
+from messagepush.models import TiantianHelp,ZuheHelp,TiantianMSG
 # Register your models here.
-admin.site.register(Tiantianhelp)
-admin.site.register(Zuhehelp)
+admin.site.register(TiantianHelp)
+admin.site.register(ZuheHelp)
 admin.site.register(TiantianMSG)
