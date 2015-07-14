@@ -43,4 +43,5 @@ class Command(BaseCommand):
                         pass
             price_list=[stock.rate for stock in zuhe.singlestock_set.all() if stock.rate is not None]
             zuhe.rate=sum(price_list)/len(price_list)
+            zuhe.updatedate=datetime.datetime.now() 
             zuhe.save()
