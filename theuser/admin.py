@@ -62,18 +62,18 @@ class MyUserAdmin(UserAdmin):
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
     list_display = ('phone',)
-    list_filter = ('is_admin',)
+    list_filter = ('is_admin_1','is_admin_2','is_superuser')
     #readonly_fields=('account','frozenaccount','totalaccount','point','bankcard','bank','bankadd','bankpoint',)
     fieldsets = (
         (u'个人信息', {'fields': ('phone','password','name','gender','img','desc','email','friends','looks','money','token','openid','openname','openurl','predate',)}),
-        (u'权限', {'fields': ('is_active','is_admin',)}),
+        (u'权限', {'fields': ('is_superuser','is_admin_1','is_admin_2',)}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('phone', 'password1', 'password2','is_active','is_admin')}
+            'fields': ('phone', 'password1', 'password2','is_superuser','is_admin_1','is_admin_2',)}
         ),
     )
     ordering=('id',)

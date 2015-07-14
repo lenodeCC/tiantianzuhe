@@ -25,7 +25,7 @@ class MyUserManager(BaseUserManager):
         return user
     def create_superuser(self, phone, password):
         user = self.create_user(phone, password=password)
-        user.is_admin = True
+        user.is_superuser = True
         user.save(using=self._db)
         return user
 
@@ -53,9 +53,11 @@ class MyUser(AbstractBaseUser):
     
 
     predate=models.ManyToManyField(PreDate,verbose_name=u'预定日期',blank=True,null=True,)
+    is_superuser = models.BooleanField(default=False,verbose_name = u'超级管理员(全部权限)')
+    is_admin_1 = models.BooleanField(default=False,verbose_name='组合上传管理员')
+    is_admin_2 = models.BooleanField(default=False,verbose_name='用户&推送管理员')
     is_active = models.BooleanField(default=True,verbose_name='活跃用户')
-    is_admin = models.BooleanField(default=False,verbose_name='管理权限')
-
+    
     USERNAME_FIELD = 'phone'
 
     objects = MyUserManager()
@@ -71,7 +73,16 @@ class MyUser(AbstractBaseUser):
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"  # Simplest possible answer: Yes, always
-        return True
+        if self.is_superuser:
+            return True
+        elif self.is_admin_1 and perm.startswith('zuhe'):
+            return True
+        elif self.is_admin_2 and perm.startswith('theuser'):
+            return True
+        elif self.is_admin_2 and perm.startswith('messagepush'):
+            return True        
+        else:
+            return False
 
     def has_module_perms(self, app_label):
             "Does the user have permissions to view the app ‘app_label‘?"  # Simplest possible answer: Yes, always
@@ -80,7 +91,7 @@ class MyUser(AbstractBaseUser):
     @property
     def is_staff(self):
         # Simplest possible answer: All admins are staff
-        return self.is_admin
+        return self.is_admin_1 or self.is_admin_2 or self.is_superuser
     class Meta:
         verbose_name = '用户'
         verbose_name_plural = "用户"

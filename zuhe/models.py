@@ -33,7 +33,7 @@ class Zuhe(models.Model):
         )
     starttime=models.DateTimeField(verbose_name='发布时间')
     freetime=models.DateTimeField(verbose_name='免费时间')
-    endtime=models.DateTimeField(verbose_name='结束时间')
+    endtime=models.DateField(verbose_name='结束时间')
     pubtime=models.DateTimeField(auto_now_add=True,verbose_name='上传时间')
     style=models.IntegerField(choices=CHOICES,verbose_name='类型')
     good=models.IntegerField(verbose_name='点赞数',default=0)
@@ -55,7 +55,7 @@ class SingleStock(models.Model):
     isfree=models.BooleanField(choices=CHOICES,verbose_name='是否免费',default=True)
     startprice=models.CharField(max_length=20,verbose_name='开盘价',blank=True)
     endprice=models.CharField(max_length=20,verbose_name='收盘价',blank=True)
-    rate=models.CharField(max_length=20,verbose_name='收益',blank=True)
+    rate=models.DecimalField(verbose_name='收益', max_digits=5, decimal_places=2,blank=True,null=True)
     updatedate=models.DateTimeField(verbose_name='更新日期',blank=True,null=True)
     zuhe=models.ForeignKey(Zuhe,verbose_name='所属组合')
     def __unicode__(self):
