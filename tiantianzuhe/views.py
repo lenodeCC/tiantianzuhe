@@ -385,7 +385,7 @@ class FindUsers(APIView):
             page=request.POST.get('page','')
             if not page:
                 page=1
-                page=int(page)
+            page=int(page)
             start=(page-1)*10
             end=start+10
             data=MyUser.objects.filter(name__icontains=key).values('id','name','img')
