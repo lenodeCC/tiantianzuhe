@@ -23,7 +23,7 @@ import decimal
 import calendar
 
 from theuser.models import MyUser,MyUserToken
-from info.models import Banner,Message,Help
+from info.models import Banner,Message,Help,Option
 from zuhe.models import Zuhe,SingleStock,Comment,Col
 from messagepush.models import TiantianHelp,ZuheHelp,TiantianMSG
 class UnsafeSessionAuthentication(SessionAuthentication):
@@ -213,6 +213,78 @@ class ModifyPassword(APIView):
         request.user.save()
         return Response({'success':True})
 
+class GetUserCenter(APIView):
+    authentication_classes = (UnsafeSessionAuthentication,BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get(self, request, format=None):
+        user=request.user
+        data={}
+        data['userid']=user.id
+        data['username']=user.name
+        data['userintro']=user.desc
+        data['usersex']=user.gender
+        data['userurl']=user.img.name if user.img else ''
+        data['collectnum']=Col.objects.filter(user=user).count()
+        data['attentionnum']=user.looks.count()
+        data['fansnum']=MyUser.objects.filter(looks=user).count()
+        data['usermail']=user.email
+        return Response(data)
+
+class UpdateUserData(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def post(self, request, format=None):
+        user=request.user
+        name=request.POST.get('name','')
+        if name:
+            user.name=name
+        sex=request.POST.get('sex','')
+        if str(sex):
+            user.gender=int(sex)
+        mail=request.POST.get('mail','')
+        if mail:
+            user.email=mail
+        desc=request.POST.get('intro','')
+        if desc:
+            user.desc=desc
+        user.save()
+        img=request.FILES.get('file','')
+        if img:
+            if img.size<3000000:
+                file_content = ContentFile(img.read()) 
+                user.img.save(img.name, file_content)
+            else:
+                data={'success':False,'err_code':'too big img'}
+                return Response(data)
+        user.save()
+        data={'success':True}
+        return Response(data)
+    
+class GetOtherData(APIView):
+    authentication_classes = (UnsafeSessionAuthentication,BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_user(self, pk):
+        try:
+            return MyUser.objects.get(pk=int(pk))
+        except MyUser.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        pk=request.POST.get('otherid','')
+        user=self.get_user(pk)
+        data={}
+        data['otherid']=user.id
+        data['othername']=user.name
+        data['otherintro']=user.desc
+        data['othersex']=user.gender
+        data['otherrurl']=user.img.name if user.img else ''
+        data['collectnum']=Col.objects.filter(user=user).count()
+        data['attentionnum']=user.looks.count()
+        data['fansnum']=MyUser.objects.filter(looks=user).count()
+        data['othermail']=user.email
+        data['top3']=Col.objects.filter(user=user).order_by('-zuhe__rate').values('zuhe__id','zuhe__style','zuhe__starttime','zuhe__rate')
+        
+        return Response(data)
+    
 class GetBanner(APIView):
     authentication_classes = (UnsafeSessionAuthentication,BasicAuthentication)
     permission_classes = (IsAuthenticated,)
@@ -519,6 +591,36 @@ class GetCommentListToComment(APIView):
         data=comment.comment_set.order_by('-date').values('user__id','user__name','user__img','date','content','to__user__id','to__user__name')
         return Response(data)
 
+class GetOneUserComment(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_comment(self, pk):
+        try:
+            return Comment.objects.get(pk=int(pk))
+        except Comment.DoesNotExist:
+            raise Http404
+    def get_user(self, pk):
+        try:
+            return MyUser.objects.get(pk=int(pk))
+        except MyUser.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        pk=request.POST.get('otherid','')
+        user=self.get_user(pk)
+        page=request.POST.get('page','')
+        if not page:
+            page=1
+        page=int(page)
+        start=(page-1)*10
+        end=start+10
+        data={}
+        data['talknum']=Comment.objects.filter(user=user).count()
+        data['list']=Comment.objects.filter(user=user).order_by('-date').values('zuhe__id','zuhe__style','zuhe__starttime','date','content','id',)[start:end]
+        for i in data['list']:
+            comment=self.get_comment(i['id'])
+            i['replynum']=Comment.objects.filter(to=comment).count()
+        return Response(data)
+    
 class GetGroupOfMonth(APIView):
     authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
@@ -677,4 +779,22 @@ class GetTiantianMSG(APIView):
     permission_classes = (IsAuthenticated,)   
     def get(self, request, format=None):
         data=TiantianMSG.objects.order_by('-pubtime').values()
+        return Response(data)
+
+class GetMyPredate(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)   
+    def get(self, request, format=None):
+        user=request.user
+        data=user.predate.values_list('date',flat=True)
+        return Response(data)
+
+class MakeOption(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def post(self, request, format=None):
+        user=request.user
+        content=request.POST.get('content','').strip()
+        Option.objects.create(user=user,content=content)
+        data={'success':True}
         return Response(data)

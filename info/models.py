@@ -40,3 +40,13 @@ class Help(models.Model):
     class Meta:
         verbose_name = '帮助中心'
         verbose_name_plural = "帮助中心"
+
+class Option(models.Model):
+    user=models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='用户')
+    date=models.DateTimeField(auto_now_add=True,verbose_name='发送时间')
+    content=models.TextField(verbose_name='内容')
+    def __unicode__(self):
+        return self.user.phone
+    class Meta:
+        verbose_name = '意见'
+        verbose_name_plural = "意见"
