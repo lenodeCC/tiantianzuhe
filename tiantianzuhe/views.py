@@ -391,7 +391,7 @@ class FindUsers(APIView):
             data=MyUser.objects.filter(name__icontains=key).values('id','name','img')
             for i in data:
                 theuser=self.get_user(i['id'])
-                if theuser in user.friends.all():
+                if theuser in user.looks.all():
                     i['isfriend']=True
                 else:
                     i['isfriend']=False
@@ -405,7 +405,7 @@ class FindUsers(APIView):
         data=[]
         for pk in userlist:
             theuser=self.get_user(pk)
-            if theuser in user.friends.all():
+            if theuser in user.looks.all():
                 data.append({'id':theuser.id,'img':theuser.img.name if theuser.img else '','name':theuser.name,'isfriend':True})
             else:
                 data.append({'id':theuser.id,'img':theuser.img.name if theuser.img else '','name':theuser.name,'isfriend':False})
