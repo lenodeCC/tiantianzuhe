@@ -322,7 +322,7 @@ class GetMessage(APIView):
         pk=request.POST.get('id','')
         touser=self.get_user(pk)
         page=request.POST.get('page','')
-        if not int(page):
+        if not page:
             page=1
         page=int(page)
         start=(page-1)*10
