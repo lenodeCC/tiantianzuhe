@@ -644,7 +644,7 @@ class GetGroupOfMonth(APIView):
                         i['isbuy']=True
                     else:
                         i['isbuy']=False
-                    if zuhe.endtime and datetime.datetime.now()>zuhe.endtime:
+                    if zuhe.endtime and datetime.date.today()>zuhe.endtime:
                         i['isover']=True
                     else:
                         i['isover']=False
