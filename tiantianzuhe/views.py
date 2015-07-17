@@ -123,7 +123,7 @@ class Login(APIView):
                 if user.is_active:
                     login(request,user)
 
-                    data={'success':True}
+                    data={'success':True,'id':user.id}
                 else:
                     data={'success':False,'err_msg':'user is disabled'}
             elif MyUser.objects.filter(phone=phone).exists():
