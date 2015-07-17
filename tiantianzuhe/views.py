@@ -798,3 +798,35 @@ class MakeOption(APIView):
         Option.objects.create(user=user,content=content)
         data={'success':True}
         return Response(data)
+
+class PayAttToUser(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_user(self, pk):
+        try:
+            return MyUser.objects.get(pk=int(pk))
+        except MyUser.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        user=request.user
+        pk=request.POST.get('friendid','')
+        touser=self.get_user(pk)
+        user.looks.add(touser)
+        data={'success':True}
+        return Response(data)
+
+class CancelAttToUser(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_user(self, pk):
+        try:
+            return MyUser.objects.get(pk=int(pk))
+        except MyUser.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        user=request.user
+        pk=request.POST.get('friendid','')
+        touser=self.get_user(pk)
+        user.looks.remove(touser)
+        data={'success':True}
+        return Response(data)

@@ -42,7 +42,6 @@ class MyUser(AbstractBaseUser):
     gender=models.IntegerField(choices=GENDER_CHOICES,verbose_name='性别',blank=True,null=True)
     desc=models.TextField(verbose_name='简介',blank=True)
     email=models.EmailField(verbose_name='邮箱',blank=True)
-    friends=models.ManyToManyField(settings.AUTH_USER_MODEL,verbose_name=u'好友',blank=True,null=True,related_name='friend')
     looks=models.ManyToManyField(settings.AUTH_USER_MODEL,verbose_name=u'关注用户',blank=True,null=True,related_name='look')
     money=models.IntegerField(verbose_name='天天币',default=0)
     token=models.CharField(max_length=20,verbose_name='推荐码',blank=True)
