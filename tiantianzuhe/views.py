@@ -644,7 +644,7 @@ class GetGroupOfMonth(APIView):
                         i['isbuy']=True
                     else:
                         i['isbuy']=False
-                    if zuhe.endtime and datetime.date.today()>zuhe.endtime:
+                    if zuhe.endtime and datetime.date.today()>zuhe.endtime :
                         i['isover']=True
                     else:
                         i['isover']=False
@@ -833,4 +833,50 @@ class CancelAttToUser(APIView):
         touser=self.get_user(pk)
         user.looks.remove(touser)
         data={'success':True}
+        return Response(data)
+
+class GetUserAttList(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_user(self, pk):
+        try:
+            return MyUser.objects.get(pk=int(pk))
+        except MyUser.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        pk=request.POST.get('friendid','')
+        if pk:
+            user=self.get_user(pk)
+        else:
+            user=request.user
+        data=user.looks.values('id','name','img')
+        for i in data:
+            lookuser=self.get_user(i['id'])
+            if user in lookuser.looks.all():
+                i['isfriend']=True
+            else:
+                i['isfriend']=False
+        return Response(data)
+
+class GetUserFansList(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_user(self, pk):
+        try:
+            return MyUser.objects.get(pk=int(pk))
+        except MyUser.DoesNotExist:
+            raise Http404
+    def post(self, request, format=None):
+        pk=request.POST.get('friendid','')
+        if pk:
+            user=self.get_user(pk)
+        else:
+            user=request.user
+        data=MyUser.objects.filter(looks=user).values('id','name','img')
+        for i in data:
+            lookuser=self.get_user(i['id'])
+            if lookuser in user.looks.all():
+                i['isfriend']=True
+            else:
+                i['isfriend']=False
         return Response(data)
