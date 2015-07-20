@@ -473,7 +473,7 @@ class GetGroups(APIView):
     def post(self, request, format=None):
         user=request.user
         style=request.POST.get('type','')
-        sort=request.POST.get('sortnum','')
+        sortnum=request.POST.get('sortnum','')
         page=request.POST.get('page','')
         if not page:
             page=1
