@@ -440,9 +440,10 @@ class ColGroup(APIView):
         user=request.user
         pk=request.POST.get('groupid','')
         zuhe=self.get_zuhe(pk)
-        Col.objects.create(user=user,zuhe=zuhe)
-        zuhe.colnum+=1
-        zuhe.save()
+        if not Col.objects.filter(user=user,zuhe=zuhe).exists():
+            Col.objects.create(user=user,zuhe=zuhe)
+            zuhe.colnum+=1
+            zuhe.save()
         data={'success':True}
         return Response(data)    
 
