@@ -698,7 +698,7 @@ class GetGroupOfDay(APIView):
         year=int(year)
         month=int(month)
         day=int(day)
-        data=Zuhe.objects.values('style','good','id','starttime','endtime',)
+        data=Zuhe.objects.filter(starttime__year=year,starttime__month=month,starttime__day=day).values('style','good','id','starttime','endtime',)
         for i in data:
             zuhe=self.get_zuhe(i['id'])
             i['colnum']=Col.objects.filter(zuhe=zuhe).count()
