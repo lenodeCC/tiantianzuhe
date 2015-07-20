@@ -1,5 +1,5 @@
 from django.contrib import admin
-from zuhe.models import Zuhe,SingleStock,NoRecommend,ZuheWithExcel,SingleStock
+from zuhe.models import Zuhe,SingleStock,NoRecommend,ZuheWithExcel,SingleStock,Comment,Col
 class StockInline(admin.TabularInline):
     model = SingleStock
     extra = 10
@@ -55,3 +55,5 @@ class ZuheWithExcelAdmin(admin.ModelAdmin):
 admin.site.register(Zuhe,ZuheAdmin)
 admin.site.register(NoRecommend)
 admin.site.register(ZuheWithExcel,ZuheWithExcelAdmin)
+admin.site.register(Comment)
+admin.site.register(Col)
