@@ -40,6 +40,8 @@ urlpatterns = patterns('',
     url(r'^makeoption/$', views.MakeOption.as_view()),
     url(r'^payatttouser/$', views.PayAttToUser.as_view()),
     url(r'^cancelatttouser/$', views.CancelAttToUser.as_view()),
+    url(r'^getuserattlist/$', views.GetUserAttList.as_view()),
+    url(r'^getuserfanslist/$', views.GetUserFansList.as_view()),
                        
     url(r'^admin/', include(admin.site.urls)),
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
