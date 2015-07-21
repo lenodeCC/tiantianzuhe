@@ -545,7 +545,7 @@ class MakeCommentToComment(APIView):
     def post(self, request, format=None):
         user=request.user
         pk=request.POST.get('talkid','')
-        comment=self.get_zuhe(pk)
+        comment=self.get_comment(pk)
         to_pk=request.POST.get('touserid','')
         touser=self.get_user(to_pk)
         content=request.POST.get('content','')
