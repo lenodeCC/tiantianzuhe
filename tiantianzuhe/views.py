@@ -573,8 +573,9 @@ class GetCommentList(APIView):
                                                       'user__img','date','content')
         for i in data:
             comment=self.get_comment(i['id'])
-            i['list']=comment.comment_set.order_by('-date').values('user__id','user__name',\
-                                                                   'user__img','date','content')[0:3]
+            i['list']=comment.comment_set.order_by('-date').values('user__id','user__name','user__img','date','content')[0:3]
+            i['num']=comment.comment_set.count()
+            
         return Response(data)
 
 class GetCommentListToComment(APIView):
