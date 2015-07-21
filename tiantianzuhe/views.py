@@ -537,12 +537,19 @@ class MakeCommentToComment(APIView):
             return Comment.objects.get(pk=int(pk))
         except Comment.DoesNotExist:
             raise Http404
+    def get_user(self, pk):
+        try:
+            return MyUser.objects.get(pk=int(pk))
+        except MyUser.DoesNotExist:
+            raise Http404
     def post(self, request, format=None):
         user=request.user
         pk=request.POST.get('talkid','')
         comment=self.get_zuhe(pk)
+        to_pk=request.POST.get('touserid','')
+        touser=self.get_user(to_pk)
         content=request.POST.get('content','')
-        Comment.objects.create(user=user,zuhe=comment.zuhe,content=content,to=comment)
+        Comment.objects.create(user=user,zuhe=comment.zuhe,content=content,to=comment,to_user=touser)
         data={'success':True}
         return Response(data)
 
@@ -573,7 +580,7 @@ class GetCommentList(APIView):
                                                       'user__img','date','content')[start:end]
         for i in data:
             comment=self.get_comment(i['id'])
-            i['list']=comment.comment_set.order_by('-date').values('user__id','user__name','user__img','date','content')[0:3]
+            i['list']=comment.comment_set.order_by('-date').values('user__id','user__name','user__img','date','content','to_user','to_user__name',)[0:3]
             i['num']=comment.comment_set.count()
             
         return Response(data)
@@ -590,7 +597,7 @@ class GetCommentListToComment(APIView):
         user=request.user
         pk=request.POST.get('talkid','')
         comment=self.get_comment(pk)
-        data=comment.comment_set.order_by('-date').values('user__id','user__name','user__img','date','content','to__user__id','to__user__name')
+        data=comment.comment_set.order_by('-date').values('user__id','user__name','user__img','date','content','to_user','to_user__name',)
         return Response(data)
 
 class GetOneUserComment(APIView):
