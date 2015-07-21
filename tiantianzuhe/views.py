@@ -570,7 +570,7 @@ class GetCommentList(APIView):
         start=(page-1)*10
         end=start+10
         data=Comment.objects.order_by('-date').values('id','user__id','user__name',\
-                                                      'user__img','date','content')
+                                                      'user__img','date','content')[start:end]
         for i in data:
             comment=self.get_comment(i['id'])
             i['list']=comment.comment_set.order_by('-date').values('user__id','user__name','user__img','date','content')[0:3]
