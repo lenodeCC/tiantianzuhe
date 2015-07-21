@@ -1,0 +1,324 @@
+.version.about_us /* version checker */
+{
+	color: #000018;
+	background-color: #23EC4F;
+}
+
+.html
+{
+	background-color: #FFFFFF;
+}
+
+#page
+{
+	z-index: 1;
+	width: 1024px;
+	min-height: 657px;
+	background-image: none;
+	border-style: none;
+	border-color: #000000;
+	background-color: transparent;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#page_position_content
+{
+	padding-bottom: 20px;
+	width: 0.01px;
+}
+
+#u988
+{
+	z-index: 2;
+	min-height: 80px;
+	padding-bottom: 28px;
+}
+
+#u989
+{
+	z-index: 3;
+	width: 60px;
+	height: 60px;
+	margin-right: -10000px;
+	margin-top: 20px;
+	left: 100px;
+}
+
+#u995
+{
+	z-index: 4;
+	width: 116px;
+	height: 27px;
+	margin-right: -10000px;
+	margin-top: 40px;
+	left: 182px;
+}
+
+#u1482
+{
+	z-index: 9;
+	width: 41px;
+	height: 19px;
+	margin-right: -10000px;
+	margin-top: 48px;
+	left: 747px;
+}
+
+#u1482:hover
+{
+	width: 41px;
+	height: 19px;
+	min-height: 0px;
+	margin: 48px -10000px 0px 0px;
+}
+
+#u1489
+{
+	z-index: 10;
+	width: 77px;
+	height: 19px;
+	margin-right: -10000px;
+	margin-top: 48px;
+	left: 818px;
+}
+
+#u1495
+{
+	z-index: 11;
+	width: 77px;
+	height: 19px;
+	margin-right: -10000px;
+	margin-top: 48px;
+	left: 925px;
+}
+
+#u1501
+{
+	z-index: 12;
+	width: 77px;
+	height: 19px;
+	margin-right: -10000px;
+	margin-top: 48px;
+	left: 1032px;
+}
+
+#u1489:hover,#u1495:hover,#u1501:hover
+{
+	width: 77px;
+	height: 19px;
+	min-height: 0px;
+	margin: 48px -10000px 0px 0px;
+}
+
+#u988-bw
+{
+	z-index: 2;
+	min-height: 80px;
+}
+
+#u1342
+{
+	z-index: 18;
+	min-height: 209px;
+	background-color: #1A76CC;
+	padding-bottom: 39px;
+}
+
+#u1342_align_to_page
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 1024px;
+	position: relative;
+	left: -100px;
+}
+
+#u1398
+{
+	z-index: 19;
+	width: 230px;
+	height: 167px;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 42px;
+	left: 267px;
+	background: transparent url("../images/smart2.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u2192-4
+{
+	z-index: 35;
+	display: block;
+	vertical-align: top;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 97px;
+	left: 612px;
+}
+
+#u1342-bw
+{
+	z-index: 18;
+	min-height: 209px;
+}
+
+#u2681-4
+{
+	z-index: 43;
+	display: block;
+	vertical-align: top;
+	margin-left: 149px;
+	margin-top: 16px;
+	position: relative;
+}
+
+#u1702-4
+{
+	z-index: 20;
+	display: block;
+	vertical-align: top;
+	margin-left: 149px;
+	margin-top: 17px;
+	position: relative;
+}
+
+#u2680-4
+{
+	z-index: 39;
+	display: block;
+	vertical-align: top;
+	margin-left: 149px;
+	margin-top: 28px;
+	position: relative;
+}
+
+#u1712-11
+{
+	z-index: 24;
+	display: block;
+	vertical-align: top;
+	margin-left: 149px;
+	margin-top: 22px;
+	position: relative;
+}
+
+#u1014
+{
+	z-index: 8;
+	width: 1024px;
+	height: 15px;
+	margin-top: 9px;
+}
+
+#u999
+{
+	z-index: 5;
+	min-height: 117px;
+	padding-bottom: 35px;
+}
+
+#u988_align_to_page,#u999_align_to_page
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 1024px;
+	left: -100px;
+}
+
+#u2683
+{
+	z-index: 17;
+	width: 198px;
+	height: 61px;
+	margin-right: -10000px;
+	margin-top: 56px;
+	left: 120px;
+}
+
+#pu2360
+{
+	width: 0.01px;
+	margin-right: -10000px;
+	margin-top: 26px;
+	margin-left: 382px;
+}
+
+#u2360
+{
+	z-index: 13;
+	width: 118px;
+	height: 16px;
+	margin-left: 171px;
+}
+
+#pu2682
+{
+	width: 0.01px;
+	margin-top: 14px;
+}
+
+#u2682
+{
+	z-index: 14;
+	width: 198px;
+	height: 61px;
+	margin-right: -10000px;
+}
+
+#u2684
+{
+	z-index: 15;
+	width: 198px;
+	height: 61px;
+	margin-right: -10000px;
+	left: 262px;
+}
+
+#u2687
+{
+	z-index: 16;
+	width: 198px;
+	height: 61px;
+	margin-right: -10000px;
+	margin-top: 56px;
+	left: 906px;
+}
+
+#u999-bw
+{
+	z-index: 5;
+	min-height: 117px;
+	margin-top: 3px;
+}
+
+#u1012
+{
+	z-index: 7;
+	width: 52px;
+	height: 16px;
+	margin-left: 486px;
+	margin-top: 12px;
+}
+
+#u1010
+{
+	z-index: 6;
+	width: 194px;
+	height: 14px;
+	margin-left: 415px;
+	margin-top: 9px;
+}
+
+body
+{
+	position: relative;
+	min-width: 1024px;
+}
+
+#page .verticalspacer
+{
+	clear: both;
+}
+

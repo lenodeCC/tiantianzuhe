@@ -1,0 +1,785 @@
+.version.index /* version checker */
+{
+	color: #000014;
+	background-color: #3EB12E;
+}
+
+.html
+{
+	background-color: #FFFFFF;
+}
+
+#page
+{
+	z-index: 1;
+	width: 1024px;
+	min-height: 657px;
+	background-image: none;
+	border-style: none;
+	border-color: #000000;
+	background-color: transparent;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#page_position_content
+{
+	padding-bottom: 21px;
+	width: 0.01px;
+}
+
+#u988
+{
+	z-index: 2;
+	min-height: 80px;
+	padding-bottom: 28px;
+}
+
+#u989
+{
+	z-index: 3;
+	width: 60px;
+	height: 60px;
+	margin-right: -10000px;
+	margin-top: 20px;
+	left: 100px;
+}
+
+#u995
+{
+	z-index: 4;
+	width: 116px;
+	height: 27px;
+	margin-right: -10000px;
+	margin-top: 40px;
+	left: 182px;
+}
+
+#u1482
+{
+	z-index: 9;
+	width: 41px;
+	height: 19px;
+	margin-right: -10000px;
+	margin-top: 48px;
+	left: 747px;
+}
+
+#u1482:hover
+{
+	width: 41px;
+	height: 19px;
+	min-height: 0px;
+	margin: 48px -10000px 0px 0px;
+}
+
+#u1489
+{
+	z-index: 10;
+	width: 77px;
+	height: 19px;
+	margin-right: -10000px;
+	margin-top: 48px;
+	left: 818px;
+}
+
+#u1495
+{
+	z-index: 11;
+	width: 77px;
+	height: 19px;
+	margin-right: -10000px;
+	margin-top: 48px;
+	left: 925px;
+}
+
+#u1501
+{
+	z-index: 12;
+	width: 77px;
+	height: 19px;
+	margin-right: -10000px;
+	margin-top: 48px;
+	left: 1032px;
+}
+
+#u1489:hover,#u1495:hover,#u1501:hover
+{
+	width: 77px;
+	height: 19px;
+	min-height: 0px;
+	margin: 48px -10000px 0px 0px;
+}
+
+#u988-bw
+{
+	z-index: 2;
+	min-height: 80px;
+}
+
+#pu786
+{
+	width: 0.01px;
+	margin-left: -100px;
+	margin-top: 1px;
+}
+
+#u786
+{
+	z-index: 18;
+	min-height: 218px;
+	padding-bottom: 343px;
+	background: #186AB8 url("../images/core.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u796
+{
+	z-index: 24;
+	width: 382px;
+	height: 45px;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 173px;
+	left: 582px;
+	background: transparent url("../images/slogan-u796-fr.png") no-repeat right center;
+	background-size: contain;
+}
+
+#u786-bw
+{
+	z-index: 18;
+	min-height: 218px;
+}
+
+#u1159
+{
+	z-index: 19;
+	min-height: 249px;
+	background: transparent url("../images/tiaowen.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u786_align_to_page,#u1159_align_to_page
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 1024px;
+	position: relative;
+	left: -100px;
+}
+
+#u1159_position_content
+{
+	margin-top: -65px;
+	padding-bottom: 60px;
+}
+
+#pu1167
+{
+	width: 0.01px;
+	left: 582px;
+	position: relative;
+}
+
+#u1167
+{
+	z-index: 41;
+	width: 195px;
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 94px;
+}
+
+#u808
+{
+	z-index: 43;
+	height: 97px;
+	width: 211px;
+	vertical-align: top;
+	margin-bottom: -9px;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: -8px;
+	left: -8px;
+	background: url("../images/round%20rct2-u808.png") no-repeat 8px 8px;
+}
+
+#u808:hover
+{
+	background: url("../images/round%20rct2-u808-r.png") no-repeat 0px 0px;
+}
+
+#u820
+{
+	z-index: 46;
+	height: 75px;
+	width: 186px;
+	vertical-align: top;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 3px;
+	background: url("../images/android-u820.png") no-repeat 15px 15px;
+}
+
+#u820:hover
+{
+	background: url("../images/android-u820-r.png") no-repeat 0px 0px;
+}
+
+#u800
+{
+	z-index: 25;
+	vertical-align: top;
+	width: 193px;
+	height: 194px;
+	margin-bottom: -10px;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: -10px;
+	left: 200px;
+	background: url("../images/b5%20-u800.png") no-repeat 0px 0px;
+}
+
+#pu1177
+{
+	width: 0.01px;
+	left: 697px;
+	margin-top: 50px;
+	position: relative;
+}
+
+#u1177
+{
+	z-index: 26;
+	width: 112px;
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+}
+
+#u814
+{
+	z-index: 28;
+	height: 50px;
+	width: 132px;
+	vertical-align: top;
+	margin-bottom: -10px;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: -10px;
+	left: -10px;
+	background: url("../images/weibo-u814.png") no-repeat 10px 10px;
+}
+
+#u814:hover
+{
+	background: url("../images/weibo-u814-r.png") no-repeat 0px 0px;
+}
+
+#u1178
+{
+	z-index: 30;
+	width: 119px;
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	left: 152px;
+}
+
+#u812
+{
+	z-index: 32;
+	height: 42px;
+	width: 131px;
+	vertical-align: top;
+	margin-bottom: -6px;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: -6px;
+	left: -6px;
+	background: url("../images/wechat-u812.png") no-repeat 6px 6px;
+}
+
+#u812:hover
+{
+	background: url("../images/wechat-u812-r.png") no-repeat 0px 0px;
+}
+
+#u1159-bw
+{
+	z-index: 19;
+	min-height: 249px;
+	margin-top: 312px;
+}
+
+#u788
+{
+	z-index: 20;
+	width: 206px;
+	height: 431px;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 94px;
+	left: 213px;
+	background: transparent url("../images/iphone1-u788-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u790
+{
+	z-index: 21;
+	width: 186px;
+	height: 332px;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 145px;
+	left: 223px;
+	background: transparent url("../images/iphone1_picture-u790-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u792
+{
+	z-index: 22;
+	width: 206px;
+	height: 431px;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 64px;
+	left: 310px;
+	background: transparent url("../images/iphone2-u792-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u794
+{
+	z-index: 23;
+	width: 185px;
+	height: 332px;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 115px;
+	left: 321px;
+	background: transparent url("../images/iphone2_picture-u794-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u1166
+{
+	z-index: 34;
+	width: 195px;
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 249px;
+	left: 582px;
+}
+
+#u806
+{
+	z-index: 36;
+	height: 111px;
+	width: 226px;
+	vertical-align: top;
+	margin-bottom: -15px;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: -16px;
+	left: -16px;
+	background: url("../images/round%20rct6-u806.png") no-repeat 16px 16px;
+}
+
+#u806:hover
+{
+	background: url("../images/round%20rct6-u806-r.png") no-repeat 0px 0px;
+}
+
+#u818
+{
+	z-index: 39;
+	height: 67px;
+	width: 176px;
+	vertical-align: top;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 6px;
+	left: 8px;
+	background: url("../images/iphone-u818.png") no-repeat 11px 11px;
+}
+
+#u818:hover
+{
+	background: url("../images/iphone-u818-r.png") no-repeat 0px 0px;
+}
+
+#u846
+{
+	z-index: 58;
+	width: 182px;
+	height: 294px;
+	opacity: 0.3;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: alpha(opacity=30);
+	position: fixed;
+	top: 729px;
+	left: 105px;
+	background: transparent url("../images/pig-u846-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u842
+{
+	z-index: 56;
+	width: 483px;
+	height: 42px;
+	opacity: 0.5;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: alpha(opacity=50);
+	position: fixed;
+	top: 812px;
+	left: 450px;
+	background: transparent url("../images/slogan1-u842-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u844
+{
+	z-index: 57;
+	width: 463px;
+	height: 22px;
+	opacity: 0.7;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+	filter: alpha(opacity=70);
+	position: fixed;
+	top: 886px;
+	left: 460px;
+	background: transparent url("../images/slogan2-u844-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u828
+{
+	z-index: 49;
+	width: 331px;
+	height: 95px;
+	opacity: 0.3;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: alpha(opacity=30);
+	position: fixed;
+	top: 1125px;
+	left: 101px;
+	background: transparent url("../images/text3-u828-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u848
+{
+	z-index: 59;
+	width: 275px;
+	height: 172px;
+	opacity: 0.3;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: alpha(opacity=30);
+	position: fixed;
+	top: 1163px;
+	left: 650px;
+	background: transparent url("../images/zhuzhuangtu-u848-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u830
+{
+	z-index: 50;
+	width: 451px;
+	height: 22px;
+	opacity: 0.3;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: alpha(opacity=30);
+	position: fixed;
+	top: 1268px;
+	left: 100px;
+	background: transparent url("../images/slogan5-u830-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u832
+{
+	z-index: 51;
+	width: 338px;
+	height: 22px;
+	opacity: 0.5;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: alpha(opacity=50);
+	position: fixed;
+	top: 1307px;
+	left: 100px;
+	background: transparent url("../images/slogan6-u832-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u850
+{
+	z-index: 60;
+	width: 331px;
+	height: 95px;
+	opacity: 0.8;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	filter: alpha(opacity=80);
+	position: fixed;
+	top: 1491px;
+	left: 600px;
+	background: transparent url("../images/slogan3-u850-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u840
+{
+	z-index: 55;
+	width: 218px;
+	height: 218px;
+	opacity: 0.3;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: alpha(opacity=30);
+	position: fixed;
+	top: 1507px;
+	left: 141px;
+	background: transparent url("../images/calender-u840-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u826
+{
+	z-index: 48;
+	width: 463px;
+	height: 49px;
+	opacity: 0.6;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+	filter: alpha(opacity=60);
+	position: fixed;
+	top: 1643px;
+	left: 468px;
+	background: transparent url("../images/slogan4-u826-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u852
+{
+	z-index: 61;
+	width: 177px;
+	height: 32px;
+	opacity: 0.7;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+	filter: alpha(opacity=70);
+	margin-left: 161px;
+	margin-top: 1005px;
+	position: relative;
+	background: transparent url("../images/sell-u852-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u854
+{
+	z-index: 62;
+	vertical-align: top;
+	width: 25px;
+	height: 23px;
+	position: fixed;
+	top: 1698px;
+	left: 228px;
+	background: url("../images/mouse-u854.png") no-repeat 0px 0px;
+}
+
+#u838
+{
+	z-index: 54;
+	width: 250px;
+	height: 251px;
+	opacity: 0.2;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+	filter: alpha(opacity=20);
+	position: fixed;
+	top: 1872px;
+	left: 679px;
+	background: transparent url("../images/earth-u838-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u834
+{
+	z-index: 52;
+	width: 331px;
+	height: 95px;
+	opacity: 0.3;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: alpha(opacity=30);
+	position: fixed;
+	top: 1886px;
+	left: 146px;
+	background: transparent url("../images/slogan7-u834-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u1760
+{
+	z-index: 63;
+	width: 33px;
+	min-height: 34px;
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	left: -152px;
+	margin-top: 226px;
+	position: relative;
+}
+
+#u836
+{
+	z-index: 53;
+	width: 464px;
+	height: 49px;
+	opacity: 0.2;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+	filter: alpha(opacity=20);
+	position: fixed;
+	top: 2033px;
+	left: 147px;
+	background: transparent url("../images/slogan8-u836-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+.js #u846.ose_pre_init,.js #u842.ose_pre_init,.js #u844.ose_pre_init,.js #u828.ose_pre_init,.js #u848.ose_pre_init,.js #u830.ose_pre_init,.js #u832.ose_pre_init,.js #u850.ose_pre_init,.js #u840.ose_pre_init,.js #u826.ose_pre_init,.js #u852.ose_pre_init,.js #u838.ose_pre_init,.js #u834.ose_pre_init,.js #u836.ose_pre_init
+{
+	opacity: 0;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+}
+
+#u1014
+{
+	z-index: 8;
+	width: 1024px;
+	height: 15px;
+	margin-top: 164px;
+}
+
+#u999
+{
+	z-index: 5;
+	min-height: 117px;
+	padding-bottom: 35px;
+}
+
+#u988_align_to_page,#u999_align_to_page
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 1024px;
+	left: -100px;
+}
+
+#u2683
+{
+	z-index: 17;
+	width: 198px;
+	height: 61px;
+	margin-right: -10000px;
+	margin-top: 56px;
+	left: 120px;
+}
+
+#pu2360
+{
+	width: 0.01px;
+	padding-bottom: 0px;
+	margin-right: -10000px;
+	margin-top: 26px;
+	margin-left: 382px;
+}
+
+#u2360
+{
+	z-index: 13;
+	width: 118px;
+	height: 16px;
+	margin-left: 171px;
+}
+
+#pu2682
+{
+	width: 0.01px;
+	margin-top: 14px;
+}
+
+#u2682
+{
+	z-index: 14;
+	width: 198px;
+	height: 61px;
+	margin-right: -10000px;
+}
+
+#u2684
+{
+	z-index: 15;
+	width: 198px;
+	height: 61px;
+	margin-right: -10000px;
+	left: 262px;
+}
+
+#u2687
+{
+	z-index: 16;
+	width: 198px;
+	height: 61px;
+	margin-right: -10000px;
+	margin-top: 56px;
+	left: 906px;
+}
+
+#u999-bw
+{
+	z-index: 5;
+	min-height: 117px;
+	margin-top: 3px;
+}
+
+#u1012
+{
+	z-index: 7;
+	width: 52px;
+	height: 16px;
+	margin-left: 486px;
+	margin-top: 12px;
+}
+
+#u1010
+{
+	z-index: 6;
+	width: 194px;
+	height: 14px;
+	margin-left: 415px;
+	margin-top: 10px;
+}
+
+body
+{
+	position: relative;
+	min-width: 1024px;
+}
+
+#page .verticalspacer
+{
+	clear: both;
+}
+

@@ -882,3 +882,21 @@ class GetUserFansList(APIView):
             else:
                 i['isfriend']=False
         return Response(data)
+
+class DayHasOrNot(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)    
+    def post(self, request, format=None):
+        user=request.user
+        date=request.POST.get('date','')
+        year=date[:4]
+        month=date[5:7]
+        day=date[8:10]
+        year=int(year)
+        month=int(month)
+        day=int(day)
+        if Zuhe.objects.filter(starttime__year=year,starttime__month=month,starttime__day=day).exists():
+            data={'success':True}
+        else:
+            data={'success':False}
+        return Response(data)

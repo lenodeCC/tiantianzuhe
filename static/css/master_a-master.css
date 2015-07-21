@@ -1,0 +1,111 @@
+#u989
+{
+	position: relative;
+	background: transparent url("../images/logo.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u995
+{
+	position: relative;
+	background: transparent url("../images/logo%20name-u995-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u1482
+{
+	position: relative;
+	background: transparent url("../images/home1.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u1482:hover
+{
+	background: transparent url("../images/home2.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u1489
+{
+	position: relative;
+	background: transparent url("../images/introduce1.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u1489:hover
+{
+	background: transparent url("../images/introduce2.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u1495
+{
+	position: relative;
+	background: transparent url("../images/issue1.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u1495:hover
+{
+	background: transparent url("../images/issue2.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u1501
+{
+	position: relative;
+	background: transparent url("../images/about1.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u1501:hover
+{
+	background: transparent url("../images/about2.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u1014
+{
+	position: relative;
+	background: transparent url("../images/text1-u1014-fr.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u988,#u999
+{
+	background-color: #F5F5F5;
+}
+
+#u988_align_to_page,#u999_align_to_page
+{
+	position: relative;
+}
+
+#u2360
+{
+	position: relative;
+	background: transparent url("../images/co_worker-u2360-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u2683,#u2682,#u2684,#u2687
+{
+	background-color: #FFFFFF;
+	border-radius: 10px;
+	position: relative;
+}
+
+#u1012
+{
+	position: relative;
+	background: transparent url("../images/english-u1012-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u1010
+{
+	position: relative;
+	background: transparent url("../images/company%20name-u1010-fr.png") no-repeat center center;
+	background-size: contain;
+}
+

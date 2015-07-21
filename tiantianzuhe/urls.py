@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.urlpatterns import format_suffix_patterns
-from tiantianzuhe import views
+from tiantianzuhe import views,api
 urlpatterns = patterns('',
     url(r'^createtoken/$', views.CreateToken.as_view()),
     url(r'^reg/$', views.Reg.as_view()),
@@ -42,7 +42,15 @@ urlpatterns = patterns('',
     url(r'^cancelatttouser/$', views.CancelAttToUser.as_view()),
     url(r'^getuserattlist/$', views.GetUserAttList.as_view()),
     url(r'^getuserfanslist/$', views.GetUserFansList.as_view()),
+    url(r'^dayhasornot/$', views.DayHasOrNot.as_view()),
                        
     url(r'^admin/', include(admin.site.urls)),
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns = format_suffix_patterns(urlpatterns)
+
+urlpatterns += patterns('tiantianzuhe.api',
+    url(r'^$', 'index'),
+    url(r'^about-us/$', 'about_us'),
+    url(r'^issue/$', 'issue'),
+    url(r'^product/$', 'product'),
+)
