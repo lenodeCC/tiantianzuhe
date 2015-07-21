@@ -50,3 +50,15 @@ class Option(models.Model):
     class Meta:
         verbose_name = '意见'
         verbose_name_plural = "意见"
+
+class Product(models.Model):
+    name=models.CharField(max_length=20,verbose_name='产品名')
+    img = models.ImageField(
+        upload_to='product',
+        verbose_name='图片')
+    content=models.TextField(verbose_name='内容')
+    def __unicode__(self):
+        return self.name
+    class Meta:
+        verbose_name = '产品'
+        verbose_name_plural = "产品"

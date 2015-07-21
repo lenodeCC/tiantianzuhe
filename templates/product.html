@@ -17,6 +17,34 @@
   <script type="text/javascript">
    document.documentElement.className += ' js';
 </script>
+<style>
+   .lunbo {
+  z-index: 22;
+  width: 616px;
+  height: 405px;
+  border-style: none;
+  border-color: transparent;
+  background-color: transparent;
+  margin-right: -10000px;
+  position: relative;
+}
+.u2065-4
+{
+	z-index: 53;
+	width: 376px;
+	min-height: 426px;
+	border-style: none;
+	border-color: transparent;
+	background-color: #FFFFFF;
+	padding: 10px;
+	color: #999999;
+	line-height: 20px;
+	text-align: left;
+	font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;
+	margin-right: -10000px;
+	position: relative;
+}
+</style>
    </head>
  <body>
 
@@ -45,39 +73,25 @@
     <div class="SlideShowWidget clearfix colelem" id="slideshowu2063"><!-- none box -->
      <div class="popup_anchor" id="u2080popup">
       <div class="SlideShowContentPanel clearfix" id="u2080"><!-- stack box -->
-       <div class="SSSlide clip_frame clearfix grpelem" id="u2085"><!-- image -->
-        <div id="u2085_clip">
-         <img class="ImageInclude position_content" id="u2085_img" data-src="/static/images/cactus.jpg" src="/static/images/blank.gif" alt="" data-width="609" data-height="406"/>
+	  {% for product in products %}
+       <div class="SSSlide clip_frame clearfix grpelem lunbo" ><!-- image -->
+        <div style="overflow: hidden;width:616px;height: 405px;">
+         <img class="ImageInclude position_content" style="margin-top:-1px;margin-right:7px;" data-src="/media/{{product.img.name}}" src="/static/images/blank.gif" alt="" data-width="609" data-height="406"/>
         </div>
        </div>
-       <div class="SSSlide invi clip_frame clearfix grpelem" id="u2081"><!-- image -->
-        <div id="u2081_clip">
-         <img class="ImageInclude position_content" id="u2081_img" data-src="/static/images/road.jpg" src="/static/images/blank.gif" alt="" data-width="616" data-height="411"/>
-        </div>
-       </div>
-       <div class="SSSlide invi clip_frame clearfix grpelem" id="u2083"><!-- image -->
-        <div id="u2083_clip">
-         <img class="ImageInclude position_content" id="u2083_img" data-src="/static/images/trees.jpg" src="/static/images/blank.gif" alt="" data-width="616" data-height="411"/>
-        </div>
-       </div>
+	  {% endfor %}
+
+
       </div>
      </div>
      <div class="popup_anchor" id="u2064popup">
       <div class="SlideShowCaptionPanel clearfix" id="u2064"><!-- stack box -->
-       <img class="SSSlideCaption grpelem" id="u2067-24" alt="天天组合是一款最棒的股票组合推荐的应用。
-天天组合的股票由专业金融私募团队组成，用量化模型打造，通过大数据分析验证得出，组合稳定性高，可信度强。 我们解决了！
-—牛市里股票不会选、买卖时机难以掌握、收益跑不赢大盘的难题。
-我们采用了！
-—投资组合形式:分散投资，抗风险能力强。
-我们提供了！
-—（1）每天3个不同风格（激进型、进取型、稳健型）、包含10支股票。（2）持仓时间为10天的股票组合。（3）股市的热点资讯及买卖热点。股票行情的实时查看。 下载使用天天组合，投资者每天都可以根据自己的风险偏好，自由选择合适的股票组合。
-天天组合包含了：轻松选牛股、手机炒股、股票分析资讯，更多惊喜，等您来发现！" width="396" height="446" src="/static/images/u2067-24.png"/><!-- rasterized frame -->
-       <div class="SSSlideCaption invi clearfix grpelem" id="u2065-4"><!-- content -->
-        <p>添加文字</p>
+        {% for product in products %}
+       <div class="SSSlideCaption invi clearfix grpelem u2065-4" ><!-- content -->
+        <div>{{product.content}}</div>
        </div>
-       <div class="SSSlideCaption invi clearfix grpelem" id="u2066-4"><!-- content -->
-        <p>添加文字</p>
-       </div>
+	    {%endfor%}
+
       </div>
      </div>
      <div class="popup_anchor" id="u2068-4popup">
