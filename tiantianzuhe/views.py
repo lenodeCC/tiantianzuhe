@@ -520,7 +520,7 @@ class GetGroups(APIView):
         now=timezone.now()
         if int(style):
             if int(sortnum)==0:
-                data=Col.objects.order_by('-date').values('zuhe__id','zuhe__starttime','zuhe__style',\
+                data=Col.objects.order_by('date').values('zuhe__id','zuhe__starttime','zuhe__style',\
                                                           'date','zuhe__rate','zuhe__good',\
                                                           'zuhe__colnum','zuhe__endtime')[start:end]
                 
@@ -534,7 +534,7 @@ class GetGroups(APIView):
                                                           'zuhe__colnum','zuhe__endtime')[start:end]
         else:
             if int(sortnum)==0:
-                data=Col.objects.filter(zuhe__starttime__lte=now,zuhe__endtime__gte=now).order_by('-date').values('zuhe__id','zuhe__starttime','zuhe__style',\
+                data=Col.objects.filter(zuhe__starttime__lte=now,zuhe__endtime__gte=now).order_by('date').values('zuhe__id','zuhe__starttime','zuhe__style',\
                                                           'date','zuhe__rate','zuhe__good',\
                                                           'zuhe__colnum','zuhe__endtime')[start:end]
                 
