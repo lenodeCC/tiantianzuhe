@@ -169,12 +169,15 @@ class BindingPhone(APIView):
         user=request.user
         phone=request.POST.get('phone','').strip()
         token=request.POST.get('token','').strip()
+        if MyUser.objects.filter(phone=phone).exists():
+            data={'success':False,'err_code':1001}
+            return Response(data) 
         if MyUserToken.objects.filter(phone=phone,token=token).exists():
             user.phone=phone
             user.save()
             data={'success':True}
         else:
-            data={'success':False}
+            data={'success':False,'err_code':1002}
         return Response(data)
 
 class ChangePhone(APIView):
@@ -184,6 +187,9 @@ class ChangePhone(APIView):
         user=request.user
         phone=request.POST.get('newphone','').strip()
         token=request.POST.get('token','').strip()
+        if MyUser.objects.filter(phone=phone).exists():
+            data={'success':False,'err_code':1001}
+            return Response(data) 
         if MyUserToken.objects.filter(phone=phone,token=token).exists():
             user.phone=phone
             user.save()
