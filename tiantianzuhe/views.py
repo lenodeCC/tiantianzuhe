@@ -161,6 +161,36 @@ class ThirdLogin(APIView):
         user.backend = 'django.contrib.auth.backends.ModelBackend'
         login(request,user)
         return Response(data)
+
+class BindingPhone(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def post(self, request, format=None):
+        user=request.user
+        phone=request.POST.get('phone','').strip()
+        token=request.POST.get('token','').strip()
+        if MyUserToken.objects.filter(phone=phone,token=token).exists():
+            user.phone=phone
+            user.save()
+            data={'success':True}
+        else:
+            data={'success':False}
+        return Response(data)
+
+class ChangePhone(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def post(self, request, format=None):
+        user=request.user
+        phone=request.POST.get('newphone','').strip()
+        token=request.POST.get('token','').strip()
+        if MyUserToken.objects.filter(phone=phone,token=token).exists():
+            user.phone=phone
+            user.save()
+            data={'success':True}
+        else:
+            {'success':False}
+        return Response(data)
     
 class LogOut(APIView):
     authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
