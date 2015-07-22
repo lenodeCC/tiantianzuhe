@@ -67,7 +67,7 @@ class SingleStock(models.Model):
 class Comment(models.Model):
     user=models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='用户',related_name='talker')
     date=models.DateTimeField(auto_now_add=True,verbose_name='时间')
-    zuhe=models.ForeignKey(Zuhe,verbose_name='组合')
+    zuhe=models.ForeignKey(Zuhe,verbose_name='组合',blank=True,null=True)
     content=models.TextField(verbose_name='内容')
     to=models.ForeignKey('self',verbose_name='回复评论',blank=True,null=True)
     to_user=models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='被回复用户',related_name='totalker',blank=True,null=True)

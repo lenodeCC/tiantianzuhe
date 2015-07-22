@@ -549,7 +549,7 @@ class MakeCommentToComment(APIView):
         to_pk=request.POST.get('touserid','')
         touser=self.get_user(to_pk)
         content=request.POST.get('content','')
-        Comment.objects.create(user=user,zuhe=comment.zuhe,content=content,to=comment,to_user=touser)
+        Comment.objects.create(user=user,content=content,to=comment,to_user=touser)
         data={'success':True}
         return Response(data)
 
@@ -576,7 +576,7 @@ class GetCommentList(APIView):
         page=int(page)
         start=(page-1)*10
         end=start+10
-        data=Comment.objects.order_by('-date').values('id','user__id','user__name',\
+        data=Comment.objects.filter(zuhe=zuhe).order_by('-date').values('id','user__id','user__name',\
                                                       'user__img','date','content')[start:end]
         for i in data:
             comment=self.get_comment(i['id'])
