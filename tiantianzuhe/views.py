@@ -459,8 +459,10 @@ class RaiseGroup(APIView):
         user=request.user
         pk=request.POST.get('groupid','')
         zuhe=self.get_zuhe(pk)
-        zuhe.good+=1
-        zuhe.save()
+        if user not in zuhe.goodmen.all():
+            zuhe.goodmen.add(user)
+            zuhe.good+=1
+            zuhe.save()
         data={'success':True}
         return Response(data)       
 
@@ -772,6 +774,14 @@ class GetZuheDetail(APIView):
             data['stocklist']=zuhe.singlestock_set.filter(isfree=True).values_list('code',flat=True)
         else:
             data['stocklist']=zuhe.singlestock_set.values_list('code',flat=True)
+        if user in zuhe.goodmen.all():
+            data['israised']=True
+        else:
+            data['israised']=False
+        if Col.objects.filter(zuhe=zuhe,user=user).exists():
+            data['iscol']=True
+        else:
+            data['iscol']=False
         return Response(data)
 
 class DefTheDay(APIView):

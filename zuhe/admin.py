@@ -6,7 +6,7 @@ class StockInline(admin.TabularInline):
     max_num=10
     readonly_fields=('startprice','endprice','rate','updatedate')
 class ZuheAdmin(admin.ModelAdmin):
-    #filter_horizontal = ('color','mate',)
+    filter_horizontal = ('goodmen',)
     inlines = [
         StockInline,
     ]
