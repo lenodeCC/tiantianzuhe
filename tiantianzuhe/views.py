@@ -264,6 +264,7 @@ class GetUserCenter(APIView):
         data['attentionnum']=user.looks.count()
         data['fansnum']=MyUser.objects.filter(looks=user).count()
         data['usermail']=user.email
+        data['top3']=Col.objects.filter(user=user).order_by('-zuhe__rate').values('zuhe__id','zuhe__style','zuhe__starttime','zuhe__rate')
         return Response(data)
 
 class UpdateUserData(APIView):
@@ -305,6 +306,7 @@ class GetOtherData(APIView):
         except MyUser.DoesNotExist:
             raise Http404
     def post(self, request, format=None):
+        me=request.user
         pk=request.POST.get('otherid','')
         user=self.get_user(pk)
         data={}
@@ -318,7 +320,10 @@ class GetOtherData(APIView):
         data['fansnum']=MyUser.objects.filter(looks=user).count()
         data['othermail']=user.email
         data['top3']=Col.objects.filter(user=user).order_by('-zuhe__rate').values('zuhe__id','zuhe__style','zuhe__starttime','zuhe__rate')
-        
+        if user in me.looks.all():
+            data['isatt']=True
+        else:
+            data['isatt']=False
         return Response(data)
     
 class GetBanner(APIView):
@@ -661,8 +666,8 @@ class GetOneUserComment(APIView):
         start=(page-1)*10
         end=start+10
         data={}
-        data['talknum']=Comment.objects.filter(user=user).count()
-        data['list']=Comment.objects.filter(user=user).order_by('-date').values('zuhe__id','zuhe__style','zuhe__starttime','date','content','id',)[start:end]
+        data['talknum']=Comment.objects.filter(user=user,to=None).count()
+        data['list']=Comment.objects.filter(user=user,to=None).order_by('-date').values('zuhe__id','zuhe__style','zuhe__starttime','date','content','id',)[start:end]
         for i in data['list']:
             comment=self.get_comment(i['id'])
             i['replynum']=Comment.objects.filter(to=comment).count()
@@ -899,18 +904,21 @@ class GetUserAttList(APIView):
         except MyUser.DoesNotExist:
             raise Http404
     def post(self, request, format=None):
+        user=request.user
         pk=request.POST.get('friendid','')
         if pk:
-            user=self.get_user(pk)
+            otheruser=self.get_user(pk)
+            data=otheruser.looks.values('id','name','img')
+            for i in data:
+                theuser=self.get_user(i['id'])
+                if theuser in user.looks.all():
+                    i['isatt']=True
+                else:
+                    i['isatt']=False
         else:
-            user=request.user
-        data=user.looks.values('id','name','img')
-        for i in data:
-            lookuser=self.get_user(i['id'])
-            if user in lookuser.looks.all():
-                i['isfriend']=True
-            else:
-                i['isfriend']=False
+            data=user.looks.values('id','name','img')
+            for i in data:
+                i['isatt']=True
         return Response(data)
 
 class GetUserFansList(APIView):
@@ -922,18 +930,26 @@ class GetUserFansList(APIView):
         except MyUser.DoesNotExist:
             raise Http404
     def post(self, request, format=None):
+        user=request.user
         pk=request.POST.get('friendid','')
         if pk:
-            user=self.get_user(pk)
+            otheruser=self.get_user(pk)
+            data=MyUser.objects.filter(looks=otheruser).values('id','name','img')
+            for i in data:
+                theuser=self.get_user(i['id'])
+                if theuser in user.looks.all():
+                    i['isatt']=True
+                else:
+                    i['isatt']=False
         else:
-            user=request.user
-        data=MyUser.objects.filter(looks=user).values('id','name','img')
-        for i in data:
-            lookuser=self.get_user(i['id'])
-            if lookuser in user.looks.all():
-                i['isfriend']=True
-            else:
-                i['isfriend']=False
+            data=MyUser.objects.filter(looks=user).values('id','name','img')
+            for i in data:
+                theuser=self.get_user(i['id'])
+                if theuser in user.looks.all():
+                    i['isatt']=True
+                else:
+                    i['isatt']=False            
+
         return Response(data)
 
 class DayHasOrNot(APIView):
