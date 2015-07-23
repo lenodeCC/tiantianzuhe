@@ -775,6 +775,7 @@ class GetZuheDetail(APIView):
         data['continuedate']=(timezone.now()-zuhe.starttime).days+1
         data['endtime']=zuhe.endtime.strftime('%Y%m%d')
         data['type']=zuhe.style
+        data['good']=zuhe.good
         if zuhe.freetime and timezone.now()<zuhe.freetime and not Col.objects.filter(user=user,zuhe=zuhe).exists():
             data['stocklist']=zuhe.singlestock_set.filter(isfree=True).values_list('code',flat=True)
         else:
