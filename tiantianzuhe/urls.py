@@ -56,4 +56,8 @@ urlpatterns += patterns('tiantianzuhe.api',
     url(r'^about-us/$', 'about_us'),
     url(r'^issue/$', 'issue'),
     url(r'^product/$', 'product'),
+    url(r'^phone_index/$', 'phone_index'),
+    url(r'^abo/$', 'abo'),
+    url(r'^iss/$', 'iss'),
+    url(r'^pro/$', 'pro'),
 )

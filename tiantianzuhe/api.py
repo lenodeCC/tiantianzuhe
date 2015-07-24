@@ -13,3 +13,13 @@ def issue(request):
 def product(request):
     products=Product.objects.all()
     return render_to_response('product.html',{'products':products})
+
+def phone_index(request):
+    return render_to_response('phone/index.html')
+def abo(request):
+    return render_to_response('phone/abo.html')
+def iss(request):
+    return render_to_response('phone/iss.html')
+def pro(request):
+    products=Product.objects.all()
+    return render_to_response('phone/pro.html',{'products':products})

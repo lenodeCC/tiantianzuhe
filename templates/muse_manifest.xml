@@ -1,0 +1,154 @@
+<manifest alg="2" build="2015.0.0.309" opt="true" iceEnabled="true" iceMarkupVersion="2" exportTarget="other" domain="ttzh.com" resolutions="1x" timestamp="1437631610219">
+  <folder name="css">
+    <file name="site_global.css" crc="4052507572"/>
+    <file name="master_a-master.css" crc="520696112" ref="product:index:about-us:issue"/>
+    <file name="product.css" crc="4081391451" ref="product"/>
+    <file name="index.css" crc="54776010" ref="index"/>
+    <file name="about-us.css" crc="476876645" ref="about-us"/>
+    <file name="issue.css" crc="430955683" ref="issue"/>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="4255413929" ref="phone>index:phone>pro:phone>iss:phone>abo:index:issue:about-us:product"/>
+    <file name="museutils.js" crc="183364071" ref="phone>index:phone>pro:phone>iss:phone>abo:index:issue:about-us:product"/>
+    <file name="jquery.musepolyfill.bgsize.js" crc="4004268962" ref="phone>index:phone>pro:phone>iss:phone>abo:index:issue:about-us:product"/>
+    <file name="webpro.js" crc="3803554875" ref="phone>index:phone>pro:phone>iss:phone>abo:product"/>
+    <file name="musewpdisclosure.js" crc="3993616448" ref="phone>index:phone>pro:phone>iss:phone>abo"/>
+    <file name="jquery.watch.js" crc="71412426" ref="phone>index:phone>pro:phone>iss:phone>abo:index:issue:about-us:product"/>
+    <file name="jquery.scrolleffects.js" crc="3860644955" ref="phone>index:index"/>
+    <file name="pie.js" crc="3827607177" ref="phone>index:phone>pro:index"/>
+    <file name="musewpslideshow.js" crc="242596657" ref="phone>pro:product"/>
+    <file name="jquery.museoverlay.js" crc="493285861" ref="phone>pro:product"/>
+    <file name="touchswipe.js" crc="4038331989" ref="phone>pro:product"/>
+    <file name="museredirect.js" crc="40941066" ref="index"/>
+  </folder>
+  <folder name="images">
+    <file name="bollhavet-minimalistic-74-icon-pack-behance-giveaway-u6129.png" crc="4063891850" ref="phone>index:phone>pro:phone>iss:phone>abo"/>
+    <file name="logo-u6133.png" crc="427645801" ref="phone>index:phone>pro:phone>iss:phone>abo"/>
+    <file name="logo name-u6134.png" crc="4977171" ref="phone>index:phone>pro:phone>iss:phone>abo"/>
+    <file name="home1-buttonu3917-fr.png" crc="4126562132" ref="phone>index"/>
+    <file name="home2-buttonu3917-r-fr.png" crc="298412033" ref="phone>index"/>
+    <file name="introduce1-buttonu3926-fr.png" crc="3797537518" ref="phone>index"/>
+    <file name="introduce2-buttonu3926-r-fr.png" crc="344044671" ref="phone>index"/>
+    <file name="issue1-buttonu3927-fr.png" crc="3930186039" ref="phone>index"/>
+    <file name="issue2-buttonu3927-r-fr.png" crc="520805515" ref="phone>index"/>
+    <file name="about1-buttonu3928-fr.png" crc="3954007787" ref="phone>index"/>
+    <file name="about2-buttonu3928-r-fr.png" crc="3778557594" ref="phone>index"/>
+    <file name="core-u3377-fr.png" crc="195743009" ref="phone>index"/>
+    <file name="slogan-u3442-fr.png" crc="257401615" ref="phone>index"/>
+    <file name="iphone1-u3433-fr.png" crc="4196455703" ref="phone>index"/>
+    <file name="iphone1_picture-u3434-fr.png" crc="325496555" ref="phone>index"/>
+    <file name="iphone2-u3436-fr.png" crc="4196455703" ref="phone>index"/>
+    <file name="iphone2_picture-u3435-fr.png" crc="116246229" ref="phone>index"/>
+    <file name="b5 -u3439.png" crc="4116732064" ref="phone>index"/>
+    <file name="weibo-u3438.png" crc="4180490980" ref="phone>index"/>
+    <file name="weibo-u3438-r.png" crc="486283425" ref="phone>index"/>
+    <file name="wechat-u3441.png" crc="38905103" ref="phone>index"/>
+    <file name="wechat-u3441-r.png" crc="295025805" ref="phone>index"/>
+    <file name="round rct2-u3460.png" crc="4028815990" ref="phone>index"/>
+    <file name="round rct2-u3460-r.png" crc="526669820" ref="phone>index"/>
+    <file name="android-u3461.png" crc="469975254" ref="phone>index"/>
+    <file name="android-u3461-r.png" crc="3772560884" ref="phone>index"/>
+    <file name="round rct6-u3458.png" crc="109734456" ref="phone>index"/>
+    <file name="round rct6-u3458-r.png" crc="6834521" ref="phone>index"/>
+    <file name="iphone-u3457.png" crc="438449146" ref="phone>index"/>
+    <file name="iphone-u3457-r.png" crc="432690806" ref="phone>index"/>
+    <file name="pig-u3640-fr.png" crc="3976192266" ref="phone>index"/>
+    <file name="slogan-u3638-fr.png" crc="342544918" ref="phone>index"/>
+    <file name="slogan2-u3639-fr.png" crc="4278656767" ref="phone>index"/>
+    <file name="text3-u3641-fr.png" crc="3947379020" ref="phone>index"/>
+    <file name="slogan5-u3642-fr.png" crc="484352162" ref="phone>index"/>
+    <file name="slogan6-u3643-fr.png" crc="4018795217" ref="phone>index"/>
+    <file name="zhuzhuangtu-u3644-fr.png" crc="3806742476" ref="phone>index"/>
+    <file name="slogan3-u3647-fr.png" crc="4130817193" ref="phone>index"/>
+    <file name="slogan4-u3645-fr.png" crc="128341916" ref="phone>index"/>
+    <file name="calender-u3646-fr.png" crc="3767674458" ref="phone>index"/>
+    <file name="sell-u3648-fr.png" crc="213121912" ref="phone>index"/>
+    <file name="mouse-u3649.png" crc="4136433202" ref="phone>index"/>
+    <file name="slogan7-u3662-fr.png" crc="70139746" ref="phone>index"/>
+    <file name="slogan8-u3663-fr.png" crc="65825108" ref="phone>index"/>
+    <file name="earth-u3664-fr.png" crc="120740005" ref="phone>index"/>
+    <file name="co_worker-u3482-fr.png" crc="382445738" ref="phone>index:index"/>
+    <file name="smartss.png" crc="4169247341" ref="phone>pro:product"/>
+    <file name="u6144-4.png" crc="3947583616" ref="phone>pro"/>
+    <file name="cactus.jpg" crc="491424337" seo="true" ref="phone>pro"/>
+    <file name="blank.gif" crc="4208392903" ref="phone>pro:product"/>
+    <file name="road.jpg" crc="180693847" seo="true" ref="phone>pro"/>
+    <file name="trees.jpg" crc="4071309946" seo="true" ref="phone>pro"/>
+    <file name="loading.gif" crc="3815509949" ref="phone>pro:product"/>
+    <file name="imagess.png" crc="177920621" ref="phone>iss:issue"/>
+    <file name="u6212-4.png" crc="428155937" ref="phone>iss"/>
+    <file name="smart2.png" crc="62239238" ref="phone>abo:about-us"/>
+    <file name="u6216-4.png" crc="520518782" ref="phone>abo"/>
+    <file name="logo.png" crc="208856517" ref="index"/>
+    <file name="logo name-u995-fr.png" crc="151702543" ref="index"/>
+    <file name="home1-u1482-fr.png" crc="162134922" ref="index"/>
+    <file name="home2-u1482-r-fr.png" crc="211596273" ref="index"/>
+    <file name="introduce1-u1489-fr.png" crc="4282704933" ref="index"/>
+    <file name="introduce2-u1489-r-fr.png" crc="4211957866" ref="index"/>
+    <file name="issue1-u1495-fr.png" crc="139269353" ref="index"/>
+    <file name="issue2-u1495-r-fr.png" crc="36172286" ref="index"/>
+    <file name="about1-u1501-fr.png" crc="3976420996" ref="index"/>
+    <file name="about2-u1501-r-fr.png" crc="152276283" ref="index"/>
+    <file name="core.png" crc="516407899" ref="index"/>
+    <file name="slogan-u796-fr.png" crc="502729832" ref="index"/>
+    <file name="tiaowen.png" crc="243964309" ref="index"/>
+    <file name="round rct2-u808.png" crc="4027904375" ref="index"/>
+    <file name="round rct2-u808-r.png" crc="171712690" ref="index"/>
+    <file name="android-u820.png" crc="325448634" ref="index"/>
+    <file name="android-u820-r.png" crc="4072929950" ref="index"/>
+    <file name="b5 -u800.png" crc="4127984283" ref="index"/>
+    <file name="weibo-u814.png" crc="4098100444" ref="index"/>
+    <file name="weibo-u814-r.png" crc="4256483232" ref="index"/>
+    <file name="wechat-u812.png" crc="4226207080" ref="index"/>
+    <file name="wechat-u812-r.png" crc="4131920910" ref="index"/>
+    <file name="iphone1.png" crc="4190030690" ref="index"/>
+    <file name="iphone1_picture.png" crc="57210866" ref="index"/>
+    <file name="iphone2.png" crc="4190030690" ref="index"/>
+    <file name="iphone2_picture.png" crc="122779842" ref="index"/>
+    <file name="round rct6-u806.png" crc="362983213" ref="index"/>
+    <file name="round rct6-u806-r.png" crc="3817940748" ref="index"/>
+    <file name="iphone-u818.png" crc="3779888093" ref="index"/>
+    <file name="iphone-u818-r.png" crc="114399664" ref="index"/>
+    <file name="pig-u846-fr.png" crc="4138326855" ref="index"/>
+    <file name="slogan1-u842-fr.png" crc="3794741649" ref="index"/>
+    <file name="slogan2-u844-fr.png" crc="3769271728" ref="index"/>
+    <file name="text3-u828-fr.png" crc="4247321130" ref="index"/>
+    <file name="zhuzhuangtu-u848-fr.png" crc="481422386" ref="index"/>
+    <file name="slogan5-u830-fr.png" crc="104183519" ref="index"/>
+    <file name="slogan6-u832-fr.png" crc="379942635" ref="index"/>
+    <file name="slogan3-u850-fr.png" crc="3818432645" ref="index"/>
+    <file name="calender-u840-fr.png" crc="111999491" ref="index"/>
+    <file name="slogan4-u826-fr.png" crc="3848039067" ref="index"/>
+    <file name="sell.png" crc="186651435" ref="index"/>
+    <file name="mouse-u854.png" crc="4050590249" ref="index"/>
+    <file name="earth-u838-fr.png" crc="3899816850" ref="index"/>
+    <file name="slogan7-u834-fr.png" crc="4015981470" ref="index"/>
+    <file name="slogan8-u836-fr.png" crc="3812489106" ref="index"/>
+    <file name="text1-u1014-fr.png" crc="3999417507" ref="index"/>
+    <file name="english-u1012-fr.png" crc="4240072874" ref="index"/>
+    <file name="company name-u1010-fr.png" crc="3776428942" ref="index"/>
+    <file name="u2175-4.png" crc="428155937" ref="issue"/>
+    <file name="u2192-4.png" crc="520518782" ref="about-us"/>
+    <file name="u2189-4.png" crc="3947583616" ref="product"/>
+    <file name="cactus2.jpg" crc="4132437879" seo="true" ref="product"/>
+    <file name="road2.jpg" crc="4221891806" seo="true" ref="product"/>
+    <file name="trees2.jpg" crc="3979494352" seo="true" ref="product"/>
+  </folder>
+  <folder name="phone">
+    <folder name="css">
+      <file name="master_a-master.css" crc="364045023" ref="phone>pro:phone>iss:phone>abo:phone>index"/>
+      <file name="pro.css" crc="3889876254" ref="phone>pro"/>
+      <file name="iss.css" crc="314119776" ref="phone>iss"/>
+      <file name="abo.css" crc="3970747788" ref="phone>abo"/>
+      <file name="index.css" crc="3948061455" ref="phone>index"/>
+    </folder>
+    <file name="index.html" crc="3921404316" seo="true" mt="1437617514471" redirect="true"/>
+    <file name="pro.html" crc="331794406" seo="true" mt="1437554903450" redirect="true"/>
+    <file name="iss.html" crc="155912666" seo="true" mt="1437554903450" redirect="true"/>
+    <file name="abo.html" crc="16505464" seo="true" mt="1437554903450" redirect="true"/>
+  </folder>
+  <file name="index.html" crc="512523522" seo="true" mt="1437627537345" redirect="true"/>
+  <file name="issue.html" crc="209724340" seo="true" mt="1437553282822" redirect="true"/>
+  <file name="about-us.html" crc="6274680" seo="true" mt="1437554146726" redirect="true"/>
+  <file name="product.html" crc="4025565752" seo="true" mt="1437554169181" redirect="true"/>
+</manifest>

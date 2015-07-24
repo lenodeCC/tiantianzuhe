@@ -36,7 +36,7 @@ class Zuhe(models.Model):
     endtime=models.DateField(verbose_name='结束时间')
     pubtime=models.DateTimeField(auto_now_add=True,verbose_name='上传时间')
     style=models.IntegerField(choices=CHOICES,verbose_name='类型')
-    goodmen=models.ManyToManyField(settings.AUTH_USER_MODEL,verbose_name='点赞人',blank=True)
+    goodmen=models.ManyToManyField(settings.AUTH_USER_MODEL,verbose_name=u'点赞人',blank=True)
     good=models.IntegerField(verbose_name='点赞数',default=0)
     colnum=models.IntegerField(verbose_name='收藏数',default=0)
     rate=models.DecimalField(verbose_name='收益', max_digits=5, decimal_places=2,blank=True,null=True)
