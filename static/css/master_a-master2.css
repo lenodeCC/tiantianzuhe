@@ -1,0 +1,190 @@
+#accordionu3904,#u3905
+{
+	border-style: none;
+	background-color: transparent;
+}
+
+#u3906-6
+{
+	border-style: none;
+	background-color: #BAC2C7;
+	text-indent: 7px;
+	text-align: center;
+}
+
+#u3906-6.AccordionPanelTabOpen
+{
+	background-color: #BAC2C7;
+}
+
+#u3906-6.AccordionPanelTabOpen p,#u3906-6.AccordionPanelTabOpen span
+{
+	text-align: center;
+}
+
+#u6129
+{
+	-webkit-transform: matrix(0,-1,1,0,0,0);
+	-ms-transform: matrix(0,-1,1,0,0,0);
+	transform: matrix(0,-1,1,0,0,0);
+	position: relative;
+}
+
+#u6129_img
+{
+	display: block;
+	vertical-align: top;
+}
+
+#u6131,#u6132
+{
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	position: relative;
+}
+
+#u6133
+{
+	vertical-align: top;
+	position: relative;
+	background: url("../../images/logo-u6133.png") no-repeat 0px 0px;
+}
+
+#u6134
+{
+	vertical-align: top;
+	position: relative;
+	background: url("../../images/logo%20name-u6134.png") no-repeat 0px 0px;
+}
+
+#u3907
+{
+	border-style: none;
+	background-color: #FFFFFF;
+}
+
+#buttonu3917
+{
+	border-color: #787878;
+	position: relative;
+	background: transparent url("../../images/home1-buttonu3917-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#buttonu3917:hover
+{
+	background: #85DAFF url("../../images/home2-buttonu3917-r-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#buttonu3917.ButtonSelected
+{
+	background: transparent url("../../images/home1-buttonu3917-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#buttonu3926
+{
+	border-color: #787878;
+	position: relative;
+	background: transparent url("../../images/introduce1-buttonu3926-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#buttonu3926:hover
+{
+	background: #85DAFF url("../../images/introduce2-buttonu3926-r-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#buttonu3926.ButtonSelected
+{
+	background: transparent url("../../images/introduce1-buttonu3926-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#buttonu3927
+{
+	border-color: #787878;
+	position: relative;
+	background: transparent url("../../images/issue1-buttonu3927-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#buttonu3927:hover
+{
+	background: #85DAFF url("../../images/issue2-buttonu3927-r-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#buttonu3927.ButtonSelected
+{
+	background: transparent url("../../images/issue1-buttonu3927-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#buttonu3928
+{
+	border-color: #787878;
+	position: relative;
+	background: transparent url("../../images/about1-buttonu3928-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#buttonu3928:hover
+{
+	background: #85DAFF url("../../images/about2-buttonu3928-r-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#buttonu3928.ButtonSelected
+{
+	background: transparent url("../../images/about1-buttonu3928-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+.AccordionPanelTab /* accordion */
+{
+	cursor: pointer;
+}
+
+#u3378
+{
+	background-color: #F5F5F5;
+	position: relative;
+}
+
+#u3471-6
+{
+	background-color: transparent;
+	text-align: center;
+}
+
+#u3471
+{
+	font-size: 1px;
+	line-height: 0px;
+}
+
+#u6128,#u3478
+{
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+}
+
+#u3482
+{
+	position: relative;
+	background: transparent url("../../images/co_worker-u3482-fr.png") no-repeat center center;
+	background-size: contain;
+}
+
+#u3483,#u3480,#u3481,#u3479
+{
+	background-color: #FFFFFF;
+	border-radius: 10px;
+	position: relative;
+}
+
