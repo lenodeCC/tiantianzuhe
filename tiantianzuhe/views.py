@@ -527,30 +527,30 @@ class GetGroups(APIView):
         now=timezone.now()
         if int(style):
             if int(sortnum)==0:
-                data=Col.objects.order_by('date').values('zuhe__id','zuhe__starttime','zuhe__style',\
+                data=Col.objects.filter(user=user).order_by('date').values('zuhe__id','zuhe__starttime','zuhe__style',\
                                                           'date','zuhe__rate','zuhe__good',\
                                                           'zuhe__colnum','zuhe__endtime')[start:end]
                 
             elif int(sortnum)==1:
-                data=Col.objects.order_by('-zuhe__starttime').values('zuhe__id','zuhe__starttime','zuhe__style',\
+                data=Col.objects.filter(user=user).order_by('-zuhe__starttime').values('zuhe__id','zuhe__starttime','zuhe__style',\
                                                           'date','zuhe__rate','zuhe__good',\
                                                           'zuhe__colnum','zuhe__endtime')[start:end]
             else:
-                data=Col.objects.order_by('-zuhe__rate').values('zuhe__id','zuhe__starttime','zuhe__style',\
+                data=Col.objects.filter(user=user).order_by('-zuhe__rate').values('zuhe__id','zuhe__starttime','zuhe__style',\
                                                           'date','zuhe__rate','zuhe__good',\
                                                           'zuhe__colnum','zuhe__endtime')[start:end]
         else:
             if int(sortnum)==0:
-                data=Col.objects.filter(zuhe__starttime__lte=now,zuhe__endtime__gte=now).order_by('date').values('zuhe__id','zuhe__starttime','zuhe__style',\
+                data=Col.objects.filter(user=user,zuhe__starttime__lte=now,zuhe__endtime__gte=now).order_by('date').values('zuhe__id','zuhe__starttime','zuhe__style',\
                                                           'date','zuhe__rate','zuhe__good',\
                                                           'zuhe__colnum','zuhe__endtime')[start:end]
                 
             elif int(sortnum)==1:
-                data=Col.objects.filter(zuhe__starttime__lte=now,zuhe__endtime__gte=now).order_by('-zuhe__starttime').values('zuhe__id','zuhe__starttime','zuhe__style',\
+                data=Col.objects.filter(user=user,zuhe__starttime__lte=now,zuhe__endtime__gte=now).order_by('-zuhe__starttime').values('zuhe__id','zuhe__starttime','zuhe__style',\
                                                           'date','zuhe__rate','zuhe__good',\
                                                           'zuhe__colnum','zuhe__endtime')[start:end]
             else:
-                data=Col.objects.filter(zuhe__starttime__lte=now,zuhe__endtime__gte=now).order_by('-zuhe__rate').values('zuhe__id','zuhe__starttime','zuhe__style',\
+                data=Col.objects.filter(user=user,zuhe__starttime__lte=now,zuhe__endtime__gte=now).order_by('-zuhe__rate').values('zuhe__id','zuhe__starttime','zuhe__style',\
                                                           'date','zuhe__rate','zuhe__good','zuhe__colnum','zuhe__endtime')[start:end]
         return Response(data) 
 
