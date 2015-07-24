@@ -48,14 +48,14 @@
 {
 	vertical-align: top;
 	position: relative;
-	background: url("../../images/logo-u6133.png") no-repeat 0px 0px;
+	background: url("/static/phone/images/logo-u6133.png") no-repeat 0px 0px;
 }
 
 #u6134
 {
 	vertical-align: top;
 	position: relative;
-	background: url("../../images/logo%20name-u6134.png") no-repeat 0px 0px;
+	background: url("/static/phone/images/logo%20name-u6134.png") no-repeat 0px 0px;
 }
 
 #u3907
@@ -68,19 +68,19 @@
 {
 	border-color: #787878;
 	position: relative;
-	background: transparent url("../../images/home1-buttonu3917-fr.png") no-repeat center center;
+	background: transparent url("/static/phone/images/home1-buttonu3917-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
 #buttonu3917:hover
 {
-	background: #85DAFF url("../../images/home2-buttonu3917-r-fr.png") no-repeat center center;
+	background: #85DAFF url("/static/phone/images/home2-buttonu3917-r-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
 #buttonu3917.ButtonSelected
 {
-	background: transparent url("../../images/home1-buttonu3917-fr.png") no-repeat center center;
+	background: transparent url("/static/phone/images/home1-buttonu3917-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
@@ -88,19 +88,19 @@
 {
 	border-color: #787878;
 	position: relative;
-	background: transparent url("../../images/introduce1-buttonu3926-fr.png") no-repeat center center;
+	background: transparent url("/static/phone/images/introduce1-buttonu3926-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
 #buttonu3926:hover
 {
-	background: #85DAFF url("../../images/introduce2-buttonu3926-r-fr.png") no-repeat center center;
+	background: #85DAFF url("/static/phone/images/introduce2-buttonu3926-r-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
 #buttonu3926.ButtonSelected
 {
-	background: transparent url("../../images/introduce1-buttonu3926-fr.png") no-repeat center center;
+	background: transparent url("/static/phone/images/introduce1-buttonu3926-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
@@ -108,19 +108,19 @@
 {
 	border-color: #787878;
 	position: relative;
-	background: transparent url("../../images/issue1-buttonu3927-fr.png") no-repeat center center;
+	background: transparent url("/static/phone/images/issue1-buttonu3927-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
 #buttonu3927:hover
 {
-	background: #85DAFF url("../../images/issue2-buttonu3927-r-fr.png") no-repeat center center;
+	background: #85DAFF url("/static/phone/images/issue2-buttonu3927-r-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
 #buttonu3927.ButtonSelected
 {
-	background: transparent url("../../images/issue1-buttonu3927-fr.png") no-repeat center center;
+	background: transparent url("/static/phone/images/issue1-buttonu3927-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
@@ -128,19 +128,19 @@
 {
 	border-color: #787878;
 	position: relative;
-	background: transparent url("../../images/about1-buttonu3928-fr.png") no-repeat center center;
+	background: transparent url("/static/phone/images/about1-buttonu3928-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
 #buttonu3928:hover
 {
-	background: #85DAFF url("../../images/about2-buttonu3928-r-fr.png") no-repeat center center;
+	background: #85DAFF url("/static/phone/images/about2-buttonu3928-r-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
 #buttonu3928.ButtonSelected
 {
-	background: transparent url("../../images/about1-buttonu3928-fr.png") no-repeat center center;
+	background: transparent url("/static/phone/images/about1-buttonu3928-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
@@ -177,7 +177,7 @@
 #u3482
 {
 	position: relative;
-	background: transparent url("../../images/co_worker-u3482-fr.png") no-repeat center center;
+	background: transparent url("/static/phone/images/co_worker-u3482-fr.png") no-repeat center center;
 	background-size: contain;
 }
 

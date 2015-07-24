@@ -230,7 +230,7 @@
 {
 	z-index: 37;
 	height: 392px;
-	background: #186AB8 url("../../images/core-u3377-fr.png") no-repeat center center;
+	background: #186AB8 url("/static/phone/images/core-u3377-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
@@ -264,7 +264,7 @@
 	height: 77px;
 	position: relative;
 	margin-right: -10000px;
-	background: transparent url("../../images/slogan-u3442-fr.png") no-repeat right center;
+	background: transparent url("/static/phone/images/slogan-u3442-fr.png") no-repeat right center;
 	background-size: contain;
 }
 
@@ -288,7 +288,7 @@
 	position: relative;
 	margin-right: -10000px;
 	margin-top: 19px;
-	background: transparent url("../../images/iphone1-u3433-fr.png") no-repeat center center;
+	background: transparent url("/static/phone/images/iphone1-u3433-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
@@ -301,7 +301,7 @@
 	margin-right: -10000px;
 	margin-top: 51px;
 	left: 6px;
-	background: transparent url("../../images/iphone1_picture-u3434-fr.png") no-repeat center center;
+	background: transparent url("/static/phone/images/iphone1_picture-u3434-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
@@ -313,7 +313,7 @@
 	position: relative;
 	margin-right: -10000px;
 	left: 65px;
-	background: transparent url("../../images/iphone2-u3436-fr.png") no-repeat center center;
+	background: transparent url("/static/phone/images/iphone2-u3436-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
@@ -326,7 +326,7 @@
 	margin-right: -10000px;
 	margin-top: 32px;
 	left: 72px;
-	background: transparent url("../../images/iphone2_picture-u3435-fr.png") no-repeat center center;
+	background: transparent url("/static/phone/images/iphone2_picture-u3435-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
@@ -340,7 +340,7 @@
 	margin-right: -10000px;
 	margin-top: 83px;
 	left: 222px;
-	background: url("../../images/b5%20-u3439.png") no-repeat 0px 0px;
+	background: url("/static/phone/images/b5%20-u3439.png") no-repeat 0px 0px;
 }
 
 #u3437
@@ -367,12 +367,12 @@
 	margin-right: -10000px;
 	margin-top: -10px;
 	left: -10px;
-	background: url("../../images/weibo-u3438.png") no-repeat 10px 10px;
+	background: url("/static/phone/images/weibo-u3438.png") no-repeat 10px 10px;
 }
 
 #u3438:hover
 {
-	background: url("../../images/weibo-u3438-r.png") no-repeat 0px 0px;
+	background: url("/static/phone/images/weibo-u3438-r.png") no-repeat 0px 0px;
 }
 
 #u3440
@@ -399,12 +399,12 @@
 	margin-right: -10000px;
 	margin-top: -6px;
 	left: -6px;
-	background: url("../../images/wechat-u3441.png") no-repeat 6px 6px;
+	background: url("/static/phone/images/wechat-u3441.png") no-repeat 6px 6px;
 }
 
 #u3441:hover
 {
-	background: url("../../images/wechat-u3441-r.png") no-repeat 0px 0px;
+	background: url("/static/phone/images/wechat-u3441-r.png") no-repeat 0px 0px;
 }
 
 #u3430-6-bw
@@ -467,12 +467,12 @@
 	margin-right: -10000px;
 	margin-top: -8px;
 	left: -8px;
-	background: url("../../images/round%20rct2-u3460.png") no-repeat 8px 8px;
+	background: url("/static/phone/images/round%20rct2-u3460.png") no-repeat 8px 8px;
 }
 
 #u3460:hover
 {
-	background: url("../../images/round%20rct2-u3460-r.png") no-repeat 0px 0px;
+	background: url("/static/phone/images/round%20rct2-u3460-r.png") no-repeat 0px 0px;
 }
 
 #u3461
@@ -485,12 +485,12 @@
 	margin-right: -10000px;
 	margin-top: -1px;
 	left: 1px;
-	background: url("../../images/android-u3461.png") no-repeat 15px 15px;
+	background: url("/static/phone/images/android-u3461.png") no-repeat 15px 15px;
 }
 
 #u3461:hover
 {
-	background: url("../../images/android-u3461-r.png") no-repeat 0px 0px;
+	background: url("/static/phone/images/android-u3461-r.png") no-repeat 0px 0px;
 }
 
 #u3456
@@ -515,12 +515,12 @@
 	margin-right: -10000px;
 	margin-top: -16px;
 	left: -16px;
-	background: url("../../images/round%20rct6-u3458.png") no-repeat 16px 16px;
+	background: url("/static/phone/images/round%20rct6-u3458.png") no-repeat 16px 16px;
 }
 
 #u3458:hover
 {
-	background: url("../../images/round%20rct6-u3458-r.png") no-repeat 0px 0px;
+	background: url("/static/phone/images/round%20rct6-u3458-r.png") no-repeat 0px 0px;
 }
 
 #u3457
@@ -533,12 +533,12 @@
 	margin-right: -10000px;
 	margin-top: 5px;
 	left: 5px;
-	background: url("../../images/iphone-u3457.png") no-repeat 11px 11px;
+	background: url("/static/phone/images/iphone-u3457.png") no-repeat 11px 11px;
 }
 
 #u3457:hover
 {
-	background: url("../../images/iphone-u3457-r.png") no-repeat 0px 0px;
+	background: url("/static/phone/images/iphone-u3457-r.png") no-repeat 0px 0px;
 }
 
 #u3454-6-bw
@@ -564,7 +564,7 @@
 	filter: alpha(opacity=30);
 	position: relative;
 	margin-right: -10000px;
-	background: transparent url("../../images/pig-u3640-fr.png") no-repeat left top;
+	background: transparent url("/static/phone/images/pig-u3640-fr.png") no-repeat left top;
 	background-size: contain;
 }
 
@@ -586,7 +586,7 @@
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
 	filter: alpha(opacity=50);
 	position: relative;
-	background: transparent url("../../images/slogan-u3638-fr.png") no-repeat left top;
+	background: transparent url("/static/phone/images/slogan-u3638-fr.png") no-repeat left top;
 	background-size: contain;
 }
 
@@ -600,7 +600,7 @@
 	filter: alpha(opacity=70);
 	margin-top: 15px;
 	position: relative;
-	background: transparent url("../../images/slogan2-u3639-fr.png") no-repeat left top;
+	background: transparent url("/static/phone/images/slogan2-u3639-fr.png") no-repeat left top;
 	background-size: contain;
 }
 
@@ -628,7 +628,7 @@
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
 	filter: alpha(opacity=30);
 	position: relative;
-	background: transparent url("../../images/text3-u3641-fr.png") no-repeat left top;
+	background: transparent url("/static/phone/images/text3-u3641-fr.png") no-repeat left top;
 	background-size: contain;
 }
 
@@ -642,7 +642,7 @@
 	filter: alpha(opacity=30);
 	margin-top: 10px;
 	position: relative;
-	background: transparent url("../../images/slogan5-u3642-fr.png") no-repeat left top;
+	background: transparent url("/static/phone/images/slogan5-u3642-fr.png") no-repeat left top;
 	background-size: contain;
 }
 
@@ -656,7 +656,7 @@
 	filter: alpha(opacity=50);
 	margin-top: 9px;
 	position: relative;
-	background: transparent url("../../images/slogan6-u3643-fr.png") no-repeat left top;
+	background: transparent url("/static/phone/images/slogan6-u3643-fr.png") no-repeat left top;
 	background-size: contain;
 }
 
@@ -671,7 +671,7 @@
 	position: relative;
 	margin-right: -10000px;
 	left: 225px;
-	background: transparent url("../../images/zhuzhuangtu-u3644-fr.png") no-repeat left top;
+	background: transparent url("/static/phone/images/zhuzhuangtu-u3644-fr.png") no-repeat left top;
 	background-size: contain;
 }
 
@@ -699,7 +699,7 @@
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	filter: alpha(opacity=80);
 	position: relative;
-	background: transparent url("../../images/slogan3-u3647-fr.png") no-repeat left top;
+	background: transparent url("/static/phone/images/slogan3-u3647-fr.png") no-repeat left top;
 	background-size: contain;
 }
 
@@ -713,7 +713,7 @@
 	filter: alpha(opacity=60);
 	margin-top: 7px;
 	position: relative;
-	background: transparent url("../../images/slogan4-u3645-fr.png") no-repeat left top;
+	background: transparent url("/static/phone/images/slogan4-u3645-fr.png") no-repeat left top;
 	background-size: contain;
 }
 
@@ -727,7 +727,7 @@
 	filter: alpha(opacity=30);
 	position: relative;
 	margin-right: -10000px;
-	background: transparent url("../../images/calender-u3646-fr.png") no-repeat left top;
+	background: transparent url("/static/phone/images/calender-u3646-fr.png") no-repeat left top;
 	background-size: contain;
 }
 
@@ -743,7 +743,7 @@
 	margin-right: -10000px;
 	margin-top: 88px;
 	left: 10px;
-	background: transparent url("../../images/sell-u3648-fr.png") no-repeat left top;
+	background: transparent url("/static/phone/images/sell-u3648-fr.png") no-repeat left top;
 	background-size: contain;
 }
 
@@ -757,7 +757,7 @@
 	margin-right: -10000px;
 	margin-top: 100px;
 	left: 46px;
-	background: url("../../images/mouse-u3649.png") no-repeat 0px 0px;
+	background: url("/static/phone/images/mouse-u3649.png") no-repeat 0px 0px;
 }
 
 #ppu3662
@@ -784,7 +784,7 @@
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
 	filter: alpha(opacity=30);
 	position: relative;
-	background: transparent url("../../images/slogan7-u3662-fr.png") no-repeat left top;
+	background: transparent url("/static/phone/images/slogan7-u3662-fr.png") no-repeat left top;
 	background-size: contain;
 }
 
@@ -798,7 +798,7 @@
 	filter: alpha(opacity=20);
 	margin-top: 5px;
 	position: relative;
-	background: transparent url("../../images/slogan8-u3663-fr.png") no-repeat left top;
+	background: transparent url("/static/phone/images/slogan8-u3663-fr.png") no-repeat left top;
 	background-size: contain;
 }
 
@@ -813,7 +813,7 @@
 	position: relative;
 	margin-right: -10000px;
 	left: 281px;
-	background: transparent url("../../images/earth-u3664-fr.png") no-repeat left top;
+	background: transparent url("/static/phone/images/earth-u3664-fr.png") no-repeat left top;
 	background-size: contain;
 }
 

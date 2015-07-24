@@ -1,3 +1,11 @@
+#u3366
+{
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	position: relative;
+}
+
 #u989
 {
 	position: relative;
@@ -15,52 +23,52 @@
 #u1482
 {
 	position: relative;
-	background: transparent url("../images/home1.png") no-repeat center center;
+	background: transparent url("../images/home1-u1482-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
 #u1482:hover
 {
-	background: transparent url("../images/home2.png") no-repeat center center;
+	background: transparent url("../images/home2-u1482-r-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
 #u1489
 {
 	position: relative;
-	background: transparent url("../images/introduce1.png") no-repeat center center;
+	background: transparent url("../images/introduce1-u1489-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
 #u1489:hover
 {
-	background: transparent url("../images/introduce2.png") no-repeat center center;
+	background: transparent url("../images/introduce2-u1489-r-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
 #u1495
 {
 	position: relative;
-	background: transparent url("../images/issue1.png") no-repeat center center;
+	background: transparent url("../images/issue1-u1495-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
 #u1495:hover
 {
-	background: transparent url("../images/issue2.png") no-repeat center center;
+	background: transparent url("../images/issue2-u1495-r-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
 #u1501
 {
 	position: relative;
-	background: transparent url("../images/about1.png") no-repeat center center;
+	background: transparent url("../images/about1-u1501-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
 #u1501:hover
 {
-	background: transparent url("../images/about2.png") no-repeat center center;
+	background: transparent url("../images/about2-u1501-r-fr.png") no-repeat center center;
 	background-size: contain;
 }
 
@@ -84,7 +92,7 @@
 #u2360
 {
 	position: relative;
-	background: transparent url("../images/co_worker-u2360-fr.png") no-repeat center center;
+	background: transparent url("../images/co_worker-u3482-fr.png") no-repeat center center;
 	background-size: contain;
 }
 

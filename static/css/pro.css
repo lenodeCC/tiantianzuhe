@@ -237,7 +237,7 @@
 	margin-right: -10000px;
 	margin-top: 34px;
 	left: 5px;
-	background: transparent url("../../images/smartss.png") no-repeat left top;
+	background: transparent url("/static/phone/images/smartss.png") no-repeat left top;
 	background-size: contain;
 }
 
@@ -443,7 +443,7 @@
 
 .SSSlideLoading /* slideshowFreeStyle */
 {
-	background: url("../../images/loading.gif") no-repeat center center;
+	background: url("/static/phone/images/loading.gif") no-repeat center center;
 }
 
 #pu3378

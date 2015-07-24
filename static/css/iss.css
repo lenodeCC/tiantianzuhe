@@ -242,7 +242,7 @@
 	margin-right: -10000px;
 	margin-top: 30px;
 	left: 11px;
-	background: transparent url("../../images/imagess.png") no-repeat left top;
+	background: transparent url("/static/phone/images/imagess.png") no-repeat left top;
 	background-size: contain;
 }
 
