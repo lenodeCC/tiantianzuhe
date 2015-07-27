@@ -2,7 +2,8 @@
 from django.contrib import admin
 from zuhe.models import Zuhe,SingleStock,NoRecommend,ZuheWithExcel,SingleStock,Comment,Col
 from messagepush.models import ZuheHelp
-
+import xinge
+import json
 class NoRecommendAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.save()
@@ -13,7 +14,8 @@ class NoRecommendAdmin(admin.ModelAdmin):
         content=u'天天组合:%d年%d月%d日无推荐'%(year,month,day)
         zuhehelp=ZuheHelp.objects.create(style=3,title=title,content=content,date=obj.date)
     
-        x = xinge.XingeApp(0, 'secret')
+        x = xinge.XingeApp(2100130704, '57bd74b32b26adb3f48b0fd8fb34502d')
+        iosx=xinge.XingeApp(2200130705, 'd3156bf69ce4357382bfc8a93920582f')
         msg=xinge.Message()
         msg.title = zuhehelp.title
         msg.content = zuhehelp.content
@@ -27,7 +29,7 @@ class NoRecommendAdmin(admin.ModelAdmin):
         iosmsg.alert = zuhehelp.content
         iosmsg.custom = {'type':'3', 'id':str(zuhehelp.id)}
         x.PushAllDevices(0, msg)
-        x.PushAllDevices(0, iosmsg, 1)
+        iosx.PushAllDevices(0, iosmsg, 1)
 
 
 

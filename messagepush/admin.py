@@ -8,7 +8,8 @@ import json
 class HelpAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.save()
-        x = xinge.XingeApp(0, 'secret')
+        x = xinge.XingeApp(2100130704, '57bd74b32b26adb3f48b0fd8fb34502d')
+        iosx=xinge.XingeApp(2200130705, 'd3156bf69ce4357382bfc8a93920582f')
         msg=xinge.Message()
         msg.title = obj.title
         msg.content = obj.content
@@ -23,16 +24,17 @@ class HelpAdmin(admin.ModelAdmin):
         iosmsg.custom = {'type':'1', 'id':str(obj.id)}
         if obj.style==1:
             x.PushAllDevices(0, msg)
-            x.PushAllDevices(0, iosmsg, 1)
+            iosx.PushAllDevices(0, iosmsg, 1)
         else:
             idlist=obj.members.values_list('id',flat=True)
             idlist=(str(i) for i in idlist)
             x.PushTags(0, idlist, 'AND', msg)
-            x.PushTags(0, idlist, 'AND', iosmsg, 1)
+            iosx.PushTags(0, idlist, 'AND', iosmsg, 1)
 class MSGAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.save()
-        x = xinge.XingeApp(0, 'secret')
+        x = xinge.XingeApp(2100130704, '57bd74b32b26adb3f48b0fd8fb34502d')
+        iosx=xinge.XingeApp(2200130705, 'd3156bf69ce4357382bfc8a93920582f')
         msg=xinge.Message()
         msg.title = obj.title
         msg.content = obj.content
@@ -46,7 +48,7 @@ class MSGAdmin(admin.ModelAdmin):
         iosmsg.alert = obj.content
         iosmsg.custom = {'type':'2', 'id':str(obj.id)}
         x.PushAllDevices(0, msg)
-        x.PushAllDevices(0, iosmsg, 1)
+        iosx.PushAllDevices(0, iosmsg, 1)
 
 admin.site.register(TiantianHelp,HelpAdmin)
 admin.site.register(ZuheHelp)
