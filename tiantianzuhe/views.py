@@ -695,7 +695,7 @@ class GetGroupOfMonth(APIView):
                     if Col.objects.filter(user=user,zuhe=zuhe).exists():
                         i['isbuy']=True
                     else:
-                        i['isbuy']=True
+                        i['isbuy']=False
                     if zuhe.endtime and datetime.date.today()>zuhe.endtime:
                         i['isover']=True
                     else:
@@ -703,14 +703,14 @@ class GetGroupOfMonth(APIView):
                 else:
                     i['toprate']=''
                     i['type']=2
-                    i['isbuy']=True
+                    i['isbuy']=False
             elif datetime.date(year=year,month=month,day=day)>datetime.date.today():
                 i['toprate']=''
                 i['type']=0
                 if user.predate.filter(date__year=year,date__month=month,date__day=day).exists():
                     i['isbuy']=True
                 else:
-                    i['isbuy']=True
+                    i['isbuy']=False
             else:
                 i['toprate']=''
                 if Zuhe.objects.filter(starttime__year=year,starttime__month=month,starttime__day=day).exists():
@@ -721,14 +721,14 @@ class GetGroupOfMonth(APIView):
                     if Col.objects.filter(user=user,zuhe__starttime__year=year,zuhe__starttime__month=month,zuhe__starttime__day=day).exists():
                         i['isbuy']=True
                     else:
-                        i['isbuy']=True
+                        i['isbuy']=False
                 else:
                     i['type']=2
                     i['isbuy']=True
                     if user.predate.filter(date__year=year,date__month=month,date__day=day).exists():
                         i['isbuy']=True
                     else:
-                        i['isbuy']=True
+                        i['isbuy']=False
             data.append(i)
                    
         return Response(data)
