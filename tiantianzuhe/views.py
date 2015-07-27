@@ -724,7 +724,7 @@ class GetGroupOfMonth(APIView):
                         i['isbuy']=False
                 else:
                     i['type']=2
-                    i['isbuy']=True
+                    i['isbuy']=False
                     if user.predate.filter(date__year=year,date__month=month,date__day=day).exists():
                         i['isbuy']=True
                     else:
