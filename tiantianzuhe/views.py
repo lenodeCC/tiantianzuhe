@@ -26,6 +26,7 @@ from theuser.models import MyUser,MyUserToken
 from info.models import Banner,Message,Help,Option
 from zuhe.models import Zuhe,SingleStock,Comment,Col
 from messagepush.models import TiantianHelp,ZuheHelp,TiantianMSG
+import xinge
 class UnsafeSessionAuthentication(SessionAuthentication):
     def authenticate(self, request):
         http_request = request._request
@@ -348,6 +349,24 @@ class MakeMessage(APIView):
         content=request.POST.get('content','')
         Message.objects.create(fromuser=user,touser=touser,content=content)
         data={'success':True}
+        x = xinge.XingeApp(2100130704, '57bd74b32b26adb3f48b0fd8fb34502d')
+        iosx=xinge.XingeApp(2200130705, 'd3156bf69ce4357382bfc8a93920582f')
+        msg=xinge.Message()
+        msg.type = xinge.Message.TYPE_NOTIFICATION
+        msg.title = u'天天组合:您收到一条新消息'
+        msg.content = content
+        msg.expireTime = 86400      
+        msg.custom = {'type':'5', 'id':str(message.id)}
+        style = xinge.Style(2, 1, 1, 0, 0)
+        msg.style = style
+        iosmsg=xinge.MessageIOS()
+        iosmsg.expireTime = 3600
+        iosmsg.badge=1
+        iosmsg.sound='beep.wav'
+        iosmsg.alert = content
+        iosmsg.custom = {'type':'5', 'id':str(message.id)}
+        ret=x.PushTags(0, (str(touser.id),),'AND',msg)
+        ret_ios=iosx.PushTags(0, (str(touser.id),),'AND',iosmsg,1)
         return Response(data)
 
 class GetMessage(APIView):
@@ -593,6 +612,24 @@ class MakeCommentToComment(APIView):
         touser=self.get_user(to_pk)
         content=request.POST.get('content','')
         Comment.objects.create(user=user,content=content,to=comment,to_user=touser)
+        x = xinge.XingeApp(2100130704, '57bd74b32b26adb3f48b0fd8fb34502d')
+        iosx=xinge.XingeApp(2200130705, 'd3156bf69ce4357382bfc8a93920582f')
+        msg=xinge.Message()
+        msg.type = xinge.Message.TYPE_NOTIFICATION
+        msg.title = u'天天组合:您收到一条新评论'
+        msg.content = content
+        msg.expireTime = 86400      
+        msg.custom = {'type':'4', 'id':str(comment.id)}
+        style = xinge.Style(2, 1, 1, 0, 0)
+        msg.style = style
+        iosmsg=xinge.MessageIOS()
+        iosmsg.expireTime = 3600
+        iosmsg.badge=1
+        iosmsg.sound='beep.wav'
+        iosmsg.alert = content
+        iosmsg.custom = {'type':'4', 'id':str(comment.id)}
+        ret=x.PushTags(0, (str(touser.id),),'AND',msg)
+        ret_ios=iosx.PushTags(0, (str(touser.id),),'AND',iosmsg,1)
         data={'success':True}
         return Response(data)
 
