@@ -17,6 +17,7 @@ class NoRecommendAdmin(admin.ModelAdmin):
         x = xinge.XingeApp(2100130704, '57bd74b32b26adb3f48b0fd8fb34502d')
         iosx=xinge.XingeApp(2200130705, 'd3156bf69ce4357382bfc8a93920582f')
         msg=xinge.Message()
+        msg.type = xinge.Message.TYPE_NOTIFICATION
         msg.title = zuhehelp.title
         msg.content = zuhehelp.content
         msg.expireTime = 86400

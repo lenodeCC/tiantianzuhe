@@ -44,5 +44,9 @@ class Command(BaseCommand):
             price_list=[stock.rate for stock in zuhe.singlestock_set.all() if stock.rate is not None]
             if len(price_list)>0:
                 zuhe.rate=sum(price_list)/len(price_list)
+                if not zuhe.toprate:
+                    zuhe.toprate=zuhe.rate
+                if zuhe.toprate and zuhe.toprate<zuhe.rate:
+                    zuhe.toprate=zuhe.rate
                 zuhe.updatedate=datetime.datetime.now() 
                 zuhe.save()
