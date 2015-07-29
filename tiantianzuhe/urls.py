@@ -46,6 +46,8 @@ urlpatterns = patterns('',
     url(r'^getuserattlist/$', views.GetUserAttList.as_view()),
     url(r'^getuserfanslist/$', views.GetUserFansList.as_view()),
     url(r'^dayhasornot/$', views.DayHasOrNot.as_view()),
+    url(r'^getversion/$', views.GetAndVersion.as_view()),
+
                        
     url(r'^admin/', include(admin.site.urls)),
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

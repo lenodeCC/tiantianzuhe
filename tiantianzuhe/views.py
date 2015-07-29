@@ -23,7 +23,7 @@ import decimal
 import calendar
 
 from theuser.models import MyUser,MyUserToken
-from info.models import Banner,Message,Help,Option
+from info.models import Banner,Message,Help,Option,Version
 from zuhe.models import Zuhe,SingleStock,Comment,Col
 from messagepush.models import TiantianHelp,ZuheHelp,TiantianMSG
 import xinge
@@ -1006,4 +1006,12 @@ class DayHasOrNot(APIView):
             data={'success':True}
         else:
             data={'success':False}
+        return Response(data)
+
+class GetAndVersion(APIView):
+    authentication_classes = (UnsafeSessionAuthentication,)
+    permission_classes = (AllowAny,)
+    def get(self, request,format=None):
+        version=Version.objects.last()
+        data={'success':True,'version':version.version,'url':version.url}
         return Response(data)

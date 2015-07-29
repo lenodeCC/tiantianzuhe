@@ -62,3 +62,20 @@ class Product(models.Model):
     class Meta:
         verbose_name = '产品'
         verbose_name_plural = "产品"
+
+class Version(models.Model):
+    version = models.CharField(max_length=16,verbose_name='版本号')
+    url=models.CharField(max_length=100,verbose_name='下载地址')
+    def __unicode__(self):
+        return self.version
+
+    def __cmp__(self, other):
+        if self.version.split('.') == other.version.split('.'):
+            return 0
+        if self.version.split('.') > other.version.split('.'):
+            return 1
+        return -1
+
+    class Meta:
+        verbose_name = u'版本'
+        verbose_name_plural = "版本"
