@@ -257,6 +257,7 @@ class GetUserCenter(APIView):
         user=request.user
         data={}
         data['userid']=user.id
+        data['userphone']=user.phone
         data['username']=user.name
         data['userintro']=user.desc
         data['usersex']=user.gender
@@ -312,6 +313,7 @@ class GetOtherData(APIView):
         user=self.get_user(pk)
         data={}
         data['otherid']=user.id
+        data['phone']=user.phone
         data['othername']=user.name
         data['otherintro']=user.desc
         data['othersex']=user.gender

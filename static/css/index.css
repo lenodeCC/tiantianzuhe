@@ -783,3 +783,24 @@ body
 	clear: both;
 }
 
+#u6244
+{
+	z-index: 63;
+	width: 213px;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 56px;
+	left: 312px;
+}
+
+#u6241
+{
+	z-index: 65;
+	width: 195px;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 95px;
+	left: 322px;
+}
