@@ -18,6 +18,10 @@ class Command(BaseCommand):
             end=zuhe.endtime.strftime('%Y-%m-%d')
             url='http://db2015.wstock.cn/wsDB_API/kline.php?symbol=SH000001&desc=1&q_type=2&fq=1&stime=%s&etime=%s&r_type=2'%(start,end)
             r=requests.get(url)
-            length=len(r.content)
-            zuhe.ondate=length
-            zuhe.save()
+            try:
+                data=json.load(r.content)
+                length=len(data)
+                zuhe.ondate=length
+                zuhe.save()
+            except:
+                pass
