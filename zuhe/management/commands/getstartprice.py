@@ -12,7 +12,8 @@ class Command(BaseCommand):
         day=today.day
         date=today.strftime('%Y-%m-%d')
         now=datetime.datetime.now()
-        zuhes_2=Zuhe.objects.filter(endtime__gte=today)
+        #zuhes_2=Zuhe.objects.filter(endtime__gte=today)
+        zuhes_2=Zuhe.objects.all()
         for zuhe in zuhes_2:
             start=zuhe.starttime.strftime('%Y-%m-%d')
             end=zuhe.endtime.strftime('%Y-%m-%d')
