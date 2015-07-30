@@ -41,6 +41,7 @@ class Zuhe(models.Model):
     colnum=models.IntegerField(verbose_name='收藏数',default=0)
     rate=models.DecimalField(verbose_name='收益', max_digits=5, decimal_places=2,blank=True,null=True)
     toprate=models.DecimalField(verbose_name='最高收益', max_digits=5, decimal_places=2,blank=True,null=True)
+    ondate=models.IntegerField(verbose_name='持续天数',default=0)
     updatedate=models.DateTimeField(verbose_name='更新日期',blank=True,null=True)
     def __unicode__(self):
         return u'%d年%d月%d日的%s组合'%(self.starttime.year,self.starttime.month,self.starttime.day,self.CHOICES[self.style-1][1])
