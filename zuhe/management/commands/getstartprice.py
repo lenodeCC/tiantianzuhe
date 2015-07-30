@@ -19,7 +19,7 @@ class Command(BaseCommand):
             url='http://db2015.wstock.cn/wsDB_API/kline.php?symbol=SH000001&desc=1&q_type=2&fq=1&stime=%s&etime=%s&r_type=2'%(start,end)
             r=requests.get(url)
             try:
-                data=json.load(r.content)
+                data=json.loads(r.content)
                 length=len(data)
                 zuhe.ondate=length
                 zuhe.save()
