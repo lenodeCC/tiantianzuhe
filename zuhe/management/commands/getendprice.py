@@ -16,7 +16,7 @@ class Command(BaseCommand):
             for stock in zuhe.singlestock_set.all():
                 if not stock.startprice:
                     code=stock.code
-                    url='http://db2015.wstock.cn/wsDB_API/kline.php?symbol=%s&q_type=2&fq=1&stime=%s&etime=%s&r_type=2'%(code,date,date)
+                    url='http://mkt.bankuang.com/kline.php?symbol=%s&q_type=2&fq=1&stime=%s&etime=%s&r_type=2'%(code,date,date)
                     r=requests.get(url)
                     try:
                         data=json.loads(r.content)
@@ -30,7 +30,7 @@ class Command(BaseCommand):
         for zuhe in zuhes_2:
             for stock in zuhe.singlestock_set.all():     
                     code=stock.code
-                    url='http://db2015.wstock.cn/wsDB_API/kline.php?symbol=%s&q_type=2&fq=1&stime=%s&etime=%s&r_type=2'%(code,date,date)
+                    url='http://mkt.bankuang.com/kline.php?symbol=%s&q_type=2&fq=1&stime=%s&etime=%s&r_type=2'%(code,date,date)
                     r=requests.get(url)
                     try:
                         data=json.loads(r.content)

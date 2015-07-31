@@ -16,7 +16,7 @@ class Command(BaseCommand):
         for zuhe in zuhes_2:
             start=zuhe.starttime.strftime('%Y-%m-%d')
             end=zuhe.endtime.strftime('%Y-%m-%d')
-            url='http://db2015.wstock.cn/wsDB_API/kline.php?symbol=SH000001&desc=1&q_type=2&fq=1&stime=%s&etime=%s&r_type=2'%(start,end)
+            url='http://mkt.bankuang.com/kline.php?symbol=SH000001&desc=1&q_type=2&fq=1&stime=%s&etime=%s&r_type=2'%(start,end)
             r=requests.get(url)
             try:
                 data=json.loads(r.content)
