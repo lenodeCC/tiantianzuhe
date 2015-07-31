@@ -147,7 +147,7 @@ class ThirdLogin(APIView):
             return Response(data)            
         try:
             user=MyUser.objects.get(openid=openid)
-            data={'success':True,'isfirst':False,'id':user.id}
+            data={'success':True,'isfirst':False,'id':user.id,'openid':openid}
         except:
             user=MyUser.objects.create_user(phone=openid,password='password')
             user.openid=openid
@@ -158,7 +158,7 @@ class ThirdLogin(APIView):
             user.token=usercode
             user.money=100
             user.save()
-            data={'success':True,'isfirst':True,'id':user.id}
+            data={'success':True,'isfirst':True,'id':user.id,'openid':openid}
         user.backend = 'django.contrib.auth.backends.ModelBackend'
         login(request,user)
         return Response(data)
