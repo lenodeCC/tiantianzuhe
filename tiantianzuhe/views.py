@@ -269,7 +269,7 @@ class GetUserCenter(APIView):
         data['openid']=user.openid
         data['openname']=user.openname
         data['openurl']=user.openurl
-        data['top3']=Col.objects.filter(user=user).order_by('-zuhe__rate').values('zuhe__id','zuhe__style','zuhe__starttime','zuhe__rate')
+        data['top3']=Col.objects.filter(user=user).order_by('-zuhe__rate').values('zuhe__id','zuhe__style','zuhe__starttime','zuhe__rate')[0:3]
         return Response(data)
 
 class UpdateUserData(APIView):
