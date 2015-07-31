@@ -248,7 +248,7 @@ class ModifyPassword(APIView):
             return Response({'success':False,'err_code':1001})
         request.user.set_password(new)
         request.user.save()
-        return Response({'success':True,'id':user.id})
+        return Response({'success':True,'id':request.user.id})
 
 class GetUserCenter(APIView):
     authentication_classes = (UnsafeSessionAuthentication,BasicAuthentication)
