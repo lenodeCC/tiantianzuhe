@@ -147,7 +147,7 @@ class ThirdLogin(APIView):
             return Response(data)            
         try:
             user=MyUser.objects.get(openid=openid)
-            data={'success':True,'isfirst':False}
+            data={'success':True,'isfirst':False,'id':user.id}
         except:
             user=MyUser.objects.create_user(phone=openid,password='password')
             user.openid=openid
