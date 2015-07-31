@@ -158,7 +158,7 @@ class ThirdLogin(APIView):
             user.token=usercode
             user.money=100
             user.save()
-            data={'success':True,'isfirst':True}
+            data={'success':True,'isfirst':True,'id':user.id}
         user.backend = 'django.contrib.auth.backends.ModelBackend'
         login(request,user)
         return Response(data)
@@ -1015,5 +1015,8 @@ class GetAndVersion(APIView):
     permission_classes = (AllowAny,)
     def get(self, request,format=None):
         version=Version.objects.last()
-        data={'success':True,'version':version.version,'url':version.url}
+        if version:
+            data={'success':True,'version':version.version,'url':version.url}
+        else:
+            data={'success':True,'err_code':1001,'err_msg':'no version'}
         return Response(data)
