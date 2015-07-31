@@ -266,6 +266,7 @@ class GetUserCenter(APIView):
         data['attentionnum']=user.looks.count()
         data['fansnum']=MyUser.objects.filter(looks=user).count()
         data['usermail']=user.email
+        data['openid']=user.openid
         data['top3']=Col.objects.filter(user=user).order_by('-zuhe__rate').values('zuhe__id','zuhe__style','zuhe__starttime','zuhe__rate')
         return Response(data)
 
