@@ -227,7 +227,7 @@ class ForgetPW(APIView):
                     user.save()
                     user=authenticate(phone=phone,password=pw)
                     login(request,user)
-                    data={'success':True}
+                    data={'success':True,'id':user.id}
                 else:
                     data={'success':False,'error_code':1005,'err_msg':'wrong token'}
             except:
@@ -248,7 +248,7 @@ class ModifyPassword(APIView):
             return Response({'success':False,'err_code':1001})
         request.user.set_password(new)
         request.user.save()
-        return Response({'success':True})
+        return Response({'success':True,'id':user.id})
 
 class GetUserCenter(APIView):
     authentication_classes = (UnsafeSessionAuthentication,BasicAuthentication)
