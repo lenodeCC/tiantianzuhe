@@ -352,7 +352,7 @@ class MakeMessage(APIView):
         pk=request.POST.get('id','')
         touser=self.get_user(pk)
         content=request.POST.get('content','')
-        Message.objects.create(fromuser=user,touser=touser,content=content)
+        message=Message.objects.create(fromuser=user,touser=touser,content=content)
         data={'success':True}
         x = xinge.XingeApp(2100130704, '57bd74b32b26adb3f48b0fd8fb34502d')
         iosx=xinge.XingeApp(2200130705, 'd3156bf69ce4357382bfc8a93920582f')
