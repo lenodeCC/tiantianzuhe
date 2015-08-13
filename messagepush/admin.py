@@ -6,6 +6,7 @@ import xinge
 import json
 
 class HelpAdmin(admin.ModelAdmin):
+    filter_horizontal = ('members',)
     def save_model(self, request, obj, form, change):
         obj.save()
         x = xinge.XingeApp(2100130704, '57bd74b32b26adb3f48b0fd8fb34502d')
