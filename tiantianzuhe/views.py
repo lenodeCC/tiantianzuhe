@@ -83,6 +83,7 @@ class Reg(APIView):
                         data={'success':False,'err_code':1001,'err_msg':'phone number was used'}
                     else:
                         user=MyUser.objects.create_user(phone=phone,password=pw)
+                        user.name='tiantian'+str(user.id)
                         usercode=random.randint(10000000,99999999)
                         usercode=str(usercode)+str(user.id)
                         user.token=usercode
@@ -453,7 +454,7 @@ class FindUsers(APIView):
             page=int(page)
             start=(page-1)*10
             end=start+10
-            data=MyUser.objects.filter(name__icontains=key).values('id','name','img')
+            data=MyUser.objects.filter(Q(name__icontains=key)|Q(openname__icontains=key)).values('id','name','img')
             for i in data:
                 theuser=self.get_user(i['id'])
                 if theuser in user.looks.all():
