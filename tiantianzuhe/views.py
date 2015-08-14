@@ -356,7 +356,7 @@ class MakeMessage(APIView):
         content=request.POST.get('content','')
         message=Message.objects.create(fromuser=user,touser=touser,content=content)
         data={'success':True}
-        x = xinge.XingeApp(2100130704, '57bd74b32b26adb3f48b0fd8fb34502d')
+        x = xinge.XingeApp(2100130704, '82bbeb41db7f303a0f0f6521ddf23558')
         iosx=xinge.XingeApp(2200130705, 'd3156bf69ce4357382bfc8a93920582f')
         msg=xinge.Message()
         msg.type = xinge.Message.TYPE_NOTIFICATION
