@@ -154,6 +154,7 @@ class ThirdLogin(APIView):
             user.openid=openid
             user.openname=openname
             user.openurl=openurl
+            user.name=openname
             usercode=random.randint(10000000,99999999)
             usercode=str(usercode)+str(user.id)
             user.token=usercode
