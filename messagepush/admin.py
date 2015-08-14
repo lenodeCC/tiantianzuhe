@@ -13,8 +13,8 @@ class HelpAdmin(admin.ModelAdmin):
         iosx=xinge.XingeApp(2200130705, 'd3156bf69ce4357382bfc8a93920582f')
         msg=xinge.Message()
         msg.type = xinge.Message.TYPE_NOTIFICATION
-        msg.title = obj.title
-        msg.content = obj.content
+        msg.title = obj.title.encode('utf-8')
+        msg.content = obj.content.encode('utf-8')
         msg.expireTime = 86400
         #msg.sendTime = '2012-12-12 18:48:00'
         # 自定义键值对，key和value都必须是字符串，非必须
@@ -22,7 +22,7 @@ class HelpAdmin(admin.ModelAdmin):
         style = xinge.Style(2, 1, 1, 0, 0)
         msg.style = style
         iosmsg=xinge.MessageIOS()
-        iosmsg.alert = obj.title
+        iosmsg.alert = obj.title.encode('utf-8')
         iosmsg.custom = {'type':'1', 'id':str(obj.id)}
         if obj.style==1:
             x.PushAllDevices(0, msg)
@@ -39,8 +39,8 @@ class MSGAdmin(admin.ModelAdmin):
         iosx=xinge.XingeApp(2200130705, 'd3156bf69ce4357382bfc8a93920582f')
         msg=xinge.Message()
         msg.type = xinge.Message.TYPE_NOTIFICATION
-        msg.title = obj.title
-        msg.content = obj.content
+        msg.title = obj.title.encode('utf-8')
+        msg.content = obj.content.encode('utf-8')
         msg.expireTime = 86400
         #msg.sendTime = '2012-12-12 18:48:00'
         # 自定义键值对，key和value都必须是字符串，非必须
@@ -48,7 +48,7 @@ class MSGAdmin(admin.ModelAdmin):
         style = xinge.Style(2, 1, 1, 0, 0)
         msg.style = style
         iosmsg=xinge.MessageIOS()
-        iosmsg.alert = obj.title
+        iosmsg.alert = obj.title.encode('utf-8')
         iosmsg.custom = {'type':'2', 'id':str(obj.id)}
         x.PushAllDevices(0, msg)
         iosx.PushAllDevices(0, iosmsg, 1)
