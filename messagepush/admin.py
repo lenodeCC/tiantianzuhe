@@ -22,7 +22,7 @@ class HelpAdmin(admin.ModelAdmin):
         style = xinge.Style(2, 1, 1, 0, 0)
         msg.style = style
         iosmsg=xinge.MessageIOS()
-        iosmsg.alert = obj.content
+        iosmsg.alert = obj.title
         iosmsg.custom = {'type':'1', 'id':str(obj.id)}
         if obj.style==1:
             x.PushAllDevices(0, msg)
@@ -48,7 +48,7 @@ class MSGAdmin(admin.ModelAdmin):
         style = xinge.Style(2, 1, 1, 0, 0)
         msg.style = style
         iosmsg=xinge.MessageIOS()
-        iosmsg.alert = obj.content
+        iosmsg.alert = obj.title
         iosmsg.custom = {'type':'2', 'id':str(obj.id)}
         x.PushAllDevices(0, msg)
         iosx.PushAllDevices(0, iosmsg, 1)
