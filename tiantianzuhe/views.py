@@ -360,7 +360,7 @@ class MakeMessage(APIView):
         iosx=xinge.XingeApp(2200130705, 'd3156bf69ce4357382bfc8a93920582f')
         msg=xinge.Message()
         msg.type = xinge.Message.TYPE_NOTIFICATION
-        msg.title = u'天天组合:您收到一条新消息'
+        msg.title = u'天天组合:您收到一条新消息'.encode('utf-8')
         msg.content = content
         msg.expireTime = 86400      
         msg.custom = {'type':'5', 'id':str(message.id)}
