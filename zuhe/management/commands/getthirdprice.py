@@ -11,8 +11,8 @@ class Command(BaseCommand):
         month=today.month
         day=today.day
         date=today.strftime('%Y-%m-%d')
-        #zuhes=Zuhe.objects.filter(starttime__year=year,starttime__month=month,starttime__day=day)
-        zuhes=Zuhe.objects.all()
+        zuhes=Zuhe.objects.filter(singlestock__startprice=None)
+        
         for zuhe in zuhes:
             startdate=zuhe.starttime.strftime('%Y-%m-%d')
             enddate=zuhe.endtime.strftime('%Y-%m-%d')
