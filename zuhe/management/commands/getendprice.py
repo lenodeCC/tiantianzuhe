@@ -11,12 +11,15 @@ class Command(BaseCommand):
         month=today.month
         day=today.day
         date=today.strftime('%Y-%m-%d')
-        zuhes=Zuhe.objects.filter(starttime__year=year,starttime__month=month,starttime__day=day)
+        zuhes=Zuhe.objects.filter(singlestock__startprice='')
+        
         for zuhe in zuhes:
+            startdate=zuhe.starttime.strftime('%Y-%m-%d')
+            enddate=zuhe.endtime.strftime('%Y-%m-%d')
             for stock in zuhe.singlestock_set.all():
                 if not stock.startprice:
                     code=stock.code
-                    url='http://mkt.bankuang.com/kline.php?symbol=%s&q_type=2&fq=1&stime=%s&etime=%s&r_type=2'%(code,date,date)
+                    url='http://mkt.bankuang.com/kline.php?symbol=%s&q_type=2&fq=1&stime=%s&etime=%s&r_type=2'%(code,startdate,startdate)
                     r=requests.get(url)
                     try:
                         data=json.loads(r.content)
