@@ -562,8 +562,8 @@ class GetGroups(APIView):
                                                           'date','zuhe__rate','zuhe__good',\
                                                           'zuhe__colnum','zuhe__endtime','zuhe__toprate','zuhe__ondate',)[start:end]
             else:
-                data=Col.objects.filter(user=user).order_by('-zuhe__rate').values('zuhe__id','zuhe__starttime','zuhe__style',\
-                                                          'date','zuhe__rate','zuhe__good',\
+                data=Col.objects.filter(user=user).order_by('-zuhe__toprate').values('zuhe__id','zuhe__starttime','zuhe__style',\
+                                                          'date','zuhe__toprate','zuhe__good',\
                                                           'zuhe__colnum','zuhe__endtime','zuhe__toprate','zuhe__ondate',)[start:end]
         else:
             if int(sortnum)==0:
@@ -576,8 +576,8 @@ class GetGroups(APIView):
                                                           'date','zuhe__rate','zuhe__good',\
                                                           'zuhe__colnum','zuhe__endtime','zuhe__toprate','zuhe__ondate',)[start:end]
             else:
-                data=Col.objects.filter(user=user,zuhe__starttime__lte=now,zuhe__endtime__gte=now).order_by('-zuhe__rate').values('zuhe__id','zuhe__starttime','zuhe__style',\
-                                                          'date','zuhe__rate','zuhe__good','zuhe__colnum','zuhe__endtime','zuhe__toprate','zuhe__ondate',)[start:end]
+                data=Col.objects.filter(user=user,zuhe__starttime__lte=now,zuhe__endtime__gte=now).order_by('-zuhe__toprate').values('zuhe__id','zuhe__starttime','zuhe__style',\
+                                                          'date','zuhe__toprate','zuhe__good','zuhe__colnum','zuhe__endtime','zuhe__toprate','zuhe__ondate',)[start:end]
         return Response(data) 
 
 
