@@ -53,7 +53,7 @@ class Command(BaseCommand):
                     zuhe.toprate=zuhe.rate
                 zuhe.updatedate=datetime.datetime.now() 
                 zuhe.save()
-        zuhes_3=Zuhe.objects.filter(endtime__lt=today)
+        '''zuhes_3=Zuhe.objects.filter(endtime__lt=today)
         for zuhe in zuhes_3:
             enddate=zuhe.endtime.strftime('%Y-%m-%d')
             for stock in zuhe.singlestock_set.all():     
@@ -77,4 +77,4 @@ class Command(BaseCommand):
                 if zuhe.toprate and zuhe.toprate<zuhe.rate:
                     zuhe.toprate=zuhe.rate
                 zuhe.updatedate=datetime.datetime.now() 
-                zuhe.save()
+                zuhe.save()'''
