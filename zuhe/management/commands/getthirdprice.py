@@ -11,7 +11,7 @@ class Command(BaseCommand):
         month=today.month
         day=today.day
         date=today.strftime('%Y-%m-%d')
-        zuhes=Zuhe.objects.filter(singlestock__startprice=None)
+        zuhes=Zuhe.objects.filter(singlestock__startprice='')
         
         for zuhe in zuhes:
             startdate=zuhe.starttime.strftime('%Y-%m-%d')
