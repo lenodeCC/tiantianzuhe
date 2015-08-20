@@ -634,7 +634,7 @@ class MakeCommentToComment(APIView):
         iosmsg.badge=1
         iosmsg.sound='beep.wav'
         iosmsg.alert = content
-        iosmsg.custom = {'type':'4', 'id':str(comment.id)}
+        iosmsg.custom = {'type':'4', 'id':str(comment.zuhe.id),'type':str(comment.zuhe.style)}
         ret=x.PushTags(0, (str(touser.id),),'AND',msg)
         ret_ios=iosx.PushTags(0, (str(touser.id),),'AND',iosmsg,1)
         data={'success':True}
