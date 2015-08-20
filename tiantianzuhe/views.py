@@ -626,7 +626,7 @@ class MakeCommentToComment(APIView):
         msg.title = u'天天组合:您收到一条新评论'
         msg.content = content
         msg.expireTime = 86400      
-        msg.custom = {'type':'4', 'id':str(comment.zuhe.id)}
+        msg.custom = {'type':'4', 'id':str(comment.zuhe.id),'type':str(comment.zuhe.style)}
         style = xinge.Style(2, 1, 1, 0, 0)
         msg.style = style
         iosmsg=xinge.MessageIOS()
