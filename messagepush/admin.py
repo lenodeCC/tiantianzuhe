@@ -31,11 +31,15 @@ class HelpAdmin(admin.ModelAdmin):
             idlist=obj.members.values_list('id',flat=True)
             idlist=(str(i) for i in idlist)
             if len(list(idlist))>1:
-                x.PushTags(0, idlist, 'AND', msg)
-                iosx.PushTags(0, idlist, 'AND', iosmsg, 1)
+                ret=x.PushTags(0, idlist, 'AND', msg)
+                print ret
+                ret=iosx.PushTags(0, idlist, 'AND', iosmsg, 1)
+                print ret
             if len(list(idlist))==1:
-                x.PushTags(0, idlist, 'OR', msg)
-                iosx.PushTags(0, idlist, 'OR', iosmsg, 1)                
+                ret=x.PushTags(0, idlist, 'OR', msg)
+                print ret
+                ret=iosx.PushTags(0, idlist, 'OR', iosmsg, 1)
+                print ret
 class MSGAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.save()
