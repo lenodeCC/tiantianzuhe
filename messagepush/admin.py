@@ -29,18 +29,12 @@ class HelpAdmin(admin.ModelAdmin):
             iosx.PushAllDevices(0, iosmsg, 1)
         else:
             idlist=obj.members.values_list('id',flat=True)
-            idlist=(str(i) for i in idlist)
-            if len(list(idlist))>1:
+            if len(idlist)>1:
                 ret=x.PushTags(0, idlist, 'AND', msg)
-                obj.title=ret[0]
                 ret=iosx.PushTags(0, idlist, 'AND', iosmsg, 1)
-                obj.content=ret[2]
-            if len(list(idlist))==1:
+            if len(idlist)==1:
                 ret=x.PushTags(0, idlist, 'OR', msg)
-                obj.title=ret[0]
                 ret=iosx.PushTags(0, idlist, 'OR', iosmsg, 1)
-                obj.content=ret[2]
-        obj.save()
 class MSGAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.save()
