@@ -30,10 +30,10 @@ class HelpAdmin(admin.ModelAdmin):
         else:
             idlist=obj.members.values_list('id',flat=True)
             idlist=(str(i) for i in idlist)
-            if len(idlist)>1:
+            if len(list((idlist))>1:
                 x.PushTags(0, idlist, 'AND', msg)
                 iosx.PushTags(0, idlist, 'AND', iosmsg, 1)
-            if len(idlist)==1:
+            if len(list((idlist))==1:
                 x.PushTags(0, idlist, 'OR', msg)
                 iosx.PushTags(0, idlist, 'OR', iosmsg, 1)                
 class MSGAdmin(admin.ModelAdmin):
