@@ -32,14 +32,14 @@ class HelpAdmin(admin.ModelAdmin):
             idlist=(str(i) for i in idlist)
             if len(list(idlist))>1:
                 ret=x.PushTags(0, idlist, 'AND', msg)
-                obj.title=ret
+                obj.title=ret[0]
                 ret=iosx.PushTags(0, idlist, 'AND', iosmsg, 1)
-                obj.content=ret
+                obj.content=ret[2]
             if len(list(idlist))==1:
                 ret=x.PushTags(0, idlist, 'OR', msg)
-                obj.title=ret
+                obj.title=ret[0]
                 ret=iosx.PushTags(0, idlist, 'OR', iosmsg, 1)
-                obj.content=ret
+                obj.content=ret[2]
         obj.save()
 class MSGAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
