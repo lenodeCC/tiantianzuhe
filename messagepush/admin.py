@@ -35,9 +35,6 @@ class HelpAdmin(admin.ModelAdmin):
                 ret=iosx.PushTags(0, idlist, 'AND', iosmsg, 1)
             if len(idlist)==1:
                 ret=x.PushTags(0, idlist, 'OR', msg)
-                obj.title=str(ret[0])
-                obj.content=ret[1]
-                obj.save()
                 ret=iosx.PushTags(0, idlist, 'OR', iosmsg, 1)
 class MSGAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
