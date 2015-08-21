@@ -29,6 +29,7 @@ class HelpAdmin(admin.ModelAdmin):
             iosx.PushAllDevices(0, iosmsg, 1)
         else:
             idlist=obj.members.values_list('id',flat=True)
+            idlist=[str(i) for i in idlist]
             if len(idlist)>1:
                 ret=x.PushTags(0, idlist, 'AND', msg)
                 ret=iosx.PushTags(0, idlist, 'AND', iosmsg, 1)
