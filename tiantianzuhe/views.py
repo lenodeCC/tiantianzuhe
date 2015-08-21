@@ -372,6 +372,7 @@ class MakeMessage(APIView):
         iosmsg.sound='beep.wav'
         iosmsg.alert = content
         iosmsg.custom = {'type':'5', 'id':str(message.id)}
+        iosmsg.sound='default'
         ret=x.PushTags(0, (str(touser.id),),'OR',msg)
         ret_ios=iosx.PushTags(0, (str(touser.id),),'OR',iosmsg,1)
         return Response(data)

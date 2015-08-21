@@ -29,6 +29,7 @@ class NoRecommendAdmin(admin.ModelAdmin):
         iosmsg=xinge.MessageIOS()
         iosmsg.alert = zuhehelp.content
         iosmsg.custom = {'type':'3', 'id':str(zuhehelp.id)}
+        iosmsg.sound='default'
         x.PushAllDevices(0, msg)
         iosx.PushAllDevices(0, iosmsg, 1)
 
