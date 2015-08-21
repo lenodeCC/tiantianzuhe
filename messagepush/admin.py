@@ -40,7 +40,7 @@ class HelpAdmin(admin.ModelAdmin):
                 obj.title=ret
                 ret=iosx.PushTags(0, idlist, 'OR', iosmsg, 1)
                 obj.content=ret
-            obj.save()
+        obj.save()
 class MSGAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.save()
