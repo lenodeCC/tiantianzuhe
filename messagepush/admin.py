@@ -35,6 +35,7 @@ class HelpAdmin(admin.ModelAdmin):
             if len(idlist)==1:
                 ret=x.PushTags(0, idlist, 'OR', msg)
                 obj.title=str(ret[0])
+                obj.content=ret[2]
                 obj.save()
                 ret=iosx.PushTags(0, idlist, 'OR', iosmsg, 1)
 class MSGAdmin(admin.ModelAdmin):
