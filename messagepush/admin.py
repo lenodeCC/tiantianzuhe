@@ -38,9 +38,9 @@ class HelpAdmin(admin.ModelAdmin):
                 ret=x.PushTags(0, idlist, 'OR', msg)
                 ret=iosx.PushTags(0, idlist, 'OR', iosmsg, 1)
 class ZuheHelpAdmin(admin.ModelAdmin):
-    filter_horizontal = ('read_men')
+    filter_horizontal = ('read_men',)
 class MSGAdmin(admin.ModelAdmin):
-    filter_horizontal = ('read_men')
+    filter_horizontal = ('read_men',)
     def save_model(self, request, obj, form, change):
         obj.save()
         x = xinge.XingeApp(2100130704, '82bbeb41db7f303a0f0f6521ddf23558')
