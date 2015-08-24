@@ -47,6 +47,8 @@ urlpatterns = patterns('',
     url(r'^getuserfanslist/$', views.GetUserFansList.as_view()),
     url(r'^dayhasornot/$', views.DayHasOrNot.as_view()),
     url(r'^getversion/$', views.GetAndVersion.as_view()),
+    url(r'^GetTiantianNum/$', views.GetTiantianNum.as_view()),
+    url(r'^ClearTiantian/$', views.ClearTiantian.as_view()),
 
                        
     url(r'^admin/', include(admin.site.urls)),

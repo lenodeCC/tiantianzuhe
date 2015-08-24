@@ -891,6 +891,35 @@ class GetTiantianMSG(APIView):
         data=TiantianMSG.objects.order_by('-pubtime').values()
         return Response(data)
 
+class GetTiantianNum(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)   
+    def get(self, request, format=None):
+        user=request.user
+        num=TiantianHelp.objects.filter(style=1).exclude(read_men=user).count()+TiantianHelp.objects.filter(style=2,members=user).exclude(read_men=user).count()
+        num_2=ZuheHelp.objects.filter(style=3).exclude(read_men=user).count()+ZuheHelp.objects.filter(user=user).exclude(read_men=user).count()
+        num_3=TiantianMSG.objects.exclude(read_men=user).count()
+        data={'success':True,'tiantianhelp':num,'zuhehelp':num_2,'tiantianmsg':num_3}
+        return Response(data)
+
+class ClearTiantian(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)   
+    def get(self, request, format=None):
+        user=request.user
+        for i in TiantianHelp.objects.filter(style=1).exclude(read_men=user):
+            i.read_men.add(user)
+        for i in TiantianHelp.objects.filter(style=2,members=user).exclude(read_men=user):
+            i.read_men.add(user)
+        for i in ZuheHelp.objects.filter(style=3).exclude(read_men=user):
+            i.read_men.add(user)
+        for i in ZuheHelp.objects.filter(user=user).exclude(read_men=user):
+            i.read_men.add(user)
+        for i in TiantianMSG.objects.exclude(read_men=user):
+            i.read_men.add(user)
+        data={'success':True}
+        return Response(data)
+    
 class GetMyPredate(APIView):
     authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)   

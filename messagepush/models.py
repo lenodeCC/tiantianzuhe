@@ -12,7 +12,8 @@ class TiantianHelp(models.Model):
     title=models.CharField(max_length=50,verbose_name='标题')
     content=models.TextField(verbose_name='内容')
     style=models.IntegerField(choices=CHOICES,verbose_name='推送类型选择')
-    members=models.ManyToManyField(settings.AUTH_USER_MODEL,verbose_name=u'推送人员选择(不选则为全部推送)',blank=True,null=True)
+    members=models.ManyToManyField(settings.AUTH_USER_MODEL,verbose_name=u'推送人员选择(不选则为全部推送)',blank=True,null=True,related_name='tiantianhelpmembers')
+    read_men=models.ManyToManyField(settings.AUTH_USER_MODEL,verbose_name=u'已读人员',blank=True,null=True,related_name='tiantianhelpreadman')
     def __unicode__(self):
         return self.title
     class Meta:
@@ -29,9 +30,10 @@ class ZuheHelp(models.Model):
     style=models.IntegerField(choices=CHOICES,verbose_name='类型')
     title=models.CharField(max_length=50,verbose_name='标题')
     content=models.TextField(verbose_name='内容')
-    user=models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name=u'推送人员',blank=True,null=True)
+    user=models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name=u'推送人员',blank=True,null=True,related_name='zuhehelpuser')
     zuhe=models.ForeignKey(Zuhe,verbose_name=u'推送组合',blank=True,null=True)
     date=models.DateField(verbose_name='收到预定组合的日期或者无推荐的日期',blank=True,null=True)
+    read_men=models.ManyToManyField(settings.AUTH_USER_MODEL,verbose_name=u'已读人员',blank=True,null=True,related_name='zuhehelpreadman')
     def __unicode__(self):
         return self.title
     class Meta:
@@ -48,6 +50,7 @@ class TiantianMSG(models.Model):
     content=models.TextField(verbose_name='内容')
     style=models.IntegerField(choices=CHOICES,verbose_name='类型')
     link=models.URLField(verbose_name='链接',blank=True)
+    read_men=models.ManyToManyField(settings.AUTH_USER_MODEL,verbose_name=u'已读人员',blank=True,null=True)
     def __unicode__(self):
         return self.title
     class Meta:

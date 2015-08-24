@@ -6,7 +6,7 @@ import xinge
 import json
 
 class HelpAdmin(admin.ModelAdmin):
-    filter_horizontal = ('members',)
+    filter_horizontal = ('members','read_men')
     def save_model(self, request, obj, form, change):
         obj.save()
         x = xinge.XingeApp(2100130704, '82bbeb41db7f303a0f0f6521ddf23558')
@@ -37,7 +37,10 @@ class HelpAdmin(admin.ModelAdmin):
             if len(idlist)==1:
                 ret=x.PushTags(0, idlist, 'OR', msg)
                 ret=iosx.PushTags(0, idlist, 'OR', iosmsg, 1)
+class ZuheHelpAdmin(admin.ModelAdmin):
+    filter_horizontal = ('read_men')
 class MSGAdmin(admin.ModelAdmin):
+    filter_horizontal = ('read_men')
     def save_model(self, request, obj, form, change):
         obj.save()
         x = xinge.XingeApp(2100130704, '82bbeb41db7f303a0f0f6521ddf23558')
@@ -60,5 +63,5 @@ class MSGAdmin(admin.ModelAdmin):
         iosx.PushAllDevices(0, iosmsg, 1)
 
 admin.site.register(TiantianHelp,HelpAdmin)
-admin.site.register(ZuheHelp)
+admin.site.register(ZuheHelp,ZuheHelpAdmin)
 admin.site.register(TiantianMSG,MSGAdmin)
