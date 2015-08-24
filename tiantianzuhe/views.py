@@ -902,7 +902,7 @@ class GetTiantianNum(APIView):
         data={'success':True,'tiantianhelp':num,'zuhehelp':num_2,'tiantianmsg':num_3}
         return Response(data)
 
-class ClearTiantian(APIView):
+class ClearTiantianHelp(APIView):
     authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)   
     def get(self, request, format=None):
@@ -911,15 +911,30 @@ class ClearTiantian(APIView):
             i.read_men.add(user)
         for i in TiantianHelp.objects.filter(style=2,members=user).exclude(read_men=user):
             i.read_men.add(user)
+        data={'success':True}
+        return Response(data)
+
+class ClearZuheHelp(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)   
+    def get(self, request, format=None):
+        user=request.user
         for i in ZuheHelp.objects.filter(style=3).exclude(read_men=user):
             i.read_men.add(user)
         for i in ZuheHelp.objects.filter(user=user).exclude(read_men=user):
             i.read_men.add(user)
+        data={'success':True}
+        return Response(data)
+
+class ClearTiantianMSG(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)   
+    def get(self, request, format=None):
+        user=request.user
         for i in TiantianMSG.objects.exclude(read_men=user):
             i.read_men.add(user)
         data={'success':True}
         return Response(data)
-    
 class GetMyPredate(APIView):
     authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)   

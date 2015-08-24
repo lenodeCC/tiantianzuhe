@@ -48,8 +48,9 @@ urlpatterns = patterns('',
     url(r'^dayhasornot/$', views.DayHasOrNot.as_view()),
     url(r'^getversion/$', views.GetAndVersion.as_view()),
     url(r'^GetTiantianNum/$', views.GetTiantianNum.as_view()),
-    url(r'^ClearTiantian/$', views.ClearTiantian.as_view()),
-
+    url(r'^ClearTiantianHelp/$', views.ClearTiantianHelp.as_view()),
+    url(r'^ClearZuheHelp/$', views.ClearZuheHelp.as_view()),
+    url(r'^ClearTiantianMSG/$', views.ClearTiantianMSG.as_view()),
                        
     url(r'^admin/', include(admin.site.urls)),
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
