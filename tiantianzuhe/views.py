@@ -374,7 +374,7 @@ class MakeMessage(APIView):
         iosmsg.custom = {'type':'5', 'id':str(message.id)}
         iosmsg.sound='default'
         ret=x.PushTags(0, (str(touser.id),),'OR',msg)
-        ret_ios=iosx.PushTags(0, (str(touser.id),),'OR',iosmsg,1)
+        ret_ios=iosx.PushTags(0, (str(touser.id),),'OR',iosmsg,2)
         return Response(data)
 
 class GetMessage(APIView):
