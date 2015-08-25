@@ -873,7 +873,8 @@ class GetTiantianHelp(APIView):
     permission_classes = (IsAuthenticated,)   
     def get(self, request, format=None):
         user=request.user
-        data=TiantianHelp.objects.filter(Q(style=1)|Q(members=user)).order_by('-pubtime').values('id','title','content','pubtime')
+        now=datetime.datetime.now()-datetime.timedelta(days=10)        
+        data=TiantianHelp.objects.filter(Q(style=1)|Q(members=user),pubtime__gte=now).order_by('-pubtime').values('id','title','content','pubtime')
         return Response(data)
 
 class GetZuheHelp(APIView):
@@ -881,14 +882,16 @@ class GetZuheHelp(APIView):
     permission_classes = (IsAuthenticated,)   
     def get(self, request, format=None):
         user=request.user
-        data=ZuheHelp.objects.filter(Q(style=3)|Q(user=user)).order_by('-pubtime').values('id','title','content','pubtime','style','zuhe','date')
+        now=datetime.datetime.now()-datetime.timedelta(days=10) 
+        data=ZuheHelp.objects.filter(Q(style=3)|Q(user=user),pubtime__gte=now).order_by('-pubtime').values('id','title','content','pubtime','style','zuhe','date')
         return Response(data)
 
 class GetTiantianMSG(APIView):
     authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)   
     def get(self, request, format=None):
-        data=TiantianMSG.objects.order_by('-pubtime').values()
+        now=datetime.datetime.now()-datetime.timedelta(days=10) 
+        data=TiantianMSG.objects.filter(pubtime__gte=now).order_by('-pubtime').values()
         return Response(data)
 
 class GetTiantianNum(APIView):
@@ -896,9 +899,10 @@ class GetTiantianNum(APIView):
     permission_classes = (IsAuthenticated,)   
     def get(self, request, format=None):
         user=request.user
-        num=TiantianHelp.objects.filter(style=1).exclude(read_men=user).count()+TiantianHelp.objects.filter(style=2,members=user).exclude(read_men=user).count()
-        num_2=ZuheHelp.objects.filter(style=3).exclude(read_men=user).count()+ZuheHelp.objects.filter(user=user).exclude(read_men=user).count()
-        num_3=TiantianMSG.objects.exclude(read_men=user).count()
+        now=datetime.datetime.now()-datetime.timedelta(days=10)
+        num=TiantianHelp.objects.filter(style=1,pubtime__gte=now).exclude(read_men=user).count()+TiantianHelp.objects.filter(style=2,members=user,pubtime__gte=now).exclude(read_men=user).count()
+        num_2=ZuheHelp.objects.filter(style=3,pubtime__gte=now).exclude(read_men=user).count()+ZuheHelp.objects.filter(user=user,pubtime__gte=now).exclude(read_men=user).count()
+        num_3=TiantianMSG.objects.filter(pubtime__gte=now).exclude(read_men=user).count()
         data={'success':True,'tiantianhelp':num,'zuhehelp':num_2,'tiantianmsg':num_3}
         return Response(data)
 
