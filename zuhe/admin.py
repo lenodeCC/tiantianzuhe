@@ -31,7 +31,7 @@ class NoRecommendAdmin(admin.ModelAdmin):
         iosmsg.custom = {'type':'3', 'id':str(zuhehelp.id)}
         iosmsg.sound='default'
         x.PushAllDevices(0, msg)
-        iosx.PushAllDevices(0, iosmsg, 2)
+        iosx.PushAllDevices(0, iosmsg, 1)
 
 
 

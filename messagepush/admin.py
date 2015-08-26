@@ -27,16 +27,16 @@ class HelpAdmin(admin.ModelAdmin):
         iosmsg.sound='default'
         if obj.style==1:
             x.PushAllDevices(0, msg)
-            iosx.PushAllDevices(0, iosmsg, 2)
+            iosx.PushAllDevices(0, iosmsg, 1)
         else:
             idlist=obj.members.values_list('id',flat=True)
             idlist=[str(i) for i in idlist]
             if len(idlist)>1:
                 ret=x.PushTags(0, idlist, 'AND', msg)
-                ret=iosx.PushTags(0, idlist, 'AND', iosmsg, 2)
+                ret=iosx.PushTags(0, idlist, 'AND', iosmsg, 1)
             if len(idlist)==1:
                 ret=x.PushTags(0, idlist, 'OR', msg)
-                ret=iosx.PushTags(0, idlist, 'OR', iosmsg, 2)
+                ret=iosx.PushTags(0, idlist, 'OR', iosmsg, 1)
 class ZuheHelpAdmin(admin.ModelAdmin):
     filter_horizontal = ('read_men',)
 class MSGAdmin(admin.ModelAdmin):
@@ -60,7 +60,7 @@ class MSGAdmin(admin.ModelAdmin):
         iosmsg.custom = {'type':'2', 'id':str(obj.id)}
         iosmsg.sound='default'
         x.PushAllDevices(0, msg)
-        iosx.PushAllDevices(0, iosmsg, 2)
+        iosx.PushAllDevices(0, iosmsg, 1)
 
 admin.site.register(TiantianHelp,HelpAdmin)
 admin.site.register(ZuheHelp,ZuheHelpAdmin)
