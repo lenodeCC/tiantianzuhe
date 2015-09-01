@@ -74,6 +74,7 @@ class Comment(models.Model):
     content=models.TextField(verbose_name='内容')
     to=models.ForeignKey('self',verbose_name='回复评论',blank=True,null=True)
     to_user=models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='被回复用户',related_name='totalker',blank=True,null=True)
+    is_read=models.BooleanField(default=False)
     def __unicode__(self):
         return self.user.name
     class Meta:

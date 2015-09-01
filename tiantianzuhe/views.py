@@ -595,7 +595,7 @@ class MakeComment(APIView):
         pk=request.POST.get('groupid','')
         zuhe=self.get_zuhe(pk)
         content=request.POST.get('content','')
-        Comment.objects.create(user=user,zuhe=zuhe,content=content)
+        Comment.objects.create(user=user,zuhe=zuhe,content=content,is_read=True)
         data={'success':True}
         return Response(data)
 
@@ -619,12 +619,12 @@ class MakeCommentToComment(APIView):
         to_pk=request.POST.get('touserid','')
         touser=self.get_user(to_pk)
         content=request.POST.get('content','')
-        Comment.objects.create(user=user,content=content,to=comment,to_user=touser)
-        x = xinge.XingeApp(2100130704, '57bd74b32b26adb3f48b0fd8fb34502d')
+        Comment.objects.create(user=user,content=content,to=comment,to_user=touser,zuhe=comment.zuhe)
+        x = xinge.XingeApp(2100130704, '82bbeb41db7f303a0f0f6521ddf23558')
         iosx=xinge.XingeApp(2200130705, 'd3156bf69ce4357382bfc8a93920582f')
         msg=xinge.Message()
         msg.type = xinge.Message.TYPE_NOTIFICATION
-        msg.title = u'天天组合:您收到一条新评论'
+        msg.title = '天天组合:您收到一条新评论'
         msg.content = content
         msg.expireTime = 86400      
         msg.custom = {'type':'4', 'id':str(comment.zuhe.id),'zuhetype':str(comment.zuhe.style)}
@@ -634,10 +634,10 @@ class MakeCommentToComment(APIView):
         iosmsg.expireTime = 3600
         iosmsg.badge=1
         iosmsg.sound='beep.wav'
-        iosmsg.alert = content
+        iosmsg.alert = '天天组合:您收到一条新评论'
         iosmsg.custom = {'type':'4', 'id':str(comment.zuhe.id),'zuhetype':str(comment.zuhe.style)}
-        ret=x.PushTags(0, (str(touser.id),),'AND',msg)
-        ret_ios=iosx.PushTags(0, (str(touser.id),),'AND',iosmsg,1)
+        ret=x.PushTags(0, (str(touser.id),),'OR',msg)
+        ret_ios=iosx.PushTags(0, (str(touser.id),),'OR',iosmsg,1)
         data={'success':True}
         return Response(data)
 
@@ -668,7 +668,7 @@ class GetCommentList(APIView):
                                                       'user__img','date','content')[start:end]
         for i in data:
             comment=self.get_comment(i['id'])
-            i['list']=comment.comment_set.order_by('-date').values('user__id','user__name','user__img','date','content','to_user','to_user__name',)[0:3]
+            i['list']=comment.comment_set.order_by('-date').values('user__id','user__name','user__img','date','content','to_user','to_user__name','to_user__img')[0:3]
             i['num']=comment.comment_set.count()
             
         return Response(data)
@@ -685,7 +685,7 @@ class GetCommentListToComment(APIView):
         user=request.user
         pk=request.POST.get('talkid','')
         comment=self.get_comment(pk)
-        data=comment.comment_set.order_by('-date').values('user__id','user__name','user__img','date','content','to_user','to_user__name',)
+        data=comment.comment_set.order_by('-date').values('user__id','user__name','user__img','date','content','to_user','to_user__name','to_user__img')
         return Response(data)
 
 class GetOneUserComment(APIView):
@@ -716,6 +716,30 @@ class GetOneUserComment(APIView):
         for i in data['list']:
             comment=self.get_comment(i['id'])
             i['replynum']=Comment.objects.filter(to=comment).count()
+        return Response(data)
+
+class GetUserCommentTo(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def post(self, request, format=None):
+        user=request.user
+        page=request.POST.get('page','')
+        if not page:
+            page=1
+        page=int(page)
+        start=(page-1)*10
+        end=start+10
+        data=Comment.objects.order_by('-date').filter(to_user=user,is_read=False).values('zuhe','zuhe__style','date','content','id','user','user__name','user__img','to_user','to_user__name','to_user__img')[start:end]
+        
+        return Response(data)
+
+class ClearUserCommentTo(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get(self, request, format=None):
+        user=request.user
+        Comment.objects.filter(to_user=user,is_read=False).update(is_read=True)
+        data={'success':True}
         return Response(data)
     
 class GetGroupOfMonth(APIView):
@@ -903,7 +927,8 @@ class GetTiantianNum(APIView):
         num=TiantianHelp.objects.filter(style=1,pubtime__gte=now).exclude(read_men=user).count()+TiantianHelp.objects.filter(style=2,members=user,pubtime__gte=now).exclude(read_men=user).count()
         num_2=ZuheHelp.objects.filter(style=3,pubtime__gte=now).exclude(read_men=user).count()+ZuheHelp.objects.filter(user=user,pubtime__gte=now).exclude(read_men=user).count()
         num_3=TiantianMSG.objects.filter(pubtime__gte=now).exclude(read_men=user).count()
-        data={'success':True,'tiantianhelp':num,'zuhehelp':num_2,'tiantianmsg':num_3}
+        num_4=Comment.objects.filter(to_user=user,is_read=False).count()
+        data={'success':True,'tiantianhelp':num,'zuhehelp':num_2,'tiantianmsg':num_3,'commentnum':num_4}
         return Response(data)
 
 class ClearTiantianHelp(APIView):
