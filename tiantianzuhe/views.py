@@ -146,10 +146,10 @@ class ThirdLogin(APIView):
         if not openid:
             data={'success':False,'err_code':1003}
             return Response(data)            
-        try:
+        if MyUser.objects.filter(openid=openid).exists():
             user=MyUser.objects.get(openid=openid)
             data={'success':True,'isfirst':False,'id':user.id,'openid':openid}
-        except:
+        else:
             user=MyUser.objects.create_user(phone=openid,password='password')
             user.openid=openid
             user.openname=openname
