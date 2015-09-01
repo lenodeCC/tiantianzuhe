@@ -624,8 +624,7 @@ class MakeCommentToComment(APIView):
         iosx=xinge.XingeApp(2200130705, 'd3156bf69ce4357382bfc8a93920582f')
         msg=xinge.Message()
         msg.type = xinge.Message.TYPE_NOTIFICATION
-        msg.title = '天天组合:您收到一条新评论'
-        msg.content = content
+        msg.title = '天天组合:您收到一条新回复'
         msg.expireTime = 86400      
         msg.custom = {'type':'4', 'id':str(comment.zuhe.id),'zuhetype':str(comment.zuhe.style)}
         style = xinge.Style(2, 1, 1, 0, 0)
@@ -634,7 +633,7 @@ class MakeCommentToComment(APIView):
         iosmsg.expireTime = 3600
         iosmsg.badge=1
         iosmsg.sound='beep.wav'
-        iosmsg.alert = '天天组合:您收到一条新评论'
+        iosmsg.alert = '天天组合:您收到一条新回复'
         iosmsg.custom = {'type':'4', 'id':str(comment.zuhe.id),'zuhetype':str(comment.zuhe.style)}
         ret=x.PushTags(0, (str(touser.id),),'OR',msg)
         ret_ios=iosx.PushTags(0, (str(touser.id),),'OR',iosmsg,1)
