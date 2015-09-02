@@ -732,6 +732,21 @@ class GetUserCommentTo(APIView):
         
         return Response(data)
 
+class GetUserAllCommentTo(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def post(self, request, format=None):
+        user=request.user
+        page=request.POST.get('page','')
+        if not page:
+            page=1
+        page=int(page)
+        start=(page-1)*10
+        end=start+10
+        data=Comment.objects.order_by('-date').filter(to_user=user).values('zuhe','zuhe__style','date','content','id','user','user__name','user__img','to_user','to_user__name','to_user__img')[start:end]
+        
+        return Response(data)
+    
 class ClearUserCommentTo(APIView):
     authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)

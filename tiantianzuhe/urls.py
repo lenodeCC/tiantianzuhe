@@ -52,7 +52,8 @@ urlpatterns = patterns('',
     url(r'^ClearZuheHelp/$', views.ClearZuheHelp.as_view()),
     url(r'^ClearTiantianMSG/$', views.ClearTiantianMSG.as_view()),
     url(r'^GetUserCommentTo/$', views.GetUserCommentTo.as_view()),
-    url(r'^ClearUserCommentTo/$', views.ClearUserCommentTo.as_view()),                       
+    url(r'^ClearUserCommentTo/$', views.ClearUserCommentTo.as_view()),
+    url(r'^GetUserAllCommentTo/$', views.GetUserAllCommentTo.as_view()), 
     url(r'^admin/', include(admin.site.urls)),
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns = format_suffix_patterns(urlpatterns)
