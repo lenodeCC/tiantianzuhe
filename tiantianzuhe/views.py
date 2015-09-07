@@ -619,7 +619,7 @@ class MakeCommentToComment(APIView):
         to_pk=request.POST.get('touserid','')
         touser=self.get_user(to_pk)
         content=request.POST.get('content','')
-        Comment.objects.create(user=user,content=content,to=comment,to_user=touser,zuhe=comment.zuhe)
+        Comment.objects.create(user=user,content=content,to=comment,to_user=touser)
         x = xinge.XingeApp(2100130704, '82bbeb41db7f303a0f0f6521ddf23558')
         iosx=xinge.XingeApp(2200130705, 'd3156bf69ce4357382bfc8a93920582f')
         msg=xinge.Message()
@@ -728,7 +728,7 @@ class GetUserCommentTo(APIView):
         page=int(page)
         start=(page-1)*10
         end=start+10
-        data=Comment.objects.order_by('-date').filter(to_user=user,is_read=False).values('zuhe','zuhe__style','date','content','id','user','user__name','user__img','to_user','to_user__name','to_user__img')[start:end]
+        data=Comment.objects.order_by('-date').filter(to_user=user,is_read=False).values('to__zuhe','to__zuhe__style','date','content','id','user','user__name','user__img','to_user','to_user__name','to_user__img')[start:end]
         
         return Response(data)
 
@@ -743,7 +743,7 @@ class GetUserAllCommentTo(APIView):
         page=int(page)
         start=(page-1)*10
         end=start+10
-        data=Comment.objects.order_by('-date').filter(to_user=user).values('zuhe','zuhe__style','date','content','id','user','user__name','user__img','to_user','to_user__name','to_user__img')[start:end]
+        data=Comment.objects.order_by('-date').filter(to_user=user).values('to__zuhe','to__zuhe__style','date','content','id','user','user__name','user__img','to_user','to_user__name','to_user__img')[start:end]
         
         return Response(data)
     
