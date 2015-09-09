@@ -19,7 +19,7 @@ class HelpAdmin(admin.ModelAdmin):
         #msg.sendTime = '2012-12-12 18:48:00'
         # 自定义键值对，key和value都必须是字符串，非必须
         msg.custom = {'type':'1', 'id':str(obj.id)}
-        style = xinge.Style(2, 1, 1, 0, 0)
+        style = xinge.Style(2, 1, 1, 1, 0)
         msg.style = style
         iosmsg=xinge.MessageIOS()
         iosmsg.alert = obj.title.encode('utf-8')
@@ -53,7 +53,7 @@ class MSGAdmin(admin.ModelAdmin):
         #msg.sendTime = '2012-12-12 18:48:00'
         # 自定义键值对，key和value都必须是字符串，非必须
         msg.custom = {'type':'2', 'id':str(obj.id)}
-        style = xinge.Style(2, 1, 1, 0, 0)
+        style = xinge.Style(2, 1, 1, 1, 0)
         msg.style = style
         iosmsg=xinge.MessageIOS()
         iosmsg.alert = obj.title.encode('utf-8')
