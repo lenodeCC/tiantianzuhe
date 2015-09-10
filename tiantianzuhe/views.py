@@ -764,7 +764,7 @@ class ReadUserCommentTo(APIView):
             return Comment.objects.get(pk=int(pk))
         except Comment.DoesNotExist:
             raise Http404
-    def get(self, request, format=None):
+    def post(self, request, format=None):
         user=request.user
         pk=request.POST.get('id','')
         comment=self.get_comment(pk)
