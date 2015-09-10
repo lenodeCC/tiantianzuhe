@@ -755,6 +755,23 @@ class ClearUserCommentTo(APIView):
         Comment.objects.filter(to_user=user,is_read=False).update(is_read=True)
         data={'success':True}
         return Response(data)
+
+class ReadUserCommentTo(APIView):
+    authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get_comment(self, pk):
+        try:
+            return Comment.objects.get(pk=int(pk))
+        except Comment.DoesNotExist:
+            raise Http404
+    def get(self, request, format=None):
+        user=request.user
+        pk=request.POST.get('id','')
+        comment=self.get_comment(pk)
+        comment.is_read=True
+        comment.save()
+        data={'success':True}
+        return Response(data)
     
 class GetGroupOfMonth(APIView):
     authentication_classes = (UnsafeSessionAuthentication, BasicAuthentication)
