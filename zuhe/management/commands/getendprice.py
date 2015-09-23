@@ -53,7 +53,7 @@ class Command(BaseCommand):
                     zuhe.toprate=zuhe.rate
                 zuhe.updatedate=datetime.datetime.now() 
                 zuhe.save()
-        zuhes_2=Zuhe.objects.filter(starttime__lte=now,endtime__gte=today)
+        '''zuhes_2=Zuhe.objects.filter(starttime__lte=now,endtime__gte=today)
         for zuhe in zuhes_2:
             startdate=zuhe.starttime.strftime('%Y-%m-%d')
             enddate=zuhe.endtime.strftime('%Y-%m-%d')
@@ -71,4 +71,4 @@ class Command(BaseCommand):
                             StockPrice.objects.create(stock=stock,date=date,price=price)
                       
                 except:
-                    pass
+                    pass'''
