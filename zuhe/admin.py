@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from zuhe.models import Zuhe,SingleStock,NoRecommend,ZuheWithExcel,SingleStock,Comment,Col
+from zuhe.models import Zuhe,SingleStock,NoRecommend,ZuheWithExcel,SingleStock,Comment,Col,StockPrice
 from messagepush.models import ZuheHelp
 import xinge
 import json
@@ -87,8 +87,13 @@ class ZuheWithExcelAdmin(admin.ModelAdmin):
             else:
                 isfree=True
             SingleStock.objects.create(code=code,isfree=isfree,zuhe=zuhe)
+
+class StockPriceAdmin(admin.ModelAdmin):
+    list_display = ('stock', 'date','price')
+
 admin.site.register(Zuhe,ZuheAdmin)
 admin.site.register(NoRecommend,NoRecommendAdmin)
 admin.site.register(ZuheWithExcel,ZuheWithExcelAdmin)
 admin.site.register(Comment)
 admin.site.register(Col)
+admin.site.register(StockPrice,StockPriceAdmin)
