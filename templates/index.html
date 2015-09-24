@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html class="html" lang="en-US">
  <head>
+<script src="/static/scripts/jquery-1.8.3.min.js"></script>
+<script src="/static/scripts/index.js"></script>
 
   <script type="text/javascript">
    if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required":["jquery-1.8.3.min.js", "museutils.js", "jquery.musepolyfill.bgsize.js", "jquery.watch.js", "jquery.scrolleffects.js", "index.css"], "outOfDate":[]};
@@ -25,6 +27,17 @@
 </script>
    </head>
  <body>
+<div id="share" class="clearfix">
+    <div id="box" class="clearfix">
+        <img src="/static/images/weibo.png">
+    </div>
+</div>
+
+<div id="share1" class="clearfix">
+    <div id="box1" class="clearfix">
+        <img src="/static/images/weixin.jpg">
+    </div>
+</div>
 
   <div class="clearfix" id="page"><!-- column -->
    <div class="position_content" id="page_position_content">
@@ -80,10 +93,12 @@
    <img class="block" id="u6241_img" src="/static/images/day.png" alt="" width="195" height="328"/>
      </div>
 
-     <div class="clearfix grpelem" id="u1166"><!-- group -->
-      <div class="grpelem" id="u806"><!-- state-based BG images --></div>
-      <div class="grpelem" id="u818"><!-- state-based BG images --></div>
-     </div>
+     <a href="https://appsto.re/cn/XQfP6.i">
+        <div class="clearfix grpelem" id="u1166"><!-- group -->
+           <div class="grpelem" id="u806"><!-- state-based BG images --></div>
+           <div class="grpelem" id="u818"><!-- state-based BG images --></div>
+        </div>
+    </a>
     </div>
     <div class="museBGSize ose_pre_init mse_pre_init" id="u846"><!-- image --></div>
     <div class="museBGSize ose_pre_init mse_pre_init" id="u842"><!-- image --></div>
@@ -121,7 +136,7 @@ height: calc(100% + 0px); padding-top:0px;
         </p>
 </div>
 
-    <div class="browser_width colelem" id="u999-bw">
+    <div class="browser_width colelem" id="u999-bw" style="display: none">
      <div id="u999"><!-- group -->
       <div class="clearfix" id="u999_align_to_page">
        <div class="rounded-corners grpelem" id="u2683"><!-- simple frame --></div>

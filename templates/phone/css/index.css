@@ -913,3 +913,68 @@ body
 	clear: both;
 }
 
+#share {
+   float: left;
+   height: 100%;
+   clear: none;
+   width: 100%;
+   position: fixed;
+   top: auto;
+   left: auto;
+   z-index: 1000;
+   min-height: 0px;
+   display: none;
+   background-color: rgba(0, 0, 0, 0.5);
+}
+
+#box {
+   float: none;
+   height: 300px;
+   clear: none;
+   width: 300px;
+   position: relative;
+   top: 0px;
+   left: 0px;
+   margin-top: 9.104704%;
+   margin-left: auto;
+   margin-right: auto;
+}
+#box >img {
+   margin: 0px;
+   height: 100%;
+   width: 100%;
+}
+
+#share1 {
+   float: left;
+   height: 100%;
+   clear: none;
+   width: 100%;
+   position: fixed;
+   top: auto;
+   left: auto;
+   z-index: 1000;
+   min-height: 0px;
+   display: none;
+   background-color: rgba(0, 0, 0, 0.5);
+}
+
+#box1 {
+   float: none;
+   height: 300px;
+   clear: none;
+   width: 300px;
+   position: relative;
+   top: 0px;
+   left: 0px;
+   margin-top: 9.104704%;
+   margin-left: auto;
+   margin-right: auto;
+}
+#box1 >img {
+   margin: 0px;
+   height: 100%;
+   width: 100%;
+}
+
+
