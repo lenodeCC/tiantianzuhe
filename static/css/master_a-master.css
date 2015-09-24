@@ -117,3 +117,9 @@
 	background-size: contain;
 }
 
+#u1014 > p
+{
+	color: rgb(158, 159, 158);
+	height: 24px;
+	text-align: center;
+}

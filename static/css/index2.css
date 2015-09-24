@@ -329,6 +329,27 @@
 	background: transparent url("/static/images/iphone2_picture-u3435-fr.png") no-repeat center center;
 	background-size: contain;
 }
+#u6229
+{
+	z-index: 96;
+	width: 137px;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 92px;
+	left: 127px;
+}
+
+#u6235
+{
+	z-index: 98;
+	width: 128px;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 116px;
+	left: 132px;
+}
 
 #u3439
 {
