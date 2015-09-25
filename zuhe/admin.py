@@ -45,7 +45,7 @@ class ZuheAdmin(admin.ModelAdmin):
     inlines = [
         StockInline,
     ]
-    list_display = ('__unicode__', 'style')
+    list_display = ('__unicode__', 'style','starttime','endtime','pubtime','rate','toprate','update')
     list_filter  = ('starttime', 'style')
     search_fields= ('starttime', 'style')
     readonly_fields = ('pubtime','updatedate',)
