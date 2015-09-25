@@ -86,7 +86,7 @@ class ZuheRate(models.Model):
     date=models.DateField(verbose_name='日期',blank=True,null=True)
 
     def __unicode__(self):
-        return self.stock.code
+        return u'%d年%d月%d日的%s组合'%(self.zuhe.starttime.year,self.zuhe.starttime.month,self.zuhe.starttime.day,self.zuhe.CHOICES[self.style-1][1])
     class Meta:
         verbose_name = '组合每日收益'
         verbose_name_plural = "组合每日收益"
