@@ -7,6 +7,7 @@ import json
 import decimal
 class Command(BaseCommand):
     def handle(self, *args, **options):
+        now=datetime.datetime.now()
         today=datetime.date.today()
         date=today.strftime('%Y-%m-%d')
         zuhes=Zuhe.objects.filter(starttime__lte=now,endtime__gte=today)
