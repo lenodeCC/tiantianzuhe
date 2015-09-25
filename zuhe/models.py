@@ -70,7 +70,8 @@ class SingleStock(models.Model):
 
 class StockPrice(models.Model):
     stock=models.ForeignKey(SingleStock,verbose_name='所属股票')
-    price=models.CharField(max_length=20,verbose_name='收盘价',blank=True)
+    price=models.DecimalField(verbose_name='收盘价', max_digits=6, decimal_places=2,blank=True,null=True)
+    rate=models.DecimalField(verbose_name='收益', max_digits=5, decimal_places=2,blank=True,null=True)
     date=models.DateField(verbose_name='日期',blank=True,null=True)
 
     def __unicode__(self):
@@ -79,6 +80,16 @@ class StockPrice(models.Model):
         verbose_name = '股票每日收盘价'
         verbose_name_plural = "股票每日收盘价"
         
+class ZuheRate(models.Model):
+    zuhe=models.ForeignKey(Zuhe,verbose_name='组合')
+    rate=models.DecimalField(verbose_name='收益', max_digits=5, decimal_places=2,blank=True,null=True)
+    date=models.DateField(verbose_name='日期',blank=True,null=True)
+
+    def __unicode__(self):
+        return self.stock.code
+    class Meta:
+        verbose_name = '组合每日收益'
+        verbose_name_plural = "组合每日收益"
         
 class Comment(models.Model):
     user=models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='用户',related_name='talker')

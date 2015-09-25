@@ -47,5 +47,28 @@ class Command(BaseCommand):
             price_list=[stock.rate for stock in zuhe.singlestock_set.all() if stock.rate is not None]
             if len(price_list)>0:
                 zuhe.rate=sum(price_list)/len(price_list)
+                if not zuhe.toprate:
+                    zuhe.toprate=zuhe.rate
+                if zuhe.toprate and zuhe.toprate<zuhe.rate:
+                    zuhe.toprate=zuhe.rate
                 zuhe.updatedate=datetime.datetime.now() 
                 zuhe.save()
+        '''zuhes_2=Zuhe.objects.filter(starttime__lte=now,endtime__gte=today)
+        for zuhe in zuhes_2:
+            startdate=zuhe.starttime.strftime('%Y-%m-%d')
+            enddate=zuhe.endtime.strftime('%Y-%m-%d')
+            for stock in zuhe.singlestock_set.all():     
+                code=stock.code
+                url='http://mkt.bankuang.com/kline.php?symbol=%s&q_type=2&fq=1&stime=%s&etime=%s&r_type=2'%(code,startdate,enddate)
+                r=requests.get(url)
+                try:
+                    datas=json.loads(r.content)
+                    for data in datas:
+                        price=str(data.get('Close',''))
+                        date=data.get('Date','')
+                        date=datetime.date(year=int(date[:4]),month=int(date[5:7]),day=int(date[8:10]))
+                        if not StockPrice.objects.filter(stock=stock,date=date).exists():
+                            StockPrice.objects.create(stock=stock,date=date,price=price)
+                      
+                except:
+                    pass'''
