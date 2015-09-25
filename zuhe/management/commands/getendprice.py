@@ -61,8 +61,8 @@ class Command(BaseCommand):
                 zuhe.save()
             dates=StockPrice.objects.filter(stock__zuhe=zuhe).dates('date','day')
             for date in dates:
-                rate=StockPrice.objects.filter(stock__zuhe=zuhe,date=date).aggregate(Avg('rate'))['rate_avg']
+                rate=StockPrice.objects.filter(stock__zuhe=zuhe,date=date).aggregate(Avg('rate'))['rate__avg']
                 ZuheRate.objects.update_or_create(zuhe=zuhe,date=date,defaults={'rate':rate,})
-            zuhe.toprate=ZuheRate.objects.filter(zuhe=zuhe).aggregate(Max('rate'))['rate_max']
+            zuhe.toprate=ZuheRate.objects.filter(zuhe=zuhe).aggregate(Max('rate'))['rate__max']
             zuhe.updatedate=datetime.datetime.now()
             zuhe.save()
